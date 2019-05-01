@@ -24,16 +24,23 @@ class GameScene: SKScene {
         self.view!.addGestureRecognizer(tapRec)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-         
-    }
+    
     
     @objc func tappedView(_ sender:UITapGestureRecognizer) {
         
-        let point: CGPoint = sender.location(in: self.view)
+        let crosshairPoint: CGPoint = CGPoint(x: 0, y: 0)
         
+        //let viewLocation = 
         
     }
     
-    
+    func removeAllGestures(){
+        
+        for gesture in (self.view?.gestureRecognizers)! {
+            
+            self.view?.removeGestureRecognizer(gesture)
+            
+        }
+        // for scene transitions
+    }
 }
