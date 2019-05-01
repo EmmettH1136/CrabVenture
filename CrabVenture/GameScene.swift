@@ -14,9 +14,9 @@ class GameScene: SKScene {
 	var crabPhys = SKPhysicsBody()
     
     override func didMove(to view: SKView) {
-        crabClaw = self.childNode(withName: "SKSpriteNode") as! SKSpriteNode
+        crabClaw = self.childNode(withName: "CrabClaw") as! SKSpriteNode
+		
 		crabPhys = crabClaw.physicsBody!
-        
         let tapRec = UITapGestureRecognizer()
         
         tapRec.addTarget(self, action:#selector(GameScene.tappedView(_:) ))
