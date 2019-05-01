@@ -13,7 +13,7 @@ class GameScene: SKScene {
     var crabClaw = SKSpriteNode()
     
     override func didMove(to view: SKView) {
-        crabClaw = self.childNode(withName: "SKSpriteNode") as! SKSpriteNode
+        crabClaw = self.childNode(withName: "CrabClaw") as! SKSpriteNode
         
         let tapRec = UITapGestureRecognizer()
         
