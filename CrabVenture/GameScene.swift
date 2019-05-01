@@ -14,9 +14,22 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        let tapRec = UITapGestureRecognizer()
+        
+        tapRec.addTarget(self, action:#selector(GameScene.tappedView(_:) ))
+        tapRec.numberOfTouchesRequired = 1
+        tapRec.numberOfTapsRequired = 1
+        self.view!.addGestureRecognizer(tapRec)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+         
+    }
+    
+    @objc func tappedView(_ sender:UITapGestureRecognizer) {
+        
+        let point: CGPoint = sender.location(in: self.view)
+        
         
     }
     
