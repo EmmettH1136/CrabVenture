@@ -22,7 +22,8 @@ func random(min: CGFloat, max: CGFloat) -> CGFloat {
 class GameScene: SKScene {
     var crabClaw = SKSpriteNode()
 	var crabPhys = SKPhysicsBody()
-    var swordFish = SKSpriteNode()
+    var swordFishNode = SKSpriteNode()
+	var swordFish = Enemy("SwordFish", 1, SKSpriteNode(), CGVector(dx: 100, dy: 0))
     var swordFishPhys = SKPhysicsBody()
 
 	var health = 1
@@ -30,8 +31,9 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         crabClaw = self.childNode(withName: "CrabClaw") as! SKSpriteNode
 		crabPhys = crabClaw.physicsBody!
-        swordFish = self.childNode(withName: "SwordFish") as! SKSpriteNode
-        swordFishPhys = swordFish.physicsBody!
+        swordFishNode = self.childNode(withName: "SwordFish") as! SKSpriteNode
+        swordFishPhys = swordFishNode.physicsBody!
+		swordFish.body = swordFishNode
 		
         let tapRec = UITapGestureRecognizer()
         
