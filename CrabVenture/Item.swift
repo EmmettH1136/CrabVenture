@@ -17,4 +17,6 @@ class Item {
 		self.name = name
 		self.type = type
 	}
+	
 }
+
