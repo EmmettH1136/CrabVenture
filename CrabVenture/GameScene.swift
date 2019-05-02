@@ -6,8 +6,18 @@
 //  Copyright © 2019 John Heresy High School. All rights reserved.
 //
 
+
 import SpriteKit
 import GameplayKit
+
+//Made these lines of code to determine random numbers
+func random() -> CGFloat {
+    return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+}
+
+func random(min: CGFloat, max: CGFloat) -> CGFloat {
+    return random() * (max - min) + min
+}
 
 class GameScene: SKScene {
     var crabClaw = SKSpriteNode()
@@ -33,7 +43,11 @@ class GameScene: SKScene {
         self.view!.addGestureRecognizer(tapRec)
         
         // Starting the sworfish movement in here for now can move to a function later
+        let actualDuration = random(min: 10, max: 25)
         
+        let actionMove = SKAction.move(to: CGPoint(x: 640,y: 320), duration: TimeInterval(actualDuration))
+        let actionMoveDone = SKAction.removeFromParent()
+        swordFishNode.run(SKAction.sequence([actionMove, actionMoveDone]))
     }
     
     
