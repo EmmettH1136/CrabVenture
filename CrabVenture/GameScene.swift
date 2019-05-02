@@ -13,6 +13,7 @@ class GameScene: SKScene {
     var crabClaw = SKSpriteNode()
 	var crabPhys = SKPhysicsBody()
     var swordFish = SKSpriteNode()
+	var swordFishStats = Enemy("SwordFish", CGVector(dx: 100, dy: 0))
     var swordFishPhys = SKPhysicsBody()
 
 	var health = 1
