@@ -1,22 +1,19 @@
 //
-//  Item.swift
+//  Enemy.swift
 //  CrabVenture
 //
-//  Created by Emmett Hasley on 5/1/19.
+//  Created by Emmett Hasley on 5/2/19.
 //  Copyright © 2019 John Heresy High School. All rights reserved.
 //
 
 import Foundation
 
-
-class Item {
+class Enemy {
 	var name : String
-	var type : Int
 	
-	init (_ name : String, _ type: Int) {
+	
+	init (_ name : String) {
 		self.name = name
-		self.type = type
+		
 	}
-	
 }
-
