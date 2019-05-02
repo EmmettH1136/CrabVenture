@@ -14,5 +14,6 @@ class Enemy {
 	
 	init (_ name : String) {
 		self.name = name
+		
 	}
 }

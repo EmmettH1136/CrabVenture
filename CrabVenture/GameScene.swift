@@ -12,6 +12,7 @@ import GameplayKit
 class GameScene: SKScene {
     var crabClaw = SKSpriteNode()
 	var crabPhys = SKPhysicsBody()
+	var health = 1
     
     override func didMove(to view: SKView) {
         crabClaw = self.childNode(withName: "CrabClaw") as! SKSpriteNode
@@ -44,4 +45,10 @@ class GameScene: SKScene {
         }
         // for scene transitions
     }
+	
+	override func update(_ currentTime: TimeInterval) {
+		if health == 0 {
+			print("yuh oh you lost")
+		}
+	}
 }
