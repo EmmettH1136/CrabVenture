@@ -23,4 +23,5 @@ class Enemy {
 		self.body = body
 		
 	}
+	
 }
