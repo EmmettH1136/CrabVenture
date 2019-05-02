@@ -23,6 +23,8 @@ class GameScene: SKScene {
         tapRec.numberOfTouchesRequired = 1
         tapRec.numberOfTapsRequired = 1
         self.view!.addGestureRecognizer(tapRec)
+        
+        // Starting the sworfish 
     }
     
     
