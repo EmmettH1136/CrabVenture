@@ -78,11 +78,4 @@ class GameScene: SKScene {
 			print("yuh oh you lost")
 		}
 	}
-	func makePath() {
-		// move this when the new scene is made
-		let outTiles : [String] = []
-		let tiles : [String] = []
-		let poss : [String] = []
-		let length = Int.random(in: 5...25)
-	}
 }
