@@ -7,13 +7,15 @@
 //
 
 import Foundation
+import UIKit
 
 class Enemy {
 	var name : String
+	var speed : CGVector
 	
-	
-	init (_ name : String) {
+	init (_ name : String, _ speed : CGVector) {
 		self.name = name
+		self.speed = speed
 		
 	}
 }
