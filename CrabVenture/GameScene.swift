@@ -14,7 +14,10 @@ class GameScene: SKScene {
 	var crabPhys = SKPhysicsBody()
     let tapRec = UITapGestureRecognizer()
     
+
+    
     override func didMove(to view: SKView) {
+        
         crabClaw = self.childNode(withName: "CrabClaw") as! SKSpriteNode
 		crabPhys = crabClaw.physicsBody!
 		
@@ -30,9 +33,25 @@ class GameScene: SKScene {
     
     @objc func tappedView(_ sender:UITapGestureRecognizer) {
         
+        let initialPosition = CGPoint(x: crabClaw.position.x, y: crabClaw.position.y)
+        
+        
         let crosshairPoint: CGPoint = CGPoint(x: 0, y: 0)
         
-        let viewLocation = tapRex
+        var viewLocation = tapRec.location(in: view)
+        viewLocation = crosshairPoint
+        
+        
+        let moveToAction = SKAction.move(to: viewLocation, duration: 0.3)
+        let moveClawBackAction = SKAction.move(to: initialPosition, duration: 0.7)
+        
+        self.crabClaw.run(moveToAction)
+        
+        
+        if CGPoint(x: crabClaw.position.x, y: crabClaw.position.y) == CGPoint(x: 0, y: 0) {
+            self.crabClaw.run(moveClawBackAction)
+        }
+        
         
     }
     
