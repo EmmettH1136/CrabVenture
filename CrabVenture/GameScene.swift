@@ -12,10 +12,15 @@ import GameplayKit
 class GameScene: SKScene {
     var crabClaw = SKSpriteNode()
 	var crabPhys = SKPhysicsBody()
+    var swordFish = SKSpriteNode()
+    var swordFishPhys = SKPhysicsBody()
+
     
     override func didMove(to view: SKView) {
         crabClaw = self.childNode(withName: "CrabClaw") as! SKSpriteNode
 		crabPhys = crabClaw.physicsBody!
+        swordFish = self.childNode(withName: "SwordFish") as! SKSpriteNode
+        swordFishPhys = swordFish.physicsBody!
 		
         let tapRec = UITapGestureRecognizer()
         
@@ -24,7 +29,8 @@ class GameScene: SKScene {
         tapRec.numberOfTapsRequired = 1
         self.view!.addGestureRecognizer(tapRec)
         
-        // Starting the sworfish 
+        // Starting the sworfish movement in here for now can move to a function later
+        
     }
     
     
