@@ -43,11 +43,14 @@ class GameScene: SKScene {
         self.view!.addGestureRecognizer(tapRec)
         
         // Starting the sworfish movement in here for now can move to a function later
-        let actualDuration = random(min: 10, max: 25)
+//        let actualDuration = random(min: 10, max: 25)
+//
+//        let actionMove = SKAction.move(to: CGPoint(x: 640,y: 320), duration: TimeInterval(actualDuration))
+//        let ahhhhhh = SKAction.move(by: swordFish.speed, duration: TimeInterval(actualDuration))
+//        let actionMoveDone = SKAction.removeFromParent()
+//        swordFishNode.run(SKAction.sequence([ahhhhhh, actionMoveDone]))
+        swordFishPhys.velocity = swordFish.speed
         
-        let actionMove = SKAction.move(to: CGPoint(x: 640,y: 320), duration: TimeInterval(actualDuration))
-        let actionMoveDone = SKAction.removeFromParent()
-        swordFishNode.run(SKAction.sequence([actionMove, actionMoveDone]))
     }
     
     
