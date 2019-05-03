@@ -68,10 +68,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        /* if contact.bodyb == (wallName) {
-        swordfishNode.
+         if contact.bodyb.categoryBitMask ==  {
+        swordfishNode
          }
-         */
+        
     }
     
     @objc func tappedView(_ sender:UITapGestureRecognizer) {
