@@ -33,6 +33,9 @@ class GameScene: SKScene {
 	var health = 1
     
     override func didMove(to view: SKView) {
+        
+        physicsWorld.contactDelegate = self as! SKPhysicsContactDelegate
+        
 		cronched = 0
         crabClaw = self.childNode(withName: "CrabClaw") as! SKSpriteNode
 		crabPhys = crabClaw.physicsBody!
@@ -58,7 +61,9 @@ class GameScene: SKScene {
         
     }
     
+    func didBegin(_ contact: SKPhysicsContact) {
     
+    }
     
     @objc func tappedView(_ sender:UITapGestureRecognizer) {
 		if cronched == 0 {
