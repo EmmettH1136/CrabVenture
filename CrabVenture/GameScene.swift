@@ -20,8 +20,7 @@ func random(min: CGFloat, max: CGFloat) -> CGFloat {
 }
 //or just use the already specified random functions
 
-
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     var crabClaw = SKSpriteNode()
 	var crabPhys = SKPhysicsBody()
     var swordFishNode = SKSpriteNode()
@@ -35,7 +34,7 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        physicsWorld.contactDelegate = self as! SKPhysicsContactDelegate
+		physicsWorld.contactDelegate = self
         
 		cronched = 0
         crabClaw = self.childNode(withName: "CrabClaw") as! SKSpriteNode
