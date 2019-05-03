@@ -62,10 +62,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-    
-        //Emmett
-        
-        
+        /* if contact.bodyb == (wallName) {
+        swordfishNode.
+         }
+         */
     }
     
     @objc func tappedView(_ sender:UITapGestureRecognizer) {
