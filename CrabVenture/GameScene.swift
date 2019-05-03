@@ -25,7 +25,7 @@ class GameScene: SKScene {
     var crabClaw = SKSpriteNode()
 	var crabPhys = SKPhysicsBody()
     var swordFishNode = SKSpriteNode()
-	var swordFish = Enemy("SwordFish", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 100...200), dy: 0))
+	var swordFish = Enemy("SwordFish", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 200...500), dy: 0))
     var swordFishPhys = SKPhysicsBody()
 	var cronched = 0
     let tapRec = UITapGestureRecognizer()
@@ -34,6 +34,9 @@ class GameScene: SKScene {
 	var health = 1
     
     override func didMove(to view: SKView) {
+        
+        physicsWorld.contactDelegate = self as! SKPhysicsContactDelegate
+        
 		cronched = 0
         crabClaw = self.childNode(withName: "CrabClaw") as! SKSpriteNode
 		crabPhys = crabClaw.physicsBody!
@@ -59,12 +62,14 @@ class GameScene: SKScene {
         
     }
     
+    func didBegin(_ contact: SKPhysicsContact) {
     
+    }
     
     @objc func tappedView(_ sender:UITapGestureRecognizer) {
 		if cronched == 0 {
 			
-			
+			crabClaw.texture = SKTexture(image: UIImage(named: "crabClawImageChomp")!)
 			
 			let initialPosition = CGPoint(x: crabClaw.position.x, y: crabClaw.position.y)
 			
