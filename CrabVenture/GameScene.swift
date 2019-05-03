@@ -75,9 +75,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-         if contact.bodyb.categoryBitMask ==  {
-        swordfishNode
-         }
+
         
     }
     
