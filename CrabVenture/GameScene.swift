@@ -20,10 +20,9 @@ func random(min: CGFloat, max: CGFloat) -> CGFloat {
 }
 //or just use the already specified random functions
 
-struct PhysicsCategory {
-    static let ClawCategory:UInt32 = 0x1 << 0
-    static let EnemyCategory:UInt32 = 0x1 << 1
-}
+let clawCategory : UInt32 = 1
+let enemyCategory : UInt32 = 2
+let rightCategory : UInt32 = 4
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var crabClaw = SKSpriteNode()
@@ -56,11 +55,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		right.physicsBody = SKPhysicsBody(edgeFrom: topRight, to: bottomRight)
 		self.addChild(right)
 		
+		swordFishPhys.isDynamic = true
+		
         tapRec.addTarget(self, action:#selector(GameScene.tappedView(_:) ))
         tapRec.numberOfTouchesRequired = 1
         tapRec.numberOfTapsRequired = 1
         self.view!.addGestureRecognizer(tapRec)
-        
+		
+		crabClaw.physicsBody?.categoryBitMask = clawCategory
+		swordFishPhys.categoryBitMask = enemyCategory
+		right.physicsBody?.categoryBitMask = rightCategory
+		
+		swordFishPhys.contactTestBitMask = clawCategory|rightCategory
+		
         // Starting the sworfish movement in here for now can move to a function later
 //        let actualDuration = random(min: 10, max: 25)
 //
@@ -79,6 +86,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         swordfishNode.
          }
          */
+		
+		if contact.bodyA.categoryBitMask == clawCategory {
+			swordFishPhys.isDynamic = false
+		}
+		if contact.bodyA.categoryBitMask == rightCategory {
+			
+		}
     }
     
     @objc func tappedView(_ sender:UITapGestureRecognizer) {
