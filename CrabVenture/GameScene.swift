@@ -48,8 +48,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         swordFishPhys = swordFishNode.physicsBody!
 		swordFish.body = swordFishNode 
 		
-        
-        
+        let topRight = CGPoint(x: -frame.origin.x, y: -frame.origin.y)
+		let bottomRight = CGPoint(x: -frame.origin.x, y: frame.origin.y)
+		
+		let right = SKNode()
+		right.name = "right"
+		right.physicsBody = SKPhysicsBody(edgeFrom: topRight, to: bottomRight)
+		self.addChild(right)
+		
         tapRec.addTarget(self, action:#selector(GameScene.tappedView(_:) ))
         tapRec.numberOfTouchesRequired = 1
         tapRec.numberOfTapsRequired = 1
@@ -69,7 +75,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-    
+        /* if contact.bodyb == (wallName) {
+        swordfishNode.
+         }
+         */
     }
     
     @objc func tappedView(_ sender:UITapGestureRecognizer) {
