@@ -36,7 +36,7 @@ class GameScene: SKScene {
 		crabPhys = crabClaw.physicsBody!
         swordFishNode = self.childNode(withName: "SwordFish") as! SKSpriteNode
         swordFishPhys = swordFishNode.physicsBody!
-		swordFish.body = swordFishNode
+		swordFish.body = swordFishNode 
 		
         let tapRec = UITapGestureRecognizer()
         
