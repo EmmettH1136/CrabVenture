@@ -22,7 +22,7 @@ func random(min: CGFloat, max: CGFloat) -> CGFloat {
 
 struct PhysicsCategory {
     static let ClawCategory:UInt32 = 0x1 << 0
-    static let SwordFishCategory:UInt32 = 0x1 << 1
+    static let EnemyCategory:UInt32 = 0x1 << 1
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
