@@ -18,6 +18,7 @@ func random() -> CGFloat {
 func random(min: CGFloat, max: CGFloat) -> CGFloat {
     return random() * (max - min) + min
 }
+//or just use the already specified random functions
 
 class GameScene: SKScene {
     var crabClaw = SKSpriteNode()
@@ -25,15 +26,17 @@ class GameScene: SKScene {
     var swordFishNode = SKSpriteNode()
 	var swordFish = Enemy("SwordFish", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 100...200), dy: 0))
     var swordFishPhys = SKPhysicsBody()
+	var cronched = 0
 
 	var health = 1
     
     override func didMove(to view: SKView) {
+		cronched = 0
         crabClaw = self.childNode(withName: "CrabClaw") as! SKSpriteNode
 		crabPhys = crabClaw.physicsBody!
         swordFishNode = self.childNode(withName: "SwordFish") as! SKSpriteNode
         swordFishPhys = swordFishNode.physicsBody!
-		swordFish.body = swordFishNode
+		swordFish.body = swordFishNode
 		
         let tapRec = UITapGestureRecognizer()
         
