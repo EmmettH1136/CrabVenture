@@ -20,6 +20,7 @@ func random(min: CGFloat, max: CGFloat) -> CGFloat {
 }
 //or just use the already specified random functions
 
+
 class GameScene: SKScene {
     var crabClaw = SKSpriteNode()
 	var crabPhys = SKPhysicsBody()
