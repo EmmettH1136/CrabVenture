@@ -11,15 +11,15 @@ import SpriteKit
 import GameplayKit
 
 //Made these lines of code to determine random numbers
-func random() -> CGFloat {
-    return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
-}
+//func random() -> CGFloat {
+//    return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+//}
+//
+//func random(min: CGFloat, max: CGFloat) -> CGFloat {
+//    return random() * (max - min) + min
+//}
 
-func random(min: CGFloat, max: CGFloat) -> CGFloat {
-    return random() * (max - min) + min
-}
-
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     var crabClaw = SKSpriteNode()
 	var crabPhys = SKPhysicsBody()
     var swordFishNode = SKSpriteNode()
@@ -31,6 +31,8 @@ class GameScene: SKScene {
 	var health = 1
     
     override func didMove(to view: SKView) {
+        
+        physicsWorld.contactDelegate = self
         
         crabClaw = self.childNode(withName: "CrabClaw") as! SKSpriteNode
 		crabPhys = crabClaw.physicsBody!
@@ -56,7 +58,9 @@ class GameScene: SKScene {
         
     }
     
+    func didBegin(_ contact: SKPhysicsContact) {
     
+    }
     
     @objc func tappedView(_ sender:UITapGestureRecognizer) {
         
