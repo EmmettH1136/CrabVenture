@@ -24,7 +24,7 @@ class GameScene: SKScene {
     var crabClaw = SKSpriteNode()
 	var crabPhys = SKPhysicsBody()
     var swordFishNode = SKSpriteNode()
-	var swordFish = Enemy("SwordFish", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 100...200), dy: 0))
+	var swordFish = Enemy("SwordFish", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 200...500), dy: 0))
     var swordFishPhys = SKPhysicsBody()
 	var cronched = 0
     let tapRec = UITapGestureRecognizer()
@@ -63,7 +63,7 @@ class GameScene: SKScene {
     @objc func tappedView(_ sender:UITapGestureRecognizer) {
 		if cronched == 0 {
 			
-			
+			crabClaw.texture = SKTexture(image: UIImage(named: "crabClawImageChomp")!)
 			
 			let initialPosition = CGPoint(x: crabClaw.position.x, y: crabClaw.position.y)
 			
