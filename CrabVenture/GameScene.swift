@@ -61,26 +61,30 @@ class GameScene: SKScene {
     
     
     @objc func tappedView(_ sender:UITapGestureRecognizer) {
-        
-        let initialPosition = CGPoint(x: crabClaw.position.x, y: crabClaw.position.y)
-        
-        
-        let crosshairPoint: CGPoint = CGPoint(x: 0, y: 0)
-        
-        var viewLocation = tapRec.location(in: view)
-        viewLocation = crosshairPoint
-        
-        
-        let moveToAction = SKAction.move(to: viewLocation, duration: 0.3)
-        let moveClawBackAction = SKAction.move(to: initialPosition, duration: 0.7)
-        
-        self.crabClaw.run(moveToAction)
-        
-        
-        if CGPoint(x: crabClaw.position.x, y: crabClaw.position.y) == CGPoint(x: 0, y: 0) {
-            self.crabClaw.run(moveClawBackAction)
-        }
-        
+		if cronched == 0 {
+			
+			
+			
+			let initialPosition = CGPoint(x: crabClaw.position.x, y: crabClaw.position.y)
+			
+			
+			let crosshairPoint: CGPoint = CGPoint(x: 0, y: 0)
+			
+			var viewLocation = tapRec.location(in: view)
+			viewLocation = crosshairPoint
+			
+			
+			let moveToAction = SKAction.move(to: viewLocation, duration: 0.01)
+			let moveClawBackAction = SKAction.move(to: initialPosition, duration: 0.7)
+			
+			self.crabClaw.run(moveToAction)
+			
+			
+			if CGPoint(x: crabClaw.position.x, y: crabClaw.position.y) == CGPoint(x: 0, y: 0) {
+				self.crabClaw.run(moveClawBackAction)
+			}
+			cronched = 1
+		}
         
     }
     
