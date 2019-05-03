@@ -27,6 +27,8 @@ class GameScene: SKScene {
 	var swordFish = Enemy("SwordFish", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 100...200), dy: 0))
     var swordFishPhys = SKPhysicsBody()
 	var cronched = 0
+    let tapRec = UITapGestureRecognizer()
+    
 
 	var health = 1
     
@@ -38,7 +40,7 @@ class GameScene: SKScene {
         swordFishPhys = swordFishNode.physicsBody!
 		swordFish.body = swordFishNode 
 		
-        let tapRec = UITapGestureRecognizer()
+        
         
         tapRec.addTarget(self, action:#selector(GameScene.tappedView(_:) ))
         tapRec.numberOfTouchesRequired = 1
@@ -60,9 +62,25 @@ class GameScene: SKScene {
     
     @objc func tappedView(_ sender:UITapGestureRecognizer) {
         
+        let initialPosition = CGPoint(x: crabClaw.position.x, y: crabClaw.position.y)
+        
+        
         let crosshairPoint: CGPoint = CGPoint(x: 0, y: 0)
         
-        //let viewLocation = 
+        var viewLocation = tapRec.location(in: view)
+        viewLocation = crosshairPoint
+        
+        
+        let moveToAction = SKAction.move(to: viewLocation, duration: 0.3)
+        let moveClawBackAction = SKAction.move(to: initialPosition, duration: 0.7)
+        
+        self.crabClaw.run(moveToAction)
+        
+        
+        if CGPoint(x: crabClaw.position.x, y: crabClaw.position.y) == CGPoint(x: 0, y: 0) {
+            self.crabClaw.run(moveClawBackAction)
+        }
+        
         
     }
     
