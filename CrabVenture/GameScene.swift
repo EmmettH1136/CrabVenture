@@ -34,7 +34,7 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        physicsWorld.contactDelegate = self as! SKPhysicsContactDelegate
+        physicsWorld.contactDelegate = self
         
 		cronched = 0
         crabClaw = self.childNode(withName: "CrabClaw") as! SKSpriteNode
@@ -63,6 +63,9 @@ class GameScene: SKScene {
     
     func didBegin(_ contact: SKPhysicsContact) {
     
+        //Emmett
+        
+        
     }
     
     @objc func tappedView(_ sender:UITapGestureRecognizer) {
