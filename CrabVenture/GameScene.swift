@@ -34,7 +34,7 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        physicsWorld.contactDelegate = self
+        physicsWorld.contactDelegate = self as! SKPhysicsContactDelegate
         
 		cronched = 0
         crabClaw = self.childNode(withName: "CrabClaw") as! SKSpriteNode
