@@ -52,10 +52,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let topRight = CGPoint(x: -frame.origin.x, y: -frame.origin.y)
 		let bottomRight = CGPoint(x: -frame.origin.x, y: frame.origin.y)
 		
-//		backgroundNode.size = CGSize(width: self.frame.width, height: self.frame.height)
-//		backgroundNode.texture = SKTexture(image: UIImage(named: "beeech")!)
-//		self.addChild(backgroundNode)
-//		
+		backgroundNode.size = CGSize(width: self.frame.width, height: self.frame.height)
+		backgroundNode.zPosition = -1
+		backgroundNode.texture = SKTexture(image: UIImage(named: "beeech")!)
+		self.addChild(backgroundNode)
+		
 		
 		let right = SKNode()
 		right.name = "right"
