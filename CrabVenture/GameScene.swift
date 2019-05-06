@@ -28,10 +28,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var crabClaw = SKSpriteNode()
 	var crabPhys = SKPhysicsBody()
     var swordFishNode = SKSpriteNode()
-	var swordFish = Enemy("SwordFish", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 200...500), dy: 0))
+	var swordFish = Enemy("SwordFish", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 100...400), dy: 0))
     var swordFishPhys = SKPhysicsBody()
 	var cronched = 0
     let tapRec = UITapGestureRecognizer()
+	var label = SKLabelNode()
+	var backgroundNode = SKSpriteNode()
     
 
 	var health = 1
@@ -50,6 +52,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let topRight = CGPoint(x: -frame.origin.x, y: -frame.origin.y)
 		let bottomRight = CGPoint(x: -frame.origin.x, y: frame.origin.y)
 		
+//		backgroundNode.size = CGSize(width: self.frame.width, height: self.frame.height)
+//		backgroundNode.texture = SKTexture(image: UIImage(named: "beeech")!)
+//		self.addChild(backgroundNode)
+//		
+		
 		let right = SKNode()
 		right.name = "right"
 		right.physicsBody = SKPhysicsBody(edgeFrom: topRight, to: bottomRight)
@@ -67,6 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		right.physicsBody?.categoryBitMask = rightCategory
 		
 		swordFishPhys.contactTestBitMask = clawCategory|rightCategory
+		
 		
         // Starting the sworfish movement in here for now can move to a function later
 //        let actualDuration = random(min: 10, max: 25)
@@ -91,7 +99,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			swordFishPhys.isDynamic = false
 		}
 		if contact.bodyA.categoryBitMask == rightCategory {
-			
+			label = SKLabelNode(text: "You lost!")
+			label.fontSize = 100.0
+			label.position = CGPoint(x: 0, y: -35)
+			self.addChild(label)
+			cronched = 1
+			swordFishPhys.isDynamic = false
 		}
     }
     
