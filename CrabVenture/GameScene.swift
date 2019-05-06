@@ -124,7 +124,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			
 			
 			let moveToAction = SKAction.move(to: viewLocation, duration: 0.01)
-			let moveClawBackAction = SKAction.move(to: initialPosition, duration: 0.7)
+			let moveClawBackAction = SKAction.move(to: initialPosition, duration: 0.01)
 			
 			self.crabClaw.run(moveToAction)
 			
