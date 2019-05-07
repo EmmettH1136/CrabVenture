@@ -24,7 +24,9 @@ class GameViewController: UIViewController {
 //            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
 //            self.imageView.frame.origin.x += 50}, completion: nil)
 //        }
+
         
+
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
@@ -41,4 +43,11 @@ class GameViewController: UIViewController {
             view.showsNodeCount = true
         }
     }
+    func swapPieces(imageView1: UIImageView, imageView2: UIImageView) {
+        let tempImage = imageView2.image
+        imageView2.image = imageView1.image
+        imageView1.image = tempImage
+        
+    }
+    
 }
