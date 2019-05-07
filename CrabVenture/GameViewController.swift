@@ -43,11 +43,6 @@ class GameViewController: UIViewController {
             view.showsNodeCount = true
         }
     }
-    func swapPieces(imageView1: UIImageView, imageView2: UIImageView) {
-        let tempImage = imageView2.image
-        imageView2.image = imageView1.image
-        imageView1.image = tempImage
-        
-    }
+   
     
 }

@@ -179,6 +179,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZHj-SF-b51"/>
                     </view>
+                    <connections>
+                        <outletCollection property="allTiles" destination="rnL-ey-GIz" collectionClass="NSMutableArray" id="EvZ-TD-QYe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dgx-xI-tTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
