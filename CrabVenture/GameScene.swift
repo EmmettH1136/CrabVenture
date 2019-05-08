@@ -6,7 +6,7 @@
 //  Copyright © 2019 John Heresy High School. All rights reserved.
 //
 
-
+import UIKit
 import SpriteKit
 import GameplayKit
 
@@ -29,26 +29,57 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var crabClaw = SKSpriteNode()
 	var crabPhys = SKPhysicsBody()
     var swordFishNode = SKSpriteNode()
-	var swordFish = Enemy("SwordFish", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 100...400), dy: 0))
+	var swordFish = Enemy("SwordFish", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 100...400), dy: 0), 0)
     var swordFishPhys = SKPhysicsBody()
+	var cleaverNode = SKSpriteNode()
+	var cleaver = Enemy("Cleaver", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 400...800), dy: 0), 2)
 	var cronched = 0
     let tapRec = UITapGestureRecognizer()
 	var label = SKLabelNode()
 	var backgroundNode = SKSpriteNode()
-    
+	var timer = Timer()
+	var seconds = 0.1
+	var isTimerRunning = false
+	var initialPosition = CGPoint(x: 288.709, y: -300.153)
+	var moveClawBackAction = SKAction()
+	var enemyP = CGPoint()
+	var contactie = 0
+	var enemies : [Enemy] = []
+	
+	func runTimer() {
+		timer = Timer.scheduledTimer(timeInterval: 0.05, target: self,   selector: (#selector(GameScene.updateTimer)), userInfo: nil, repeats: true)
+		isTimerRunning = true
+	}
+	@objc func updateTimer() {
+		if isTimerRunning {
+			if seconds <= 0 {
+				timer.invalidate()
+				seconds = 0.1
+				isTimerRunning = false
+				self.crabClaw.run(moveClawBackAction)
+			} else {
+				seconds -= 0.05
+			}
+		}
+	}
+	
 
 	var health = 1
     
     override func didMove(to view: SKView) {
         
 		physicsWorld.contactDelegate = self
-        
+		
+		enemies = [swordFish, cleaver]
+		
 		cronched = 0
         crabClaw = self.childNode(withName: "CrabClaw") as! SKSpriteNode
 		crabPhys = crabClaw.physicsBody!
         swordFishNode = self.childNode(withName: "SwordFish") as! SKSpriteNode
         swordFishPhys = swordFishNode.physicsBody!
-		swordFish.body = swordFishNode 
+		swordFish.body = swordFishNode
+		cleaverNode = self.childNode(withName: "cleaver") as! SKSpriteNode
+		cleaver.body = cleaverNode
 		
         let topRight = CGPoint(x: -frame.origin.x, y: -frame.origin.y)
 		let bottomRight = CGPoint(x: -frame.origin.x, y: frame.origin.y)
@@ -65,6 +96,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		self.addChild(right)
 		
 		swordFishPhys.isDynamic = true
+		cleaverNode.physicsBody?.isDynamic = true
+		
+		moveClawBackAction = SKAction.move(to: initialPosition, duration: 0.01)
 		
         tapRec.addTarget(self, action:#selector(GameScene.tappedView(_:) ))
         tapRec.numberOfTouchesRequired = 1
@@ -73,9 +107,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		
 		crabClaw.physicsBody?.categoryBitMask = clawCategory
 		swordFishPhys.categoryBitMask = enemyCategory
+		cleaverNode.physicsBody?.categoryBitMask = enemyCategory
 		right.physicsBody?.categoryBitMask = rightCategory
 		
+		enemyP = CGPoint(x: swordFish.body.position.x, y: swordFishNode.position.y)
+		
 		swordFishPhys.contactTestBitMask = clawCategory|rightCategory
+		cleaverNode.physicsBody?.contactTestBitMask = clawCategory|rightCategory
+		
 		
 		
         // Starting the sworfish movement in here for now can move to a function later
@@ -90,15 +129,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
     }
+	
     
     func didBegin(_ contact: SKPhysicsContact) {
         /* if contact.bodyb == (wallName) {
         swordfishNode.
          }
          */
+		contactie = 1
 		
 		if contact.bodyA.categoryBitMask == clawCategory {
 			swordFishPhys.isDynamic = false
+			let moveToActionS = SKAction.move(to: enemyP, duration: 0.01)
+			swordFishNode.run(moveToActionS)
+			
 		}
 		if contact.bodyA.categoryBitMask == rightCategory {
 			label = SKLabelNode(text: "You lost!")
@@ -115,7 +159,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			
 			crabClaw.texture = SKTexture(image: UIImage(named: "crabClawImageChomp")!)
 			
-			let initialPosition = CGPoint(x: crabClaw.position.x, y: crabClaw.position.y)
 			
 			
 			let crosshairPoint: CGPoint = CGPoint(x: 0, y: 0)
@@ -125,15 +168,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			
 			
 			let moveToAction = SKAction.move(to: viewLocation, duration: 0.01)
-			let moveClawBackAction = SKAction.move(to: initialPosition, duration: 0.01)
 			
 			self.crabClaw.run(moveToAction)
 			
-			
 			if CGPoint(x: crabClaw.position.x, y: crabClaw.position.y) == CGPoint(x: 0, y: 0) {
 				self.crabClaw.run(moveClawBackAction)
+				self.crabClaw.texture = SKTexture(image: UIImage(named: "crabClawImage")!)
 			}
 			cronched = 1
+			if contactie == 1 {
+				swordFishPhys.isDynamic = false
+			}
+			runTimer()
 		}
     }
     
@@ -151,5 +197,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		if health == 0 {
 			print("yuh oh you lost")
 		}
+		if contactie == 0 {
+			enemyP = CGPoint(x: swordFish.body.position.x, y: swordFishNode.position.y)
+		}
+		
 	}
 }
