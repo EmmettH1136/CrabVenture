@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1458D1682281E5CC00DCB403 /* CrabVentureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1458D1672281E5CC00DCB403 /* CrabVentureViewController.swift */; };
 		34BDC128227B51C000A1BF12 /* SecondGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BDC127227B51C000A1BF12 /* SecondGameScene.swift */; };
+		5F27DCC3228339490046D40F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F27DCC2228339490046D40F /* Assets.xcassets */; };
 		5FA3E9CC227A01F600D8C1D3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA3E9CB227A01F600D8C1D3 /* Item.swift */; };
 		5FD7497C2278B02600F26F63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD7497B2278B02600F26F63 /* AppDelegate.swift */; };
 		5FD7497E2278B02600F26F63 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5FD7497D2278B02600F26F63 /* GameScene.sks */; };
@@ -24,7 +25,7 @@
 /* Begin PBXFileReference section */
 		1458D1672281E5CC00DCB403 /* CrabVentureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrabVentureViewController.swift; sourceTree = "<group>"; };
 		34BDC127227B51C000A1BF12 /* SecondGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondGameScene.swift; sourceTree = "<group>"; };
-		5F91759E2281EBBB00F329C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = /Users/Ehasley1136/Documents/Projects/CrabVenture/CrabVenture/Assets.xcassets; sourceTree = "<absolute>"; };
+		5F27DCC2228339490046D40F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FA3E9CB227A01F600D8C1D3 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		5FD749782278B02600F26F63 /* CrabVenture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrabVenture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FD7497B2278B02600F26F63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,7 +80,7 @@
 				5FDE45DC227B4C2A008D9E16 /* Enemy.swift */,
 				5FD749832278B02600F26F63 /* GameViewController.swift */,
 				1458D1672281E5CC00DCB403 /* CrabVentureViewController.swift */,
-				5F91759E2281EBBB00F329C3 /* Assets.xcassets */,
+				5F27DCC2228339490046D40F /* Assets.xcassets */,
 				5FD749852278B02600F26F63 /* Main.storyboard */,
 				5FD7498A2278B02700F26F63 /* LaunchScreen.storyboard */,
 				5FD7498D2278B02700F26F63 /* Info.plist */,
@@ -149,6 +150,7 @@
 				5FD7497E2278B02600F26F63 /* GameScene.sks in Resources */,
 				5FD7498C2278B02700F26F63 /* LaunchScreen.storyboard in Resources */,
 				5FD749802278B02600F26F63 /* Actions.sks in Resources */,
+				5F27DCC3228339490046D40F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
