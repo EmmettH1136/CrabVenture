@@ -19,12 +19,6 @@ class GameViewController: UIViewController {
 //
 //        var imageView = UIImageView(image: \(crab))
         
-        // call action whichever way button moves
-//        @IBAction func movecrab (_ sender: UIButton) {
-//            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
-//            self.imageView.frame.origin.x += 50}, completion: nil)
-//        }
-        
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
@@ -40,5 +34,10 @@ class GameViewController: UIViewController {
             view.showsFPS = true
             view.showsNodeCount = true
         }
+// call action whichever way button moves
+//        @IBAction func movecrab (_ sender: UIButton) {
+//            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+//            self.imageView.frame.origin.x += 50}, completion: nil)
+//        }
     }
 }
