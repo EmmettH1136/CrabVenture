@@ -24,7 +24,9 @@ class GameViewController: UIViewController {
 //            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
 //            self.imageView.frame.origin.x += 50}, completion: nil)
 //        }
+
         
+
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
@@ -41,4 +43,6 @@ class GameViewController: UIViewController {
             view.showsNodeCount = true
         }
     }
+   
+    
 }

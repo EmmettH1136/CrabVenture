@@ -9,12 +9,20 @@
 import UIKit
 
 class CrabVentureViewController: UIViewController {
-
+    @IBOutlet var allTiles: [UIImageView]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+    func swapPieces(imageView1: UIImageView, imageView2: UIImageView) {
+        let tempImage = imageView2.image
+        imageView2.image = imageView1.image
+        imageView1.image = tempImage
+        
+    }
     @IBAction func whenRightArrowClicked(_ sender: Any) {
+        swapPieces(imageView1: imageCrabIsIn, imageView2: imageThatCrabIsIn.tag + 10)
     }
     @IBAction func whenTopArrowClicked(_ sender: Any) {
     }
