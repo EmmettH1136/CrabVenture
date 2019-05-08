@@ -160,10 +160,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     @objc func tappedView(_ sender:UITapGestureRecognizer) {
 		if cronched == 0 {
-			
-			let initialPosition = CGPoint(x: crabClaw.position.x, y: crabClaw.position.y)
-			crabClaw.texture = SKTexture(image: UIImage(named: "crabClawImageChomp")!)
-			
+            
+            crabClaw.texture = SKTexture(image: UIImage(named: "crabClawImageChomp")!)
 			
 			let crosshairPoint: CGPoint = CGPoint(x: 0, y: 0)
 			
@@ -171,29 +169,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			var viewLocation = tapRec.location(in: view)
 			viewLocation = crosshairPoint
             
-			crabClaw.texture = SKTexture(image: UIImage(named: "crabClawImageChomp")!)
 			
 			let moveToAction = SKAction.move(to: viewLocation, duration: 0.3)
             
-			
 			self.crabClaw.run(moveToAction)
+            
             cronched = 1
+            let crabWhenGrabbedPosition = CGPoint(x: crabClaw.position.x, y: crabClaw.position.y)
 			
-			if CGPoint(x: crabClaw.position.x, y: crabClaw.position.y) == CGPoint(x: 0, y: 0) {
-				self.crabClaw.run(moveClawBackAction)
-				self.crabClaw.texture = SKTexture(image: UIImage(named: "crabClawImage")!)
-			}
-			cronched = 1
+            print(crabClaw.position)
+			
 			if contactie == 1 {
 				swordFishPhys.isDynamic = false
 			}
+            
+            let moveClawBackAction = SKAction.move(to: initialCrabPosition, duration: 0.2)
+            
+            if crabClaw.position == crabWhenGrabbedPosition {
+                self.crabClaw.run(moveClawBackAction)
+            }
+            
 			runTimer()
 		}
         
-        if cronched == 1 {
-            let moveClawBackAction = SKAction.move(to: initialCrabPosition, duration: 0.2)
-            self.crabClaw.run(moveClawBackAction)
-        }
         
     }
     
