@@ -11,6 +11,7 @@ import UIKit
 class CrabVentureViewController: UIViewController {
     @IBOutlet var allTiles: [UIImageView]!
     @IBOutlet weak var crabImageView: UIImageView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +24,28 @@ class CrabVentureViewController: UIViewController {
         
     }
     @IBAction func whenRightArrowClicked(_ sender: Any) {
-        crabImageView.frame = CGRect(x:crabImageView.frame.midX, y: crabImageView.frame.midY + 100, width: crabImageView.frame.width, height: crabImageView.frame.height)
+        var crabFrame = crabImageView.frame
+        var crabY = crabFrame.midY
+        var crabX = crabFrame.midX
+        crabFrame = CGRect(x: crabX + 100, y: crabY, width: crabFrame.width, height: crabFrame.height)
     }
     @IBAction func whenTopArrowClicked(_ sender: Any) {
+        var crabFrame = crabImageView.frame
+        var crabY = crabFrame.midY
+        var crabX = crabFrame.midX
+         crabFrame = CGRect(x: crabX + 100, y: crabY, width: crabFrame.width, height: crabFrame.height)
     }
     @IBAction func whenBottomArrowClicked(_ sender: Any) {
+        var crabFrame = crabImageView.frame
+        var crabY = crabFrame.midY
+        var crabX = crabFrame.midX
+         crabFrame = CGRect(x: crabX + 100, y: crabY, width: crabFrame.width, height: crabFrame.height)
     }
     @IBAction func whenLeftArrowClicked(_ sender: Any) {
+        var crabFrame = crabImageView.frame
+        var crabY = crabFrame.midY
+        var crabX = crabFrame.midX
+         crabFrame = CGRect(x: crabX + 100, y: crabY, width: crabFrame.width, height: crabFrame.height)
     }
     
 
