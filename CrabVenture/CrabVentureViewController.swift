@@ -10,6 +10,7 @@ import UIKit
 
 class CrabVentureViewController: UIViewController {
     @IBOutlet var allTiles: [UIImageView]!
+    @IBOutlet weak var crabImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,7 @@ class CrabVentureViewController: UIViewController {
         
     }
     @IBAction func whenRightArrowClicked(_ sender: Any) {
-        swapPieces(imageView1: imageCrabIsIn, imageView2: imageThatCrabIsIn.tag + 10)
+        crabImageView.frame = CGRect(x:crabImageView.frame.midX, y: crabImageView.frame.midY + 100, width: crabImageView.frame.width, height: crabImageView.frame.height)
     }
     @IBAction func whenTopArrowClicked(_ sender: Any) {
     }
