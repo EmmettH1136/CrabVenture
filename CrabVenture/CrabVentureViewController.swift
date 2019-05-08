@@ -33,19 +33,19 @@ class CrabVentureViewController: UIViewController {
         var crabFrame = crabImageView.frame
         var crabY = crabFrame.midY
         var crabX = crabFrame.midX
-         crabFrame = CGRect(x: crabX + 100, y: crabY, width: crabFrame.width, height: crabFrame.height)
+         crabFrame = CGRect(x: crabX, y: crabY + 100, width: crabFrame.width, height: crabFrame.height)
     }
     @IBAction func whenBottomArrowClicked(_ sender: Any) {
         var crabFrame = crabImageView.frame
         var crabY = crabFrame.midY
         var crabX = crabFrame.midX
-         crabFrame = CGRect(x: crabX + 100, y: crabY, width: crabFrame.width, height: crabFrame.height)
+         crabFrame = CGRect(x: crabX, y: crabY - 100, width: crabFrame.width, height: crabFrame.height)
     }
     @IBAction func whenLeftArrowClicked(_ sender: Any) {
         var crabFrame = crabImageView.frame
         var crabY = crabFrame.midY
         var crabX = crabFrame.midX
-         crabFrame = CGRect(x: crabX + 100, y: crabY, width: crabFrame.width, height: crabFrame.height)
+         crabFrame = CGRect(x: crabX - 100, y: crabY, width: crabFrame.width, height: crabFrame.height)
     }
     
 

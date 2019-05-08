@@ -25,6 +25,7 @@ let enemyCategory : UInt32 = 2
 let rightCategory : UInt32 = 4
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    var gameVC: GameViewController?
     var crabClaw = SKSpriteNode()
 	var crabPhys = SKPhysicsBody()
     var swordFishNode = SKSpriteNode()
@@ -134,7 +135,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			}
 			cronched = 1
 		}
-        
     }
     
     func removeAllGestures(){
