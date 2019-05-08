@@ -25,9 +25,9 @@ class GameViewController: UIViewController {
             if let scene = SKScene(fileNamed: "GameScene") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
-                
+                perform(shouldPerformSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>))
                 // Present the scene
-                view.presentScene(scene)
+//                view.presentScene(scene)
             }
             
             view.ignoresSiblingOrder = true
@@ -41,6 +41,8 @@ class GameViewController: UIViewController {
 //            self.imageView.frame.origin.x += 50}, completion: nil)
 //        }
     }
-   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
     
 }

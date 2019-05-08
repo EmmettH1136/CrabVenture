@@ -21,7 +21,7 @@
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
                     <connections>
-                        <segue destination="slJ-kp-nhJ" kind="show" id="lww-zR-ibk"/>
+                        <segue destination="slJ-kp-nhJ" kind="show" identifier="Segue" id="lww-zR-ibk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
