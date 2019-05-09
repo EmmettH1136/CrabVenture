@@ -19,30 +19,48 @@ class CrabVentureViewController: UIViewController {
     var crabFrame: CGRect = CGRect()
     var crabX: CGFloat = 0.0
     var crabY: CGFloat = 0.0
+	var locationX = 0
+	var locationY = -2
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    }
+	}
     
     //right
     @IBAction func movecrab (_ sender: UIButton) {
-        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
-        self.crabImageView.frame.origin.x += 50}, completion: nil)
+		if locationX < 6 {
+			UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+			self.crabImageView.frame.origin.x += 50}, completion: nil)
+			locationX += 1
+			crabImageView.image = UIImage(named: "Crab")
+		}
     }
     //left
-    @IBAction func movecrableft (_sender: UIButton) {
-            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
-                self.crabImageView.frame.origin.x -= 50}, completion: nil)
-
-        }
+	@IBAction func movecrableft (_sender: UIButton) {
+		if locationX > -6 {
+			UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+			self.crabImageView.frame.origin.x -= 50}, completion: nil)
+			locationX -= 1
+			crabImageView.image = UIImage(named: "Crab")
+		}
+		
+	}
 	@IBAction func movecrabUP (_ sender: UIButton) {
-		UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
-		self.crabImageView.frame.origin.y -= 50}, completion: nil)
+		if locationY < 2 {
+			UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+			self.crabImageView.frame.origin.y -= 50}, completion: nil)
+			locationY += 1
+			crabImageView.image = UIImage(named: "CrabUp")
+		}
 	}
 	@IBAction func movecrabDown (_ sender: UIButton) {
-		UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
-		self.crabImageView.frame.origin.y += 50}, completion: nil)
+		if locationY > -2 {
+			UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+			self.crabImageView.frame.origin.y += 50}, completion: nil)
+			locationY -= 1
+			crabImageView.image = UIImage(named: "CrabUp")
+		}
 	}
     }
 
