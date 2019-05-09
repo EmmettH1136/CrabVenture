@@ -58,11 +58,17 @@
                                 <rect key="frame" x="827" y="224" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="ArrowDown"/>
+                                <connections>
+                                    <action selector="movecrabDown:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="W4w-a3-eKk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQp-TM-YV1">
                                 <rect key="frame" x="792" y="190" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="ArrowLeft"/>
+                                <connections>
+                                    <action selector="movecrableftWith_sender:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="Fda-vC-ZOI"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7DX-sZ-nWj">
                                 <rect key="frame" x="-4" y="304" width="900" height="110"/>
@@ -173,6 +179,9 @@
                                 <rect key="frame" x="827" y="157" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="ArrowUp"/>
+                                <connections>
+                                    <action selector="movecrabUP:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="W2J-RA-3xB"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Crab" translatesAutoresizingMaskIntoConstraints="NO" id="CiK-Oj-TWq">
                                 <rect key="frame" x="398" y="200" width="100" height="100"/>
