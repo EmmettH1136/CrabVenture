@@ -15,12 +15,6 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        var image = UIImage(named: \(crabgoeshere))
-//
-//        var imageView = UIImageView(image: \(crab))
-
-
-
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
@@ -28,7 +22,7 @@ class GameViewController: UIViewController {
                 scene.scaleMode = .aspectFill
                 
                 // Present the scene
-                view.presentScene(scene)
+                //view.presentScene(scene)
             }
             
             view.ignoresSiblingOrder = true
@@ -36,11 +30,7 @@ class GameViewController: UIViewController {
             view.showsFPS = true
             view.showsNodeCount = true
         }
-// call action whichever way button moves
-//        @IBAction func movecrab (_ sender: UIButton) {
-//            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
-//            self.imageView.frame.origin.x += 50}, completion: nil)
-//        }
+
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
