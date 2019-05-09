@@ -19,6 +19,8 @@ class GameViewController: UIViewController {
 //
 //        var imageView = UIImageView(image: \(crab))
 
+        performSegue(withIdentifier: "Segue", sender: nil)
+
 
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
@@ -27,7 +29,7 @@ class GameViewController: UIViewController {
                 scene.scaleMode = .aspectFill
                 
                 // Present the scene
-                view.presentScene(scene)
+//                view.presentScene(scene)
             }
             
             view.ignoresSiblingOrder = true
@@ -41,6 +43,8 @@ class GameViewController: UIViewController {
 //            self.imageView.frame.origin.x += 50}, completion: nil)
 //        }
     }
-   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
     
 }
