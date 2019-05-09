@@ -66,6 +66,9 @@
                                 <rect key="frame" x="792" y="190" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="ArrowLeft"/>
+                                <connections>
+                                    <action selector="movecrableftWith_sender:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="Fda-vC-ZOI"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7DX-sZ-nWj">
                                 <rect key="frame" x="-4" y="304" width="900" height="110"/>
