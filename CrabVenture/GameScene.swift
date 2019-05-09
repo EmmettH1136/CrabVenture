@@ -133,10 +133,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	
     
     func didBegin(_ contact: SKPhysicsContact) {
-        /* if contact.bodyb == (wallName) {
-        swordfishNode.
-         }
-         */
+        
         let initialPosition = CGPoint(x: crabClaw.position.x, y: crabClaw.position.y)
         initialCrabPosition = initialPosition
         
@@ -174,19 +171,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
 			self.crabClaw.run(moveToAction)
             
-            cronched = 1
+            //cronched = 1
             let crabWhenGrabbedPosition = CGPoint(x: crabClaw.position.x, y: crabClaw.position.y)
 			
             print(crabClaw.position)
 			
-			if contactie == 1 {
-				swordFishPhys.isDynamic = false
-			}
+			
             
             let moveClawBackAction = SKAction.move(to: initialCrabPosition, duration: 0.2)
             
             if crabClaw.position == crabWhenGrabbedPosition {
                 self.crabClaw.run(moveClawBackAction)
+                print("is at position")
             }
             
 			runTimer()
@@ -209,9 +205,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		if health == 0 {
 			print("yuh oh you lost")
 		}
-		if contactie == 0 {
-			enemyP = CGPoint(x: swordFish.body.position.x, y: swordFishNode.position.y)
-		}
+        
 		
 	}
 }
