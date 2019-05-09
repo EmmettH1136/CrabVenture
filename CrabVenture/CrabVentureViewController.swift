@@ -9,6 +9,11 @@
 import UIKit
 
 class CrabVentureViewController: UIViewController {
+    
+    var image = UIImage(named: "Crab")
+
+    //var imageView = UIImageView(image:)
+    // :)
     @IBOutlet var allTiles: [UIImageView]!
     @IBOutlet weak var crabImageView: UIImageView!
     
@@ -32,5 +37,9 @@ class CrabVentureViewController: UIViewController {
     @IBAction func whenLeftArrowClicked(_ sender: Any) {
     }
     
+    @IBAction func movecrab (_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+        self.imageView.frame.origin.x += 50}, completion: nil)
+        }
+    }
 
-}
