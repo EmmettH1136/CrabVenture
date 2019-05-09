@@ -19,7 +19,6 @@ class GameViewController: UIViewController {
 //
 //        var imageView = UIImageView(image: \(crab))
 
-        performSegue(withIdentifier: "Segue", sender: nil)
 
 
         if let view = self.view as! SKView? {
@@ -29,7 +28,7 @@ class GameViewController: UIViewController {
                 scene.scaleMode = .aspectFill
                 
                 // Present the scene
-//                view.presentScene(scene)
+                view.presentScene(scene)
             }
             
             view.ignoresSiblingOrder = true
