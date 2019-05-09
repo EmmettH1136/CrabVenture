@@ -12,6 +12,8 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,17 +33,25 @@ class GameViewController: UIViewController {
                 view.presentScene(scene)
             }
             
+            
             view.ignoresSiblingOrder = true
             
             view.showsFPS = true
             view.showsNodeCount = true
         }
-// call action whichever way button moves
+            //call action whichever way button moves
 //        @IBAction func movecrab (_ sender: UIButton) {
 //            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
 //            self.imageView.frame.origin.x += 50}, completion: nil)
 //        }
     }
+    
+    func gameOver() {
+        
+        self.removeFromParent()
+        performSegue(withIdentifier: "Segue", sender: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
     }
