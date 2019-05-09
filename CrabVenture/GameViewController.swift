@@ -20,6 +20,7 @@ class GameViewController: UIViewController {
 //        var imageView = UIImageView(image: \(crab))
 
 
+
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
@@ -41,6 +42,8 @@ class GameViewController: UIViewController {
 //            self.imageView.frame.origin.x += 50}, completion: nil)
 //        }
     }
-   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
     
 }
