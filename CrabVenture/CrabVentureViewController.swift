@@ -30,5 +30,13 @@ class CrabVentureViewController: UIViewController {
         UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
         self.crabImageView.frame.origin.x += 50}, completion: nil)
         }
+	@IBAction func movecrabUP (_ sender: UIButton) {
+		UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+		self.crabImageView.frame.origin.y -= 50}, completion: nil)
+	}
+	@IBAction func movecrabDown (_ sender: UIButton) {
+		UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+		self.crabImageView.frame.origin.y += 50}, completion: nil)
+	}
     }
 
