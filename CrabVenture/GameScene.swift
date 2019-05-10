@@ -25,6 +25,7 @@ let enemyCategory : UInt32 = 2
 let rightCategory : UInt32 = 4
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    var viewController: GameViewController!
     var gameVC: GameViewController?
     var crabClaw = SKSpriteNode()
 	var crabPhys = SKPhysicsBody()
@@ -75,6 +76,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		
 		enemies = [swordFish, cleaver]
 		
+        
 		
 		cronched = 0
         crabClaw = self.childNode(withName: "CrabClaw") as! SKSpriteNode
@@ -99,8 +101,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		right.physicsBody = SKPhysicsBody(edgeFrom: topRight, to: bottomRight)
 		self.addChild(right)
 		
-		swordFishPhys.isDynamic = false
-		cleaverNode.physicsBody?.isDynamic = false
+		swordFishPhys.isDynamic = true
+		cleaverNode.physicsBody?.isDynamic = true
 		
 		
 		for x in enemies {
@@ -145,14 +147,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	
     
     func didBegin(_ contact: SKPhysicsContact) {
-        /* if contact.bodyb == (wallName) {
-        swordfishNode.
-         }
-         */
+        
         let initialPosition = CGPoint(x: crabClaw.position.x, y: crabClaw.position.y)
         initialCrabPosition = initialPosition
         
-		contactie = 1
+        
 		
 		if contact.bodyA.categoryBitMask == clawCategory {
 			enemy.body.physicsBody!.isDynamic = false
@@ -173,6 +172,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     @objc func tappedView(_ sender:UITapGestureRecognizer) {
 		if cronched == 0 {
             
+            
+            
             crabClaw.texture = SKTexture(image: UIImage(named: "crabClawImageChomp")!)
 			
 			let crosshairPoint: CGPoint = CGPoint(x: 0, y: 0)
@@ -191,20 +192,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			
             print(crabClaw.position)
 			
-			if contactie == 1 {
-				enemy.body.physicsBody!.isDynamic = false
-			}
+			
             
             let moveClawBackAction = SKAction.move(to: initialCrabPosition, duration: 0.2)
             
             if crabClaw.position == crabWhenGrabbedPosition {
                 self.crabClaw.run(moveClawBackAction)
+                print("is at position")
             }
             
 			runTimer()
 		}
         
-        
+        if cronched == 1 {
+            let vc = UIApplication.shared.keyWindow?.rootViewController as! GameViewController
+            vc.gameOver()
+        }
     }
     
     func removeAllGestures(){
@@ -220,12 +223,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	override func update(_ currentTime: TimeInterval) {
 		if health == 0 {
 			print("yuh oh you lost")
+            
 		}
-		if contactie == 0 {
-			enemyP = CGPoint(x: enemy.body.position.x, y: enemy.body.position.y)
-			enemy.body.physicsBody!.isDynamic = true
-			enemy.body.physicsBody!.velocity = enemy.speed
-		}
-		
+        
+        if isTimerRunning == false {
+                    //present second vc
+                    //remove gamescene from ontop of vc
+//            let vc = UIApplication.shared.keyWindow?.rootViewController as! GameViewController
+//            vc.gameOver()
+            
+        }
 	}
 }
