@@ -41,7 +41,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var initialCrabPosition = CGPoint(x: 100, y: -400)
     
 	var timer = Timer()
-	var seconds = 0.1
+	var seconds = 0.5
 	var isTimerRunning = false
 	var initialPosition = CGPoint(x: 288.709, y: -300.153)
 	var moveClawBackAction = SKAction()
@@ -53,19 +53,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	var hit = 0
 	
 	func runTimer() {
-		timer = Timer.scheduledTimer(timeInterval: 0.05, target: self,   selector: (#selector(GameScene.updateTimer)), userInfo: nil, repeats: true)
+		timer = Timer.scheduledTimer(timeInterval: 0.5, target: self,   selector: (#selector(GameScene.updateTimer)), userInfo: nil, repeats: true)
 		isTimerRunning = true
 	}
 	@objc func updateTimer() {
 		if isTimerRunning {
 			if seconds <= 0 {
 				timer.invalidate()
-				seconds = 0.1
+				seconds = 0.5
 				isTimerRunning = false
 				self.crabClaw.run(moveClawBackAction)
+				enemy.body.physicsBody?.isDynamic = true
+				enemy.body.physicsBody?.velocity = enemy.speed
 				electricBoogaloo = 1
 			} else {
-				seconds -= 0.05
+				seconds -= 0.5
 			}
 		}
 	}
@@ -190,8 +192,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			viewLocation = crosshairPoint
             
 			
-			let moveToAction = SKAction.move(to: viewLocation, duration: 0.3)
-            
+			let moveToAction = SKAction.move(to: viewLocation, duration: 0.15)
+			
+			enemy.body.physicsBody?.isDynamic = false
+			
 			self.crabClaw.run(moveToAction)
             
             cronched = 1
@@ -201,7 +205,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			
 			
             
-            let moveClawBackAction = SKAction.move(to: initialCrabPosition, duration: 0.2)
+            let moveClawBackAction = SKAction.move(to: initialCrabPosition, duration: 0.1)
             
             if crabClaw.position == crabWhenGrabbedPosition {
                 self.crabClaw.run(moveClawBackAction)
