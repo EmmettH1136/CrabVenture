@@ -75,6 +75,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		physicsWorld.contactDelegate = self
 		
 		enemies = [swordFish, cleaver]
+		enemy = enemies.randomElement()!
 		
         
 		
@@ -86,6 +87,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		swordFish.body = swordFishNode
 		cleaverNode = self.childNode(withName: "cleaver") as! SKSpriteNode
 		cleaver.body = cleaverNode
+		enemy.body.position = CGPoint(x: -932.162, y: 235.423)
+		enemy.body.physicsBody?.isDynamic = true
+		enemy.body.physicsBody?.velocity = enemy.speed
 		
         let topRight = CGPoint(x: -frame.origin.x, y: -frame.origin.y)
 		let bottomRight = CGPoint(x: -frame.origin.x, y: frame.origin.y)
@@ -101,7 +105,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		right.physicsBody = SKPhysicsBody(edgeFrom: topRight, to: bottomRight)
 		self.addChild(right)
 		
-		swordFishPhys.isDynamic = true
+		swordFishNode.physicsBody?.isDynamic = true
 		cleaverNode.physicsBody?.isDynamic = true
 		
 		
@@ -109,8 +113,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			x.body.zPosition = CGFloat(x.z)
 			crabClaw.zPosition = CGFloat(enemy.z)
 		}
-		
-		enemy.body.position.y += 300
 		
 		moveClawBackAction = SKAction.move(to: initialPosition, duration: 0.01)
 		
@@ -120,16 +122,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.view!.addGestureRecognizer(tapRec)
 		
 		crabClaw.physicsBody?.categoryBitMask = clawCategory
-		swordFishPhys.categoryBitMask = enemyCategory
+		swordFishNode.physicsBody?.categoryBitMask = enemyCategory
 		cleaverNode.physicsBody?.categoryBitMask = enemyCategory
 		right.physicsBody?.categoryBitMask = rightCategory
 		
 		enemyP = CGPoint(x: swordFish.body.position.x, y: swordFishNode.position.y)
 		
-		swordFishPhys.contactTestBitMask = clawCategory|rightCategory
+		swordFishNode.physicsBody?.contactTestBitMask = clawCategory|rightCategory
 		cleaverNode.physicsBody?.contactTestBitMask = clawCategory|rightCategory
 		
-		enemy = enemies.randomElement()!
 		
 		
         // Starting the sworfish movement in here for now can move to a function later
