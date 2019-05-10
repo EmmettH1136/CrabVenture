@@ -10,8 +10,13 @@ import UIKit
 
 class CrabVentureViewController: UIViewController {
     
+    @IBOutlet weak var mainCrab: UIImageView!
+    @IBOutlet weak var swordFish: UIImageView!
+    
     var image = UIImage(named: "Crab")
-
+    
+    var collision: UICollisionBehavior!
+    
     //var imageView = UIImageView(image:)
     // :)
     @IBOutlet var allTiles: [UIImageView]!
@@ -24,8 +29,12 @@ class CrabVentureViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-	}
+      print("changed to View")
+        
+       
+        
+    }
+    
     
     //right
     @IBAction func movecrab (_ sender: UIButton) {
@@ -62,7 +71,22 @@ class CrabVentureViewController: UIViewController {
 			crabImageView.image = UIImage(named: "CrabUp")
 		}
 	}
+
+    func ifTouching() {
+       
+        var touchingEnemy: Bool = false
+        
+        guard let r1 = mainCrab.superview?.convert(mainCrab.frame, to: nil) else { return }
+        guard let r2 = swordFish.superview?.convert(swordFish.frame, to: nil) else { return }
+        
+        if r1.intersects(r2) { touchingEnemy = true }
+        
+        if touchingEnemy == true {
+            print("touching")
+        }
+        return
     }
+}
 
 
 
