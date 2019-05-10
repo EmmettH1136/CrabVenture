@@ -49,6 +49,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	var contactie = 0
 	var enemies : [Enemy] = []
 	var enemy = Enemy("boop", 0, SKSpriteNode(), CGVector(), 1)
+	var electricBoogaloo = 0
+	var hit = 0
 	
 	func runTimer() {
 		timer = Timer.scheduledTimer(timeInterval: 0.05, target: self,   selector: (#selector(GameScene.updateTimer)), userInfo: nil, repeats: true)
@@ -61,6 +63,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 				seconds = 0.1
 				isTimerRunning = false
 				self.crabClaw.run(moveClawBackAction)
+				electricBoogaloo = 1
 			} else {
 				seconds -= 0.05
 			}
@@ -75,10 +78,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		physicsWorld.contactDelegate = self
 		
 		enemies = [swordFish, cleaver]
+		enemy = enemies.randomElement()!
 		
         
-		
+		electricBoogaloo = 0
 		cronched = 0
+		hit = 0
         crabClaw = self.childNode(withName: "CrabClaw") as! SKSpriteNode
 		crabPhys = crabClaw.physicsBody!
         swordFishNode = self.childNode(withName: "SwordFish") as! SKSpriteNode
@@ -86,6 +91,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		swordFish.body = swordFishNode
 		cleaverNode = self.childNode(withName: "cleaver") as! SKSpriteNode
 		cleaver.body = cleaverNode
+		enemy.body.position = CGPoint(x: -932.162, y: 235.423)
+		enemy.body.physicsBody?.isDynamic = true
+		enemy.body.physicsBody?.velocity = enemy.speed
 		
         let topRight = CGPoint(x: -frame.origin.x, y: -frame.origin.y)
 		let bottomRight = CGPoint(x: -frame.origin.x, y: frame.origin.y)
@@ -101,7 +109,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		right.physicsBody = SKPhysicsBody(edgeFrom: topRight, to: bottomRight)
 		self.addChild(right)
 		
-		swordFishPhys.isDynamic = true
+		swordFishNode.physicsBody?.isDynamic = true
 		cleaverNode.physicsBody?.isDynamic = true
 		
 		
@@ -109,8 +117,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			x.body.zPosition = CGFloat(x.z)
 			crabClaw.zPosition = CGFloat(enemy.z)
 		}
-		
-		enemy.body.position.y += 300
 		
 		moveClawBackAction = SKAction.move(to: initialPosition, duration: 0.01)
 		
@@ -120,16 +126,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.view!.addGestureRecognizer(tapRec)
 		
 		crabClaw.physicsBody?.categoryBitMask = clawCategory
-		swordFishPhys.categoryBitMask = enemyCategory
+		swordFishNode.physicsBody?.categoryBitMask = enemyCategory
 		cleaverNode.physicsBody?.categoryBitMask = enemyCategory
 		right.physicsBody?.categoryBitMask = rightCategory
 		
 		enemyP = CGPoint(x: swordFish.body.position.x, y: swordFishNode.position.y)
 		
-		swordFishPhys.contactTestBitMask = clawCategory|rightCategory
+		swordFishNode.physicsBody?.contactTestBitMask = clawCategory|rightCategory
 		cleaverNode.physicsBody?.contactTestBitMask = clawCategory|rightCategory
 		
-		enemy = enemies.randomElement()!
 		
 		
         // Starting the sworfish movement in here for now can move to a function later
@@ -147,7 +152,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	
     
     func didBegin(_ contact: SKPhysicsContact) {
-        
+		
+		hit = 1
+		
         let initialPosition = CGPoint(x: crabClaw.position.x, y: crabClaw.position.y)
         initialCrabPosition = initialPosition
         
@@ -203,11 +210,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
 			runTimer()
 		}
-        
-        if cronched == 1 {
-            let vc = UIApplication.shared.keyWindow?.rootViewController as! GameViewController
-            vc.gameOver()
-        }
+		
     }
     
     func removeAllGestures(){
@@ -233,5 +236,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            vc.gameOver()
             
         }
+		if hit == 1 && electricBoogaloo == 1 {
+			let vc = UIApplication.shared.keyWindow?.rootViewController as! GameViewController
+			vc.gameOver()
+			electricBoogaloo = 0
+		}
 	}
 }
