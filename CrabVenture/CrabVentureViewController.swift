@@ -5,7 +5,8 @@
 //  Created by Michael Linker on 5/7/19.
 //  Copyright © 2019 John Heresy High School. All rights reserved.
 //
-
+import SpriteKit
+import GameplayKit
 import UIKit
 
 class CrabVentureViewController: UIViewController {
@@ -26,6 +27,10 @@ class CrabVentureViewController: UIViewController {
     var crabY: CGFloat = 0.0
 	var locationX = 0
 	var locationY = -2
+    
+    var touchingEnemy: Bool = false
+    // important
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,22 +76,23 @@ class CrabVentureViewController: UIViewController {
 			crabImageView.image = UIImage(named: "CrabUp")
 		}
 	}
-//fix, only runs if put in action (button) ^^^
-    func ifTouching() {
-       
-        var touchingEnemy: Bool = false
-        
+    
+    @IBAction func checkIfContact (_ sender: UIButton) {
+
         guard let r1 = mainCrab.superview?.convert(mainCrab.frame, to: nil) else { return }
         guard let r2 = swordFish.superview?.convert(swordFish.frame, to: nil) else { return }
-        
+
         if r1.intersects(r2) { touchingEnemy = true }
         
         if touchingEnemy == true {
             print("touching")
+            //add change to gamescene code
         }
-        return
     }
 }
+
+
+
 
 
 
