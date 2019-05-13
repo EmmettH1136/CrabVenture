@@ -12,7 +12,11 @@ class CrabVentureViewController: UIViewController {
     
     @IBOutlet weak var mainCrab: UIImageView!
     @IBOutlet weak var swordFish: UIImageView!
-    
+	@IBOutlet weak var invent1: UIImageView!
+	@IBOutlet weak var invent2: UIImageView!
+	@IBOutlet weak var invent3: UIImageView!
+	@IBOutlet weak var invent4: UIImageView!
+	
     var image = UIImage(named: "Crab")
     
     var collision: UICollisionBehavior!
@@ -29,15 +33,21 @@ class CrabVentureViewController: UIViewController {
 	var location = CGPoint(x: 0, y: 0)
 	var banned : [CGPoint] = []
 	var noGo = false
-	var bannedPoint1 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
-	var bannedPoin2 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
-	var bannedPoint3 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
+//	var bannedPoint1 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
+//	var bannedPoin2 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
+//	var bannedPoint3 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
+	var bannedTile = UIImageView()
     override func viewDidLoad() {
         super.viewDidLoad()
       	print("changed to View")
 		location = CGPoint(x: locationX, y :locationY)
-		banned = [bannedPoint1, bannedPoin2, bannedPoint3]
-        
+//		banned = [bannedPoint1, bannedPoin2, bannedPoint3]
+		bannedTile = allTiles.randomElement()!
+		bannedTile.image = UIImage(named: "gravelpathtile")
+		if abs(bannedTile.tag) < 20 {
+			let point = bannedTile.tag - 10
+			banned = [CGPoint(x: point, y: 2), CGPoint(x: point, y: 1), CGPoint(x: point - 1, y: 2), CGPoint(x: point - 1, y: 1), CGPoint(x: point + 1, y: 2), CGPoint(x: point + 1, y: 1)]
+		}
     }
     
     
