@@ -86,6 +86,15 @@ class CrabVentureViewController: UIViewController {
         }
         return
     }
+    func whenTapped(sender: UIFocusEnvironment) {
+        if UIStackView().contains(sender) {
+            for imageView in imageViewCollection {
+                if imageView.contains(sender) {}else {
+                performSegue(withIdentifier: "modalSegue", sender: nil)
+                }
+            }
+        }
+    }
 }
 
 
