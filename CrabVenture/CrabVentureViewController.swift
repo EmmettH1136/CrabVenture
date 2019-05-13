@@ -45,15 +45,36 @@ class CrabVentureViewController: UIViewController {
 		bannedTile = allTiles.randomElement()!
 		bannedTile.image = UIImage(named: "gravelpathtile")
 		if abs(bannedTile.tag) < 20 {
-			let point = bannedTile.tag - 10
+			var point = Int()
+			if bannedTile.tag < 0 {
+				point = bannedTile.tag + 10
+			} else {
+				point = bannedTile.tag - 10
+			}
 			banned = [CGPoint(x: point, y: 2), CGPoint(x: point, y: 1), CGPoint(x: point - 1, y: 2), CGPoint(x: point - 1, y: 1), CGPoint(x: point + 1, y: 2), CGPoint(x: point + 1, y: 1)]
+		} else if abs(bannedTile.tag) < 30 {
+			var point = Int()
+			if bannedTile.tag < 0 {
+				point = bannedTile.tag + 20
+			} else {
+				point = bannedTile.tag - 20
+			}
+			banned = [CGPoint(x: point, y: 1), CGPoint(x: point, y: -1), CGPoint(x: point - 1, y: 1), CGPoint(x: point - 1, y: 0), CGPoint(x: point - 1, y: -1), CGPoint(x: point + 1, y: 1), CGPoint(x: point + 1, y: 0), CGPoint(x: point + 1, y: -1)]
+		} else {
+			var point = Int()
+			if bannedTile.tag < 0 {
+				point = bannedTile.tag + 30
+			} else {
+				point = bannedTile.tag - 30
+			}
+			banned = [CGPoint(x: point, y: -1), CGPoint(x: point, y: -2), CGPoint(x: point - 1, y: -2), CGPoint(x: point - 1, y: -1), CGPoint(x: point + 1, y: -2), CGPoint(x: point + 1, y: -1)]
 		}
     }
     
     
     //right
     @IBAction func movecrab (_ sender: UIButton) {
-		var newLocation = (CGPoint(x: locationX + 1, y: locationY))
+		let newLocation = (CGPoint(x: locationX + 1, y: locationY))
 		for x in banned {
 			if newLocation == x {
 				noGo = true
@@ -70,7 +91,7 @@ class CrabVentureViewController: UIViewController {
     }
     //left
 	@IBAction func movecrableft (_sender: UIButton) {
-		var newLocation = (CGPoint(x: locationX - 1, y: locationY))
+		let newLocation = (CGPoint(x: locationX - 1, y: locationY))
 		for x in banned {
 			if newLocation == x {
 				noGo = true
@@ -87,7 +108,7 @@ class CrabVentureViewController: UIViewController {
 		
 	}
 	@IBAction func movecrabUP (_ sender: UIButton) {
-		var newLocation = (CGPoint(x: locationX , y: locationY + 1))
+		let newLocation = (CGPoint(x: locationX , y: locationY + 1))
 		for x in banned {
 			if newLocation == x {
 				noGo = true
@@ -103,7 +124,7 @@ class CrabVentureViewController: UIViewController {
 		}
 	}
 	@IBAction func movecrabDown (_ sender: UIButton) {
-		var newLocation = (CGPoint(x: locationX, y: locationY - 1))
+		let newLocation = (CGPoint(x: locationX, y: locationY - 1))
 		for x in banned {
 			if newLocation == x {
 				noGo = true
