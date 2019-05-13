@@ -9,7 +9,8 @@
 import UIKit
 
 class InventoryViewController: UIViewController {
-
+    @IBOutlet weak var CollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

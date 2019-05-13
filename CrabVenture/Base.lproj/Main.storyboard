@@ -252,6 +252,9 @@
                         <viewLayoutGuide key="safeArea" id="H9Z-No-YAg"/>
                     </view>
                     <navigationItem key="navigationItem" id="AVT-a9-MTk"/>
+                    <connections>
+                        <outlet property="CollectionView" destination="fc8-OK-11w" id="WTg-Hz-V6C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HDv-eF-ufc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
