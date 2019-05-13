@@ -133,18 +133,19 @@ class CrabVentureViewController: UIViewController {
         }
         return
     }
-    func whenTapped(sender: UIFocusEnvironment) {
-        if UIStackView().contains(sender) {
-            if invent1.contains(sender) {}else {
+    func whenTapped(sender: CGPoint) {
+        let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
+        if rectangle.contains(sender) {
+            if invent1.contains(sender as! UIFocusEnvironment) {}else {
                 performSegue(withIdentifier: "modalSegue", sender: nil)
             }
-            if invent2.contains(sender) {}else {
+            if invent2.contains(sender as! UIFocusEnvironment) {}else {
                 performSegue(withIdentifier: "modalSegue", sender: nil)
             }
-            if invent3.contains(sender) {}else {
+            if invent3.contains(sender as! UIFocusEnvironment) {}else {
                 performSegue(withIdentifier: "modalSegue", sender: nil)
             }
-            if invent4.contains(sender) {}else {
+            if invent4.contains(sender as! UIFocusEnvironment) {}else {
                 performSegue(withIdentifier: "modalSegue", sender: nil)
             }
         }
