@@ -3,7 +3,7 @@
 //  CrabVenture
 //
 //  Created by Emmett Hasley on 4/30/19.
-//  Copyright © 2019 John Heresy High School. All rights reserved.
+//  Copyright © 2019 John Heresy Hi2gh School. All rights reserved.
 //
 
 import UIKit
