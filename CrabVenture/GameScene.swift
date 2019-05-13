@@ -41,7 +41,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var initialCrabPosition = CGPoint(x: 100, y: -400)
     
 	var timer = Timer()
-	var seconds = 0.25
+	var seconds = 0.5
 	var isTimerRunning = false
 	var initialPosition = CGPoint(x: 288.709, y: -300.153)
 	var moveClawBackAction = SKAction()
@@ -53,21 +53,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	var hit = 0
 	
 	func runTimer() {
-		timer = Timer.scheduledTimer(timeInterval: 0.25, target: self,   selector: (#selector(GameScene.updateTimer)), userInfo: nil, repeats: true)
+		timer = Timer.scheduledTimer(timeInterval: 0.5, target: self,   selector: (#selector(GameScene.updateTimer)), userInfo: nil, repeats: true)
 		isTimerRunning = true
 	}
 	@objc func updateTimer() {
 		if isTimerRunning {
 			if seconds <= 0 {
 				timer.invalidate()
-				seconds = 0.25
+				seconds = 0.5
 				isTimerRunning = false
 				self.crabClaw.run(moveClawBackAction)
 				enemy.body.physicsBody?.isDynamic = true
 				enemy.body.physicsBody?.velocity = enemy.speed
 				electricBoogaloo = 1
 			} else {
-				seconds -= 0.25
+				seconds -= 0.5
 			}
 		}
 	}
