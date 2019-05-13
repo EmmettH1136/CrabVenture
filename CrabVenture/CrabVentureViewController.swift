@@ -71,7 +71,7 @@ class CrabVentureViewController: UIViewController {
 			crabImageView.image = UIImage(named: "CrabUp")
 		}
 	}
-
+//fix, only runs if put in action (button) ^^^
     func ifTouching() {
        
         var touchingEnemy: Bool = false
