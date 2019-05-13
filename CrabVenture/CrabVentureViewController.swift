@@ -5,7 +5,8 @@
 //  Created by Michael Linker on 5/7/19.
 //  Copyright © 2019 John Heresy High School. All rights reserved.
 //
-
+import SpriteKit
+import GameplayKit
 import UIKit
 
 class CrabVentureViewController: UIViewController {
@@ -37,6 +38,11 @@ class CrabVentureViewController: UIViewController {
 //	var bannedPoin2 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
 //	var bannedPoint3 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
 	var bannedTile = UIImageView()
+    
+    var touchingEnemy: Bool = false
+    // important
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
       	print("changed to View")
@@ -139,22 +145,23 @@ class CrabVentureViewController: UIViewController {
 			noGo = false
 		}
 	}
+    
+    @IBAction func checkIfContact (_ sender: UIButton) {
 
-    func ifTouching() {
-       
-        var touchingEnemy: Bool = false
-        
         guard let r1 = mainCrab.superview?.convert(mainCrab.frame, to: nil) else { return }
         guard let r2 = swordFish.superview?.convert(swordFish.frame, to: nil) else { return }
-        
+
         if r1.intersects(r2) { touchingEnemy = true }
         
         if touchingEnemy == true {
             print("touching")
+            //add change to gamescene code
         }
-        return
     }
 }
+
+
+
 
 
 
