@@ -79,10 +79,14 @@
                                         <rect key="frame" x="682.66666666666663" y="0.0" width="217.33333333333337" height="110"/>
                                     </imageView>
                                 </subviews>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="900" id="1HZ-Az-8M8"/>
                                     <constraint firstAttribute="height" constant="110" id="IuP-Tb-24V"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="aCR-DT-Lws" appends="YES" id="c0a-vF-bcO"/>
+                                </connections>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="-14" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="WNz-XU-CZX">
                                 <rect key="frame" x="198" y="0.0" width="100" height="100"/>
@@ -225,6 +229,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dgx-xI-tTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="aCR-DT-Lws">
+                    <connections>
+                        <action selector="whenTappedStackView:" destination="slJ-kp-nhJ" id="dTi-hw-IqL"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="594.64285714285711" y="-1020.2898550724639"/>
         </scene>

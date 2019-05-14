@@ -137,7 +137,7 @@ class CrabVentureViewController: UIViewController {
             //add change to gamescene code
         }
     }
-    func whenTapped(sender: CGPoint) {
+    func moveToNewInventory(sender: CGPoint) {
         let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
         if rectangle.contains(sender) {
             if invent1.contains(sender as! UIFocusEnvironment) {}else {
@@ -153,6 +153,12 @@ class CrabVentureViewController: UIViewController {
                 performSegue(withIdentifier: "modalSegue", sender: nil)
             }
         }
+    }
+    @IBAction func whenTappedStackView(_ sender: Any) {
+        moveToNewInventory(sender: sender as! CGPoint)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nvc = segue.destination as! InventoryViewController
     }
 }
 
