@@ -27,6 +27,7 @@ class CrabVentureViewController: UIViewController {
 
 	}
     
+    
     //right
     @IBAction func movecrab (_ sender: UIButton) {
 		if locationX < 6 {
