@@ -37,6 +37,7 @@ class CrabVentureViewController: UIViewController {
 	let form1 = [-16, -26, -36, 16, 26, 36]
 	let form2 = [-16, -24, -32, 32, 24, 16, -26, -36, -34, 36, 34, 26]
 	let form3 = [-12, 12, -26, 26, -32, 32]
+	var beans = false
 //	var bannedPoint1 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
 //	var bannedPoin2 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
 //	var bannedPoint3 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
@@ -170,6 +171,8 @@ class CrabVentureViewController: UIViewController {
         
         if touchingEnemy == true {
             print("touching")
+			beans = true
+			performSegue(withIdentifier: "bingo", sender: Any?.self)
             //add change to gamescene code
         }
     }
@@ -209,7 +212,11 @@ class CrabVentureViewController: UIViewController {
 //        }
 //    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let nvc = segue.destination as! InventoryViewController
+		if beans {
+			let nvc = segue.destination as! GameViewController
+		} else {
+        	let nvc = segue.destination as! InventoryViewController
+		}
     }
 }
 

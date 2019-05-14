@@ -226,6 +226,7 @@
                         <outletCollection property="allTiles" destination="ttT-3e-iR4" collectionClass="NSMutableArray" id="sY4-am-QIV"/>
                         <outletCollection property="allTiles" destination="XYR-3B-rdi" collectionClass="NSMutableArray" id="rNK-To-cTW"/>
                         <segue destination="5gu-Mf-Ljt" kind="presentation" identifier="modalSegue" modalTransitionStyle="coverVertical" id="SjC-e1-wki"/>
+                        <segue destination="BV1-FR-VrT" kind="show" identifier="bingo" id="PsS-wd-U3t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dgx-xI-tTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
