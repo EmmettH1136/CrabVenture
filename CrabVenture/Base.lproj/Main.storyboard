@@ -17,16 +17,6 @@
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jg-zE-cUs">
-                                <rect key="frame" x="741" y="62" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="slJ-kp-nhJ" kind="show" id="JGs-4G-ax8"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
@@ -51,6 +41,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="ArrowRight"/>
                                 <connections>
+                                    <action selector="checkIfContact:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="atM-eR-dOV"/>
                                     <action selector="movecrab:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="wgX-nV-bEV"/>
                                 </connections>
                             </button>
@@ -59,6 +50,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="ArrowDown"/>
                                 <connections>
+                                    <action selector="checkIfContact:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="FMN-Kx-22v"/>
                                     <action selector="movecrabDown:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="W4w-a3-eKk"/>
                                 </connections>
                             </button>
@@ -67,6 +59,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="ArrowLeft"/>
                                 <connections>
+                                    <action selector="checkIfContact:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="wwV-48-Py1"/>
                                     <action selector="movecrableftWith_sender:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="Fda-vC-ZOI"/>
                                 </connections>
                             </button>
@@ -86,92 +79,96 @@
                                         <rect key="frame" x="682.66666666666663" y="0.0" width="217.33333333333337" height="110"/>
                                     </imageView>
                                 </subviews>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="900" id="1HZ-Az-8M8"/>
                                     <constraint firstAttribute="height" constant="110" id="IuP-Tb-24V"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="aCR-DT-Lws" appends="YES" id="c0a-vF-bcO"/>
+                                </connections>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="21" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="WNz-XU-CZX">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="-14" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="WNz-XU-CZX">
                                 <rect key="frame" x="198" y="0.0" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="HtD-Ev-jZC">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="-16" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="HtD-Ev-jZC">
                                 <rect key="frame" x="98" y="0.0" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="73" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="UY0-Ks-EcT">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="36" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="UY0-Ks-EcT">
                                 <rect key="frame" x="698" y="200" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="63" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="rnL-ey-GIz">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="34" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="rnL-ey-GIz">
                                 <rect key="frame" x="598" y="200" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="53" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="HdL-YV-ytD">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="32" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="HdL-YV-ytD">
                                 <rect key="frame" x="498" y="200" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="43" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="QyX-li-Hfv">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="30" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="QyX-li-Hfv">
                                 <rect key="frame" x="398" y="200" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="33" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="sOS-eM-skN">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="-32" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="sOS-eM-skN">
                                 <rect key="frame" x="298" y="200" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="23" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="3x7-mh-EeG">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="-34" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="3x7-mh-EeG">
                                 <rect key="frame" x="198" y="200" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="13" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="XYR-3B-rdi">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="-36" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="XYR-3B-rdi">
                                 <rect key="frame" x="98" y="200" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="62" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="a8z-HQ-ydL">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="24" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="a8z-HQ-ydL">
                                 <rect key="frame" x="598" y="100" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="52" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="Tuc-D8-7yp">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="22" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="Tuc-D8-7yp">
                                 <rect key="frame" x="498" y="100" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="42" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="yTQ-WV-SCZ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="20" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="yTQ-WV-SCZ">
                                 <rect key="frame" x="398" y="100" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="32" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="ylC-Ge-gwf">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="-22" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="ylC-Ge-gwf">
                                 <rect key="frame" x="298" y="100" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="22" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="gLw-1K-eig">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="-24" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="gLw-1K-eig">
                                 <rect key="frame" x="198" y="100" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="12" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="ttT-3e-iR4">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="-26" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="ttT-3e-iR4">
                                 <rect key="frame" x="98" y="100" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="71" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="Trm-3s-l5N">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="16" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="Trm-3s-l5N">
                                 <rect key="frame" x="698" y="0.0" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="61" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="ZYo-bE-fBa">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="14" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="ZYo-bE-fBa">
                                 <rect key="frame" x="598" y="0.0" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="51" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="5lx-0s-nKR">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="12" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="5lx-0s-nKR">
                                 <rect key="frame" x="498" y="0.0" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="41" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="fWO-s2-d0h">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="10" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="fWO-s2-d0h">
                                 <rect key="frame" x="398" y="0.0" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="31" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="CLR-OX-nk1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="-12" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="CLR-OX-nk1">
                                 <rect key="frame" x="298" y="0.0" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="72" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="8iz-Vs-xRv">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="26" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sandtile" translatesAutoresizingMaskIntoConstraints="NO" id="8iz-Vs-xRv">
                                 <rect key="frame" x="698" y="100" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -180,11 +177,16 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="ArrowUp"/>
                                 <connections>
+                                    <action selector="checkIfContact:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="vSI-pJ-KnW"/>
                                     <action selector="movecrabUP:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="W2J-RA-3xB"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Crab" translatesAutoresizingMaskIntoConstraints="NO" id="CiK-Oj-TWq">
                                 <rect key="frame" x="398" y="200" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SwordFish" translatesAutoresizingMaskIntoConstraints="NO" id="WcD-Qc-z0G">
+                                <rect key="frame" x="634" y="9" width="164" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -197,12 +199,103 @@
                     </view>
                     <connections>
                         <outlet property="crabImageView" destination="CiK-Oj-TWq" id="wMx-Oc-05z"/>
+                        <outlet property="invent1" destination="Ubn-E6-VP6" id="M9W-CV-mZf"/>
+                        <outlet property="invent2" destination="Dur-8a-NHo" id="W56-kh-oih"/>
+                        <outlet property="invent3" destination="hOc-IK-i7O" id="lCE-xj-yF0"/>
+                        <outlet property="invent4" destination="l84-BD-loT" id="cFP-tc-4Bz"/>
+                        <outlet property="mainCrab" destination="CiK-Oj-TWq" id="10C-Mt-b2v"/>
+                        <outlet property="swordFish" destination="WcD-Qc-z0G" id="DAk-Da-Hxq"/>
                         <outletCollection property="allTiles" destination="rnL-ey-GIz" collectionClass="NSMutableArray" id="EvZ-TD-QYe"/>
+                        <outletCollection property="allTiles" destination="UY0-Ks-EcT" collectionClass="NSMutableArray" id="Ybg-UR-cM9"/>
+                        <outletCollection property="allTiles" destination="8iz-Vs-xRv" collectionClass="NSMutableArray" id="Ezf-0b-sda"/>
+                        <outletCollection property="allTiles" destination="a8z-HQ-ydL" collectionClass="NSMutableArray" id="3dM-tg-9Xt"/>
+                        <outletCollection property="allTiles" destination="HdL-YV-ytD" collectionClass="NSMutableArray" id="xTt-av-9Ae"/>
+                        <outletCollection property="allTiles" destination="Tuc-D8-7yp" collectionClass="NSMutableArray" id="4cE-9c-b0l"/>
+                        <outletCollection property="allTiles" destination="5lx-0s-nKR" collectionClass="NSMutableArray" id="sSU-kg-zt6"/>
+                        <outletCollection property="allTiles" destination="Trm-3s-l5N" collectionClass="NSMutableArray" id="gUd-KL-02t"/>
+                        <outletCollection property="allTiles" destination="ZYo-bE-fBa" collectionClass="NSMutableArray" id="jUN-Wl-UCK"/>
+                        <outletCollection property="allTiles" destination="fWO-s2-d0h" collectionClass="NSMutableArray" id="bv8-c9-K1V"/>
+                        <outletCollection property="allTiles" destination="yTQ-WV-SCZ" collectionClass="NSMutableArray" id="VEH-pN-qlm"/>
+                        <outletCollection property="allTiles" destination="sOS-eM-skN" collectionClass="NSMutableArray" id="nML-go-6vH"/>
+                        <outletCollection property="allTiles" destination="ylC-Ge-gwf" collectionClass="NSMutableArray" id="nF6-Bu-zgC"/>
+                        <outletCollection property="allTiles" destination="CLR-OX-nk1" collectionClass="NSMutableArray" id="8LT-AT-PRg"/>
+                        <outletCollection property="allTiles" destination="WNz-XU-CZX" collectionClass="NSMutableArray" id="oLt-5u-kB1"/>
+                        <outletCollection property="allTiles" destination="gLw-1K-eig" collectionClass="NSMutableArray" id="pef-lT-Qg2"/>
+                        <outletCollection property="allTiles" destination="3x7-mh-EeG" collectionClass="NSMutableArray" id="I48-Nv-GIb"/>
+                        <outletCollection property="allTiles" destination="HtD-Ev-jZC" collectionClass="NSMutableArray" id="vP0-F2-44o"/>
+                        <outletCollection property="allTiles" destination="ttT-3e-iR4" collectionClass="NSMutableArray" id="sY4-am-QIV"/>
+                        <outletCollection property="allTiles" destination="XYR-3B-rdi" collectionClass="NSMutableArray" id="rNK-To-cTW"/>
+                        <segue destination="5gu-Mf-Ljt" kind="presentation" identifier="modalSegue" modalTransitionStyle="coverVertical" id="SjC-e1-wki"/>
+                        <segue destination="BV1-FR-VrT" kind="show" identifier="bingo" id="PsS-wd-U3t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dgx-xI-tTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="aCR-DT-Lws">
+                    <connections>
+                        <action selector="whenTappedStackView:" destination="slJ-kp-nhJ" id="dTi-hw-IqL"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="595" y="-1019"/>
+            <point key="canvasLocation" x="594.64285714285711" y="-1020.2898550724639"/>
+        </scene>
+        <!--Inventory View Controller-->
+        <scene sceneID="0op-tz-6su">
+            <objects>
+                <viewController id="5gu-Mf-Ljt" customClass="InventoryViewController" customModule="CrabVenture" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="icH-Gl-GcY">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fc8-OK-11w">
+                                <rect key="frame" x="20" y="20" width="812" height="353"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VEY-Dt-Sxn">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vhi-3T-uAU">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="lXV-9Q-cev">
+                                        <rect key="frame" x="63.666666666666664" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fc8-OK-11w" firstAttribute="top" secondItem="H9Z-No-YAg" secondAttribute="top" constant="20" id="0iU-lp-EaI"/>
+                            <constraint firstItem="H9Z-No-YAg" firstAttribute="bottom" secondItem="fc8-OK-11w" secondAttribute="bottom" constant="20" id="2Jq-Fs-RST"/>
+                            <constraint firstItem="fc8-OK-11w" firstAttribute="top" secondItem="H9Z-No-YAg" secondAttribute="top" constant="20" id="AA7-xF-Fig"/>
+                            <constraint firstItem="H9Z-No-YAg" firstAttribute="bottom" secondItem="fc8-OK-11w" secondAttribute="bottom" constant="20" id="Fkg-2m-iH1"/>
+                            <constraint firstItem="fc8-OK-11w" firstAttribute="leading" secondItem="icH-Gl-GcY" secondAttribute="leading" constant="20" id="N77-O8-dYs"/>
+                            <constraint firstItem="fc8-OK-11w" firstAttribute="leading" secondItem="icH-Gl-GcY" secondAttribute="leading" constant="20" id="qOc-4o-Q3N"/>
+                            <constraint firstItem="fc8-OK-11w" firstAttribute="leading" secondItem="icH-Gl-GcY" secondAttribute="leading" constant="20" id="wi7-9o-QXA"/>
+                            <constraint firstItem="H9Z-No-YAg" firstAttribute="trailing" secondItem="fc8-OK-11w" secondAttribute="trailing" constant="20" id="x8j-HC-wDU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="H9Z-No-YAg"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AVT-a9-MTk"/>
+                    <connections>
+                        <outlet property="CollectionView" destination="fc8-OK-11w" id="WTg-Hz-V6C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HDv-eF-ufc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1315.8482142857142" y="-1030.4347826086957"/>
         </scene>
     </scenes>
     <resources>
@@ -212,9 +305,7 @@
         <image name="ArrowUp" width="225" height="225"/>
         <image name="Crab" width="222" height="227"/>
         <image name="EmptySlot" width="225" height="225"/>
+        <image name="SwordFish" width="600" height="213"/>
         <image name="sandtile" width="400" height="400"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="JGs-4G-ax8"/>
-    </inferredMetricsTieBreakers>
 </document>
