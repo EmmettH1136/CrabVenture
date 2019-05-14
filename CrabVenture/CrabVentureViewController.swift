@@ -34,11 +34,17 @@ class CrabVentureViewController: UIViewController {
 	var location = CGPoint(x: 0, y: 0)
 	var banned : [CGPoint] = []
 	var noGo = false
+	let form1 = [-16, -26, -36, 16, 26, 36]
+	
+	
 //	var bannedPoint1 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
 //	var bannedPoin2 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
 //	var bannedPoint3 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
 	var bannedTile = UIImageView()
-    
+	var bannedTile2 = UIImageView()
+	var bannedTile3 = UIImageView()
+	var bannedTiles : [UIImageView] = []
+	
     var touchingEnemy: Bool = false
     // important
 
@@ -48,35 +54,42 @@ class CrabVentureViewController: UIViewController {
       	print("changed to View")
 		location = CGPoint(x: locationX, y :locationY)
 //		banned = [bannedPoint1, bannedPoin2, bannedPoint3]
-		bannedTile = allTiles.randomElement()!
-		bannedTile.image = UIImage(named: "gravelpathtile")
-		if abs(bannedTile.tag) < 20 {
-			var point = Int()
-			if bannedTile.tag < 0 {
-				point = bannedTile.tag + 10
-			} else {
-				point = bannedTile.tag - 10
+		for tag in form1 {
+			for tile in allTiles {
+				if tag == tile.tag {
+					bannedTiles.append(tile)
+				}
 			}
-			banned = [CGPoint(x: point, y: 2), CGPoint(x: point, y: 1), CGPoint(x: point - 1, y: 2), CGPoint(x: point - 1, y: 1), CGPoint(x: point + 1, y: 2), CGPoint(x: point + 1, y: 1)]
-		} else if abs(bannedTile.tag) < 30 {
-			var point = Int()
-			if bannedTile.tag < 0 {
-				point = bannedTile.tag + 20
-			} else {
-				point = bannedTile.tag - 20
-			}
-			banned = [CGPoint(x: point, y: 1), CGPoint(x: point, y: -1), CGPoint(x: point - 1, y: 1), CGPoint(x: point - 1, y: 0), CGPoint(x: point - 1, y: -1), CGPoint(x: point + 1, y: 1), CGPoint(x: point + 1, y: 0), CGPoint(x: point + 1, y: -1)]
-		} else {
-			var point = Int()
-			if bannedTile.tag < 0 {
-				point = bannedTile.tag + 30
-			} else {
-				point = bannedTile.tag - 30
-			}
-			banned = [CGPoint(x: point, y: -1), CGPoint(x: point, y: -2), CGPoint(x: point - 1, y: -2), CGPoint(x: point - 1, y: -1), CGPoint(x: point + 1, y: -2), CGPoint(x: point + 1, y: -1)]
 		}
-    }
-    
+		for x in bannedTiles {
+			x.image = UIImage(named: "gravelpathtile")
+			if abs(x.tag) < 20 {
+				var point = Int()
+				if x.tag < 0 {
+					point = x.tag + 10
+				} else {
+					point = x.tag - 10
+				}
+				banned += [CGPoint(x: point, y: 2), CGPoint(x: point, y: 1), CGPoint(x: point - 1, y: 2), CGPoint(x: point - 1, y: 1), CGPoint(x: point + 1, y: 2), CGPoint(x: point + 1, y: 1)]
+			} else if abs(x.tag) < 30 {
+				var point = Int()
+				if x.tag < 0 {
+					point = x.tag + 20
+				} else {
+					point = x.tag - 20
+				}
+				banned += [CGPoint(x: point, y: 1), CGPoint(x: point, y: -1), CGPoint(x: point - 1, y: 1), CGPoint(x: point - 1, y: 0), CGPoint(x: point - 1, y: -1), CGPoint(x: point + 1, y: 1), CGPoint(x: point + 1, y: 0), CGPoint(x: point + 1, y: -1)]
+			} else {
+				var point = Int()
+				if x.tag < 0 {
+					point = x.tag + 30
+				} else {
+					point = x.tag - 30
+				}
+				banned += [CGPoint(x: point, y: -1), CGPoint(x: point, y: -2), CGPoint(x: point - 1, y: -2), CGPoint(x: point - 1, y: -1), CGPoint(x: point + 1, y: -2), CGPoint(x: point + 1, y: -1)]
+			}
+		}
+	}
     
     //right
     @IBAction func movecrab (_ sender: UIButton) {
