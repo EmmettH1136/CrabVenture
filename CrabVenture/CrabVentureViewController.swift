@@ -172,41 +172,41 @@ class CrabVentureViewController: UIViewController {
             //add change to gamescene code
         }
     }
-    func moveToNewInventory(sender: UITapGestureRecognizer) {
-        let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
-        if rectangle.contains(sender.location in UIview) {
-            if invent1.contains(sender as! UIFocusEnvironment) {}else {
-                performSegue(withIdentifier: "modalSegue", sender: nil)
-            }
-            if invent2.contains(sender as! UIFocusEnvironment) {}else {
-                performSegue(withIdentifier: "modalSegue", sender: nil)
-            }
-            if invent3.contains(sender as! UIFocusEnvironment) {}else {
-                performSegue(withIdentifier: "modalSegue", sender: nil)
-            }
-            if invent4.contains(sender as! UIFocusEnvironment) {}else {
-                performSegue(withIdentifier: "modalSegue", sender: nil)
-            }
-        }
-    }
-    @IBAction func whenTappedStackView(_ sender: UITapGestureRecognizer) {
-        let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
-        let stackView: UIStackView = UIStackView(frame: rectangle)
-        if rectangle.contains(sender.location(in: stackView)) {
-            if invent1.frame.contains(sender.location(in: stackView)) {}else {
-                performSegue(withIdentifier: "modalSegue", sender: nil)
-            }
-            if invent2.frame.contains(sender as! UIFocusEnvironment) {}else {
-                performSegue(withIdentifier: "modalSegue", sender: nil)
-            }
-            if invent3.frame.contains(sender as! UIFocusEnvironment) {}else {
-                performSegue(withIdentifier: "modalSegue", sender: nil)
-            }
-            if invent4.frame.contains(sender as! UIFocusEnvironment) {}else {
-                performSegue(withIdentifier: "modalSegue", sender: nil)
-            }
-        }
-    }
+//    func moveToNewInventory(sender: UITapGestureRecognizer) {
+//        let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
+//        if rectangle.contains(sender.location in UIview) {
+//            if invent1.contains(sender as! UIFocusEnvironment) {}else {
+//                performSegue(withIdentifier: "modalSegue", sender: nil)
+//            }
+//            if invent2.contains(sender as! UIFocusEnvironment) {}else {
+//                performSegue(withIdentifier: "modalSegue", sender: nil)
+//            }
+//            if invent3.contains(sender as! UIFocusEnvironment) {}else {
+//                performSegue(withIdentifier: "modalSegue", sender: nil)
+//            }
+//            if invent4.contains(sender as! UIFocusEnvironment) {}else {
+//                performSegue(withIdentifier: "modalSegue", sender: nil)
+//            }
+//        }
+//    }
+//    @IBAction func whenTappedStackView(_ sender: UITapGestureRecognizer) {
+//        let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
+//        let stackView: UIStackView = UIStackView(frame: rectangle)
+//        if rectangle.contains(sender.location(in: stackView)) {
+//            if invent1.frame.contains(sender.location(in: stackView)) {}else {
+//                performSegue(withIdentifier: "modalSegue", sender: nil)
+//            }
+//            if invent2.frame.contains(sender as! UIFocusEnvironment) {}else {
+//                performSegue(withIdentifier: "modalSegue", sender: nil)
+//            }
+//            if invent3.frame.contains(sender as! UIFocusEnvironment) {}else {
+//                performSegue(withIdentifier: "modalSegue", sender: nil)
+//            }
+//            if invent4.frame.contains(sender as! UIFocusEnvironment) {}else {
+//                performSegue(withIdentifier: "modalSegue", sender: nil)
+//            }
+//        }
+//    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nvc = segue.destination as! InventoryViewController
     }
