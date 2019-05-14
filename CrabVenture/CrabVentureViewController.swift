@@ -35,8 +35,7 @@ class CrabVentureViewController: UIViewController {
 	var banned : [CGPoint] = []
 	var noGo = false
 	let form1 = [-16, -26, -36, 16, 26, 36]
-	
-	
+	let form2 = [-16, -24, -32, 32, 24, 16, -26, -36, -34, 36, 34, 26]
 //	var bannedPoint1 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
 //	var bannedPoin2 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
 //	var bannedPoint3 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
@@ -51,10 +50,12 @@ class CrabVentureViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		let forms = [form1, form2]
+		let form = forms.randomElement()
       	print("changed to View")
 		location = CGPoint(x: locationX, y :locationY)
 //		banned = [bannedPoint1, bannedPoin2, bannedPoint3]
-		for tag in form1 {
+		for tag in form! {
 			for tile in allTiles {
 				if tag == tile.tag {
 					bannedTiles.append(tile)
