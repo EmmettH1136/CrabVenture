@@ -189,6 +189,10 @@
                                     <action selector="movecrab:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="wgX-nV-bEV"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="egg" translatesAutoresizingMaskIntoConstraints="NO" id="iac-AV-hhP">
+                                <rect key="frame" x="305" y="133" width="85" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -314,6 +318,7 @@
         <image name="Crab" width="222" height="227"/>
         <image name="EmptySlot" width="225" height="225"/>
         <image name="SwordFish" width="600" height="213"/>
+        <image name="egg" width="310" height="360"/>
         <image name="sandtile" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
