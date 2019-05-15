@@ -46,7 +46,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	var initialPosition = CGPoint(x: 288.709, y: -300.153)
 	var moveClawBackAction = SKAction()
 	var enemyP = CGPoint()
-	var contactie = 0
 	var enemies : [Enemy] = []
 	var enemy = Enemy("boop", 0, SKSpriteNode(), CGVector(), 1)
 	var electricBoogaloo = 0
@@ -82,7 +81,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		enemies = [swordFish, cleaver]
 		enemy = enemies.randomElement()!
 		
-        
+        isTimerRunning = false
 		electricBoogaloo = 0
 		cronched = 0
 		hit = 0
@@ -250,3 +249,4 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		}
 	}
 }
+////happy now xcode

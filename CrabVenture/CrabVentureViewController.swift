@@ -37,6 +37,7 @@ class CrabVentureViewController: UIViewController {
 	let form1 = [-16, -26, -36, 16, 26, 36]
 	let form2 = [-16, -24, -32, 32, 24, 16, -26, -36, -34, 36, 34, 26]
 	let form3 = [-12, 12, -26, 26, -32, 32]
+	let form4 = [-16, -14, -36, -34, 16, 14, 36, 34]
 	var beans = false
 //	var bannedPoint1 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
 //	var bannedPoin2 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
@@ -52,7 +53,7 @@ class CrabVentureViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		let forms = [form1, form2, form3]
+		let forms = [form1, form2, form3, form4]
 		let form = forms.randomElement()
       	print("changed to View")
 		location = CGPoint(x: locationX, y :locationY)
@@ -268,46 +269,32 @@ class CrabVentureViewController: UIViewController {
         
         if touchingEnemy == true {
             print("touching")
+            
 			beans = true
 			performSegue(withIdentifier: "bingo", sender: Any?.self)
             //add change to gamescene code
         }
     }
-//    func moveToNewInventory(sender: UITapGestureRecognizer) {
-//        let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
-//        if rectangle.contains(sender.location in UIview) {
-//            if invent1.contains(sender as! UIFocusEnvironment) {}else {
-//                performSegue(withIdentifier: "modalSegue", sender: nil)
-//            }
-//            if invent2.contains(sender as! UIFocusEnvironment) {}else {
-//                performSegue(withIdentifier: "modalSegue", sender: nil)
-//            }
-//            if invent3.contains(sender as! UIFocusEnvironment) {}else {
-//                performSegue(withIdentifier: "modalSegue", sender: nil)
-//            }
-//            if invent4.contains(sender as! UIFocusEnvironment) {}else {
-//                performSegue(withIdentifier: "modalSegue", sender: nil)
-//            }
-//        }
-//    }
-//    @IBAction func whenTappedStackView(_ sender: UITapGestureRecognizer) {
-//        let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
-//        let stackView: UIStackView = UIStackView(frame: rectangle)
-//        if rectangle.contains(sender.location(in: stackView)) {
-//            if invent1.frame.contains(sender.location(in: stackView)) {}else {
-//                performSegue(withIdentifier: "modalSegue", sender: nil)
-//            }
-//            if invent2.frame.contains(sender as! UIFocusEnvironment) {}else {
-//                performSegue(withIdentifier: "modalSegue", sender: nil)
-//            }
-//            if invent3.frame.contains(sender as! UIFocusEnvironment) {}else {
-//                performSegue(withIdentifier: "modalSegue", sender: nil)
-//            }
-//            if invent4.frame.contains(sender as! UIFocusEnvironment) {}else {
-//                performSegue(withIdentifier: "modalSegue", sender: nil)
-//            }
-//        }
-//    }
+    func moveToNewInventory(sender: UITapGestureRecognizer) {
+        let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
+        let stackView: UIStackView = UIStackView(frame: rectangle)
+        view.addSubview(stackView)
+            if invent1.frame.contains(sender.location(in: stackView)) {}else {
+                if invent2.frame.contains(sender.location(in: stackView)) {}else {
+                    if invent3.frame.contains(sender.location(in: stackView)) {}else {
+                        if invent4.frame.contains(sender.location(in: stackView)) {}else {
+                            print("here3")
+                            performSegue(withIdentifier: "modalSegue", sender: sender)
+                        }
+                    }
+                }
+            }
+        view.willRemoveSubview(stackView)
+        stackView.removeFromSuperview()
+    }
+    @IBAction func whenTappedStackView(_ sender: UITapGestureRecognizer) {
+        moveToNewInventory(sender: sender)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if beans {
 			let nvc = segue.destination as! GameViewController
