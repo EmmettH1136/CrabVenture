@@ -274,6 +274,14 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ei9-4D-nz2">
+                                <rect key="frame" x="197" y="269" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="slJ-kp-nhJ" kind="show" id="wa8-IF-dA1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -308,4 +316,7 @@
         <image name="SwordFish" width="600" height="213"/>
         <image name="sandtile" width="400" height="400"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="wa8-IF-dA1"/>
+    </inferredMetricsTieBreakers>
 </document>

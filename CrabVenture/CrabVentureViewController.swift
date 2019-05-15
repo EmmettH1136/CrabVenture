@@ -18,7 +18,7 @@ class CrabVentureViewController: UIViewController {
 	@IBOutlet weak var invent3: UIImageView!
 	@IBOutlet weak var invent4: UIImageView!
 	
-    var image = UIImage(named: "Crab")
+    var image = UIImage(named: "craeb")
     
     var collision: UICollisionBehavior!
     
@@ -94,9 +94,14 @@ class CrabVentureViewController: UIViewController {
 		}
 	}
     
+    
     //right
     @IBAction func movecrab (_ sender: UIButton) {
 		let newLocation = (CGPoint(x: locationX + 1, y: locationY))
+        UIView.animate(withDuration: 0.5) {
+            self.crabImageView.image = UIImage(named: "craeb")
+        }
+        
 		for x in banned {
 			if newLocation == x {
 				noGo = true
@@ -106,7 +111,7 @@ class CrabVentureViewController: UIViewController {
 			UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
 			self.crabImageView.frame.origin.x += 50}, completion: nil)
 			locationX += 1
-			crabImageView.image = UIImage(named: "Crab")
+			crabImageView.image = UIImage(named: "craeb2")
 		} else {
 			noGo = false
 		}
@@ -114,6 +119,11 @@ class CrabVentureViewController: UIViewController {
     //left
 	@IBAction func movecrableft (_sender: UIButton) {
 		let newLocation = (CGPoint(x: locationX - 1, y: locationY))
+        UIView.animate(withDuration: 0.5) {
+            self.crabImageView.image = UIImage(named: "craeb")
+        }
+        
+        
 		for x in banned {
 			if newLocation == x {
 				noGo = true
@@ -123,7 +133,7 @@ class CrabVentureViewController: UIViewController {
 			UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
 			self.crabImageView.frame.origin.x -= 50}, completion: nil)
 			locationX -= 1
-			crabImageView.image = UIImage(named: "Crab")
+			self.crabImageView.image = UIImage(named: "craeb2")
 		} else {
 			noGo = false
 		}
@@ -131,13 +141,16 @@ class CrabVentureViewController: UIViewController {
 	}
 	@IBAction func movecrabUP (_ sender: UIButton) {
 		let newLocation = (CGPoint(x: locationX , y: locationY + 1))
+        UIView.animate(withDuration: 0.5) {
+            self.crabImageView.image = UIImage(named: "craeb")
+        }
 		for x in banned {
 			if newLocation == x {
 				noGo = true
 			}
 		}
 		if locationY < 2 && noGo == false {
-			UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+			UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations:  {
 			self.crabImageView.frame.origin.y -= 50}, completion: nil)
 			locationY += 1
 			crabImageView.image = UIImage(named: "CrabUp")
@@ -176,41 +189,30 @@ class CrabVentureViewController: UIViewController {
             //add change to gamescene code
         }
     }
-//    func moveToNewInventory(sender: UITapGestureRecognizer) {
-//        let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
-//        if rectangle.contains(sender.location in UIview) {
-//            if invent1.contains(sender as! UIFocusEnvironment) {}else {
-//                performSegue(withIdentifier: "modalSegue", sender: nil)
-//            }
-//            if invent2.contains(sender as! UIFocusEnvironment) {}else {
-//                performSegue(withIdentifier: "modalSegue", sender: nil)
-//            }
-//            if invent3.contains(sender as! UIFocusEnvironment) {}else {
-//                performSegue(withIdentifier: "modalSegue", sender: nil)
-//            }
-//            if invent4.contains(sender as! UIFocusEnvironment) {}else {
-//                performSegue(withIdentifier: "modalSegue", sender: nil)
-//            }
-//        }
-//    }
-//    @IBAction func whenTappedStackView(_ sender: UITapGestureRecognizer) {
-//        let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
-//        let stackView: UIStackView = UIStackView(frame: rectangle)
-//        if rectangle.contains(sender.location(in: stackView)) {
-//            if invent1.frame.contains(sender.location(in: stackView)) {}else {
-//                performSegue(withIdentifier: "modalSegue", sender: nil)
-//            }
-//            if invent2.frame.contains(sender as! UIFocusEnvironment) {}else {
-//                performSegue(withIdentifier: "modalSegue", sender: nil)
-//            }
-//            if invent3.frame.contains(sender as! UIFocusEnvironment) {}else {
-//                performSegue(withIdentifier: "modalSegue", sender: nil)
-//            }
-//            if invent4.frame.contains(sender as! UIFocusEnvironment) {}else {
-//                performSegue(withIdentifier: "modalSegue", sender: nil)
-//            }
-//        }
-//    }
+    func moveToNewInventory(sender: UITapGestureRecognizer) {
+        let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
+        let stackView: UIStackView = UIStackView(frame: rectangle)
+        view.addSubview(stackView)
+        print("here")
+            if invent1.frame.contains(sender.location(in: stackView)) {
+                print("here2")
+                print(sender.location(in: view))
+            }else {
+                if invent2.frame.contains(sender.location(in: view)) {}else {
+                    if invent3.frame.contains(sender.location(in: view)) {}else {
+                        if invent4.frame.contains(sender.location(in: view)) {}else {
+                            print("here3")
+                            performSegue(withIdentifier: "modalSegue", sender: sender)
+                        }
+                    }
+                }
+            }
+        view.willRemoveSubview(stackView)
+        stackView.removeFromSuperview()
+    }
+    @IBAction func whenTappedStackView(_ sender: UITapGestureRecognizer) {
+        moveToNewInventory(sender: sender)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if beans {
 			let nvc = segue.destination as! GameViewController
