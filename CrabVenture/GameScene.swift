@@ -173,6 +173,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			label.fontSize = 100.0
 			label.position = CGPoint(x: 0, y: -35)
 			self.addChild(label)
+			health -= 1
 			cronched = 1
 			enemy.body.physicsBody!.isDynamic = false
 		}
@@ -230,7 +231,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	override func update(_ currentTime: TimeInterval) {
 		if health == 0 {
 			print("yuh oh you lost")
-            
+			let vc = UIApplication.shared.keyWindow?.rootViewController as! GameViewController
+				vc.gameOver()
+			
 		}
         
         if isTimerRunning == false {
