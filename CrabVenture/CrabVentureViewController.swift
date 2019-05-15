@@ -18,7 +18,7 @@ class CrabVentureViewController: UIViewController {
 	@IBOutlet weak var invent3: UIImageView!
 	@IBOutlet weak var invent4: UIImageView!
 	
-    var image = UIImage(named: "Crab")
+    var image = UIImage(named: "craeb")
     
     var collision: UICollisionBehavior!
     
@@ -94,9 +94,14 @@ class CrabVentureViewController: UIViewController {
 		}
 	}
     
+    
     //right
     @IBAction func movecrab (_ sender: UIButton) {
 		let newLocation = (CGPoint(x: locationX + 1, y: locationY))
+        UIView.animate(withDuration: 0.5) {
+            self.crabImageView.image = UIImage(named: "craeb")
+        }
+        
 		for x in banned {
 			if newLocation == x {
 				noGo = true
@@ -106,7 +111,7 @@ class CrabVentureViewController: UIViewController {
 			UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
 			self.crabImageView.frame.origin.x += 50}, completion: nil)
 			locationX += 1
-			crabImageView.image = UIImage(named: "Crab")
+			crabImageView.image = UIImage(named: "craeb2")
 		} else {
 			noGo = false
 		}
@@ -114,6 +119,11 @@ class CrabVentureViewController: UIViewController {
     //left
 	@IBAction func movecrableft (_sender: UIButton) {
 		let newLocation = (CGPoint(x: locationX - 1, y: locationY))
+        UIView.animate(withDuration: 0.5) {
+            self.crabImageView.image = UIImage(named: "craeb")
+        }
+        
+        
 		for x in banned {
 			if newLocation == x {
 				noGo = true
@@ -123,7 +133,7 @@ class CrabVentureViewController: UIViewController {
 			UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
 			self.crabImageView.frame.origin.x -= 50}, completion: nil)
 			locationX -= 1
-			crabImageView.image = UIImage(named: "Crab")
+			self.crabImageView.image = UIImage(named: "craeb2")
 		} else {
 			noGo = false
 		}
@@ -131,13 +141,16 @@ class CrabVentureViewController: UIViewController {
 	}
 	@IBAction func movecrabUP (_ sender: UIButton) {
 		let newLocation = (CGPoint(x: locationX , y: locationY + 1))
+        UIView.animate(withDuration: 0.5) {
+            self.crabImageView.image = UIImage(named: "craeb")
+        }
 		for x in banned {
 			if newLocation == x {
 				noGo = true
 			}
 		}
 		if locationY < 2 && noGo == false {
-			UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+			UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations:  {
 			self.crabImageView.frame.origin.y -= 50}, completion: nil)
 			locationY += 1
 			crabImageView.image = UIImage(named: "CrabUp")
