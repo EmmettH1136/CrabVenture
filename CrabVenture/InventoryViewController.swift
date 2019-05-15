@@ -14,12 +14,7 @@ class InventoryViewController: UIViewController, UICollectionViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         CollectionView.delegate = self
-        while numberOfCells < 20 {
-            let cell = CollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: IndexPath(row: 3, section: 1))
-            cell.contentView.backgroundColor = .green
-            cell.backgroundView?.backgroundColor = .brown
-            CollectionView.addSubview(cell)
-        }
+       
 
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
