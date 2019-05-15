@@ -149,10 +149,15 @@
                                 <rect key="frame" x="398" y="200" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SwordFish" translatesAutoresizingMaskIntoConstraints="NO" id="WcD-Qc-z0G">
-                                <rect key="frame" x="634" y="9" width="164" height="83"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efv-6p-LRX">
+                                <rect key="frame" x="89" y="188" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <state key="normal" image="ArrowRight"/>
+                                <connections>
+                                    <action selector="checkIfContact:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="atM-eR-dOV"/>
+                                    <action selector="movecrab:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="wgX-nV-bEV"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLk-FW-QAU">
                                 <rect key="frame" x="55" y="222" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -180,15 +185,10 @@
                                     <action selector="movecrabUP:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="W2J-RA-3xB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efv-6p-LRX">
-                                <rect key="frame" x="89" y="188" width="35" height="35"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SwordFish" translatesAutoresizingMaskIntoConstraints="NO" id="WcD-Qc-z0G">
+                                <rect key="frame" x="364" y="9" width="164" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="ArrowRight"/>
-                                <connections>
-                                    <action selector="checkIfContact:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="atM-eR-dOV"/>
-                                    <action selector="movecrab:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="wgX-nV-bEV"/>
-                                </connections>
-                            </button>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -317,7 +317,6 @@
         <image name="sandtile" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SjC-e1-wki"/>
-        <segue reference="wa8-IF-dA1"/>
+        <segue reference="lww-zR-ibk"/>
     </inferredMetricsTieBreakers>
 </document>
