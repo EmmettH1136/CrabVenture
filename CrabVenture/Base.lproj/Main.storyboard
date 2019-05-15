@@ -36,33 +36,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efv-6p-LRX">
-                                <rect key="frame" x="861" y="190" width="35" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="ArrowRight"/>
-                                <connections>
-                                    <action selector="checkIfContact:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="atM-eR-dOV"/>
-                                    <action selector="movecrab:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="wgX-nV-bEV"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLk-FW-QAU">
-                                <rect key="frame" x="827" y="224" width="35" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="ArrowDown"/>
-                                <connections>
-                                    <action selector="checkIfContact:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="FMN-Kx-22v"/>
-                                    <action selector="movecrabDown:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="W4w-a3-eKk"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQp-TM-YV1">
-                                <rect key="frame" x="792" y="190" width="35" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="ArrowLeft"/>
-                                <connections>
-                                    <action selector="checkIfContact:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="wwV-48-Py1"/>
-                                    <action selector="movecrableftWith_sender:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="Fda-vC-ZOI"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7DX-sZ-nWj">
                                 <rect key="frame" x="-4" y="304" width="900" height="110"/>
                                 <subviews>
@@ -172,8 +145,34 @@
                                 <rect key="frame" x="698" y="100" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Crab" translatesAutoresizingMaskIntoConstraints="NO" id="CiK-Oj-TWq">
+                                <rect key="frame" x="398" y="200" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SwordFish" translatesAutoresizingMaskIntoConstraints="NO" id="WcD-Qc-z0G">
+                                <rect key="frame" x="634" y="9" width="164" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLk-FW-QAU">
+                                <rect key="frame" x="55" y="222" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="ArrowDown"/>
+                                <connections>
+                                    <action selector="checkIfContact:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="FMN-Kx-22v"/>
+                                    <action selector="movecrabDown:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="W4w-a3-eKk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQp-TM-YV1">
+                                <rect key="frame" x="20" y="188" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="ArrowLeft"/>
+                                <connections>
+                                    <action selector="checkIfContact:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="wwV-48-Py1"/>
+                                    <action selector="movecrableftWith_sender:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="Fda-vC-ZOI"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWs-kw-C3w">
-                                <rect key="frame" x="827" y="157" width="35" height="35"/>
+                                <rect key="frame" x="55" y="155" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="ArrowUp"/>
                                 <connections>
@@ -181,12 +180,17 @@
                                     <action selector="movecrabUP:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="W2J-RA-3xB"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Crab" translatesAutoresizingMaskIntoConstraints="NO" id="CiK-Oj-TWq">
-                                <rect key="frame" x="398" y="200" width="100" height="100"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efv-6p-LRX">
+                                <rect key="frame" x="89" y="188" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SwordFish" translatesAutoresizingMaskIntoConstraints="NO" id="WcD-Qc-z0G">
-                                <rect key="frame" x="634" y="9" width="164" height="83"/>
+                                <state key="normal" image="ArrowRight"/>
+                                <connections>
+                                    <action selector="checkIfContact:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="atM-eR-dOV"/>
+                                    <action selector="movecrab:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="wgX-nV-bEV"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="egg" translatesAutoresizingMaskIntoConstraints="NO" id="iac-AV-hhP">
+                                <rect key="frame" x="305" y="133" width="85" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -314,10 +318,10 @@
         <image name="Crab" width="222" height="227"/>
         <image name="EmptySlot" width="225" height="225"/>
         <image name="SwordFish" width="600" height="213"/>
+        <image name="egg" width="310" height="360"/>
         <image name="sandtile" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SjC-e1-wki"/>
-        <segue reference="wa8-IF-dA1"/>
+        <segue reference="lww-zR-ibk"/>
     </inferredMetricsTieBreakers>
 </document>
