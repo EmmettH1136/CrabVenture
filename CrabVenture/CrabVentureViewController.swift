@@ -185,6 +185,7 @@ class CrabVentureViewController: UIViewController {
         
         if touchingEnemy == true {
             print("touching")
+            
 			beans = true
 			performSegue(withIdentifier: "bingo", sender: Any?.self)
             //add change to gamescene code
