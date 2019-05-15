@@ -134,7 +134,7 @@ class CrabVentureViewController: UIViewController {
         
         if touchingEnemy == true {
             print("touching")
-            //add change to gamescene code
+            
         }
     }
 }
