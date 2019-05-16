@@ -25,10 +25,14 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
 
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return 7
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") {
+                return cell
+            }else {
+                return UITableViewCell()
+            }
     }
 }
