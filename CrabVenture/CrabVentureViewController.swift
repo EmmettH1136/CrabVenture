@@ -46,7 +46,6 @@ class CrabVentureViewController: UIViewController {
 	var bannedTile2 = UIImageView()
 	var bannedTile3 = UIImageView()
 	var bannedTiles : [UIImageView] = []
-	
     var touchingEnemy: Bool = false
     // important
 
