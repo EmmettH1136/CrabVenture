@@ -290,6 +290,8 @@ class CrabVentureViewController: UIViewController {
             print ("touching sprite")
             //in this case, the egg
             invent1.image = UIImage(named: "egg")
+            eggtest.isHidden = true
+            
             
         }
         
