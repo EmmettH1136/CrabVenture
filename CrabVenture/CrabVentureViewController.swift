@@ -9,6 +9,8 @@ import SpriteKit
 import GameplayKit
 import UIKit
 
+let userDefaults = UserDefaults.standard
+
 class CrabVentureViewController: UIViewController {
     
     @IBOutlet weak var mainCrab: UIImageView!
@@ -53,14 +55,14 @@ class CrabVentureViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		let forms = [form1, form2, form3, form4]
-		let form = forms.randomElement()
+		var form : [Int] = []
+		form = userDefaults.array(forKey: "form") as! [Int]
       	print("changed to View")
 		location = CGPoint(x: locationX, y :locationY)
 //		banned = [bannedPoint1, bannedPoin2, bannedPoint3]
-		for tag in form! {
+		for tag in form {
 			for tile in allTiles {
-				if tag == tile.tag {
+				if Int(tag) == tile.tag {
 					bannedTiles.append(tile)
 				}
 			}
