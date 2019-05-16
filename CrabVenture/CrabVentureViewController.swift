@@ -320,6 +320,10 @@ class CrabVentureViewController: UIViewController {
 			let nvc = segue.destination as! GameViewController
 		} else {
         	let nvc = segue.destination as! InventoryViewController
+            nvc.invent1 = invent1
+            nvc.invent2 = invent2
+            nvc.invent3 = invent3
+            nvc.invent4 = invent4
 		}
     }
     
