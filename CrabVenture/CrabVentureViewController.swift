@@ -9,6 +9,8 @@ import SpriteKit
 import GameplayKit
 import UIKit
 
+let userDefaults = UserDefaults.standard
+
 class CrabVentureViewController: UIViewController {
     
     @IBOutlet weak var mainCrab: UIImageView!
@@ -41,6 +43,7 @@ class CrabVentureViewController: UIViewController {
 	let form1 = [-16, -26, -36, 16, 26, 36]
 	let form2 = [-16, -24, -32, 32, 24, 16, -26, -36, -34, 36, 34, 26]
 	let form3 = [-12, 12, -26, 26, -32, 32]
+	let form4 = [-16, -14, -36, -34, 16, 14, 36, 34]
 	var beans = false
 //	var bannedPoint1 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
 //	var bannedPoin2 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
@@ -57,14 +60,14 @@ class CrabVentureViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		let forms = [form1, form2, form3]
-		let form = forms.randomElement()
+		var form : [Int] = []
+		form = userDefaults.array(forKey: "form") as! [Int]
       	print("changed to View")
 		location = CGPoint(x: locationX, y :locationY)
 //		banned = [bannedPoint1, bannedPoin2, bannedPoint3]
-		for tag in form! {
+		for tag in form {
 			for tile in allTiles {
-				if tag == tile.tag {
+				if Int(tag) == tile.tag {
 					bannedTiles.append(tile)
 				}
 			}
@@ -100,12 +103,79 @@ class CrabVentureViewController: UIViewController {
         //vc
 	}
     
+    enum WalkState {
+        case idle
+        case walking
+    }
+    private var walkState = WalkState.idle
+    
+    private func setupImageViewAnimation() {
+        crabImageView.animationImages = [UIImage(named: "craeb"), UIImage(named: "craeb2")] as? [UIImage]
+        crabImageView.animationDuration = 1
+    }
+    
+    private func setupImageViewAnimationUp() {
+        crabImageView.animationImages = [UIImage(named: "craebUp"), UIImage(named: "craeb2Up")] as? [UIImage]
+        crabImageView.animationDuration = 1
+    }
+    
+    private func connect() {
+        crabImageView.startAnimating()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            self.crabImageView.stopAnimating()
+            
+            // Updates UI
+            self.toggleCastState()
+        }
+    }
+    
+    private func connectUp() {
+        crabImageView.startAnimating()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            self.crabImageView.stopAnimating()
+            
+            // Updates UI
+            self.toggleCastStateUp()
+        }
+    }
+    
+    private func disconnect() {
+        toggleCastState()
+    }
+    
+    private func disconnectUp() {
+        toggleCastStateUp()
+    }
+    
+    private func toggleCastState() {
+        // Updates current Chromecast state
+        walkState = walkState == .walking ? .idle : .walking
+        
+        // Updates `UIImageView` default image
+        let image = walkState == .walking ? UIImage(named: "craeb2") : UIImage(named: "craeb")
+        crabImageView.image = image
+    }
+    
+    private func toggleCastStateUp() {
+        // Updates current Chromecast state
+        walkState = walkState == .walking ? .idle : .walking
+        
+        // Updates `UIImageView` default image
+        let image = walkState == .walking ? UIImage(named: "craeb2Up") : UIImage(named: "craebUp")
+        crabImageView.image = image
+    }
     
     //right
     @IBAction func movecrab (_ sender: UIButton) {
 		let newLocation = (CGPoint(x: locationX + 1, y: locationY))
-        UIView.animate(withDuration: 0.5) {
-            self.crabImageView.image = UIImage(named: "craeb")
+        
+        switch walkState {
+        case .idle:
+            disconnect()
+        case .walking:
+            connect()
         }
         
 		for x in banned {
@@ -125,8 +195,12 @@ class CrabVentureViewController: UIViewController {
     //left
 	@IBAction func movecrableft (_sender: UIButton) {
 		let newLocation = (CGPoint(x: locationX - 1, y: locationY))
-        UIView.animate(withDuration: 0.5) {
-            self.crabImageView.image = UIImage(named: "craeb")
+        
+        switch walkState {
+        case .idle:
+            disconnect()
+        case .walking:
+            connect()
         }
         
         
@@ -147,8 +221,12 @@ class CrabVentureViewController: UIViewController {
 	}
 	@IBAction func movecrabUP (_ sender: UIButton) {
 		let newLocation = (CGPoint(x: locationX , y: locationY + 1))
-        UIView.animate(withDuration: 0.5) {
-            self.crabImageView.image = UIImage(named: "craeb")
+        
+        switch walkState {
+        case .idle:
+            disconnectUp()
+        case .walking:
+            connectUp()
         }
 		for x in banned {
 			if newLocation == x {
@@ -159,13 +237,20 @@ class CrabVentureViewController: UIViewController {
 			UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations:  {
 			self.crabImageView.frame.origin.y -= 50}, completion: nil)
 			locationY += 1
-			crabImageView.image = UIImage(named: "CrabUp")
+			crabImageView.image = UIImage(named: "craebUp2")
 		} else {
 			noGo = false
 		}
 	}
 	@IBAction func movecrabDown (_ sender: UIButton) {
 		let newLocation = (CGPoint(x: locationX, y: locationY - 1))
+        
+        switch walkState {
+        case .idle:
+            disconnectUp()
+        case .walking:
+            connectUp()
+        }
 		for x in banned {
 			if newLocation == x {
 				noGo = true
@@ -175,7 +260,9 @@ class CrabVentureViewController: UIViewController {
 			UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
 			self.crabImageView.frame.origin.y += 50}, completion: nil)
 			locationY -= 1
-			crabImageView.image = UIImage(named: "CrabUp")
+            
+            self.crabImageView.image = UIImage(named: "craebUp2")
+			
 		} else {
 			noGo = false
 		}
@@ -211,14 +298,10 @@ class CrabVentureViewController: UIViewController {
         let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
         let stackView: UIStackView = UIStackView(frame: rectangle)
         view.addSubview(stackView)
-        print("here")
-            if invent1.frame.contains(sender.location(in: stackView)) {
-                print("here2")
-                print(sender.location(in: view))
-            }else {
-                if invent2.frame.contains(sender.location(in: view)) {}else {
-                    if invent3.frame.contains(sender.location(in: view)) {}else {
-                        if invent4.frame.contains(sender.location(in: view)) {}else {
+            if invent1.frame.contains(sender.location(in: stackView)) {}else {
+                if invent2.frame.contains(sender.location(in: stackView)) {}else {
+                    if invent3.frame.contains(sender.location(in: stackView)) {}else {
+                        if invent4.frame.contains(sender.location(in: stackView)) {}else {
                             print("here3")
                             performSegue(withIdentifier: "modalSegue", sender: sender)
                         }

@@ -12,11 +12,18 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
-    
+	let form1 = [-16, -26, -36, 16, 26, 36]
+	let form2 = [-16, -24, -32, 32, 24, 16, -26, -36, -34, 36, 34, 26]
+	let form3 = [-12, 12, -26, 26, -32, 32]
+	let form4 = [-16, -14, -36, -34, 16, 14, 36, 34]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+		
+		let forms = [form1, form2, form3, form4]
+		let form = forms.randomElement()
+		userDefaults.set(form, forKey: "form")
+		
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {

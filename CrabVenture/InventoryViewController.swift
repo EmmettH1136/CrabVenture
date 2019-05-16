@@ -8,24 +8,17 @@
 
 import UIKit
 
-class InventoryViewController: UIViewController {
+class InventoryViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var CollectionView: UICollectionView!
-    
+    var numberOfCells = 2
     override func viewDidLoad() {
         super.viewDidLoad()
+        CollectionView.delegate = self
+       
 
-        // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
     }
-    */
 
 }
