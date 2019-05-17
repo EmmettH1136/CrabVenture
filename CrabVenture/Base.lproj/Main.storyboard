@@ -203,6 +203,7 @@
                     </view>
                     <connections>
                         <outlet property="crabImageView" destination="CiK-Oj-TWq" id="wMx-Oc-05z"/>
+                        <outlet property="eggtest" destination="iac-AV-hhP" id="rhK-mr-jvx"/>
                         <outlet property="invent1" destination="Ubn-E6-VP6" id="M9W-CV-mZf"/>
                         <outlet property="invent2" destination="Dur-8a-NHo" id="W56-kh-oih"/>
                         <outlet property="invent3" destination="hOc-IK-i7O" id="lCE-xj-yF0"/>

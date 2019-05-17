@@ -15,10 +15,17 @@ class CrabVentureViewController: UIViewController {
     
     @IBOutlet weak var mainCrab: UIImageView!
     @IBOutlet weak var swordFish: UIImageView!
-	@IBOutlet weak var invent1: UIImageView!
+    @IBOutlet weak var eggtest: UIImageView!
+    
+    @IBOutlet weak var invent1: UIImageView!
 	@IBOutlet weak var invent2: UIImageView!
 	@IBOutlet weak var invent3: UIImageView!
 	@IBOutlet weak var invent4: UIImageView!
+    var inventory1 = UIImageView()
+    var inventory2 = UIImageView()
+    var inventory3 = UIImageView()
+    var inventory4 = UIImageView()
+    var spritesLocation: [CGRect] = []
 	
     var image = UIImage(named: "craeb")
     
@@ -49,15 +56,23 @@ class CrabVentureViewController: UIViewController {
 	var bannedTile3 = UIImageView()
 	var bannedTiles : [UIImageView] = []
     var touchingEnemy: Bool = false
+    var touchingSprite: Bool = false
     // important
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        inventory1 = invent1
+        inventory2 = invent2
+        inventory3 = invent3
+        inventory4 = invent4
 		var form : [Int] = []
 		form = userDefaults.array(forKey: "form") as! [Int]
+		locationX = 0
+		locationY = -2
+		
       	print("changed to View")
-		location = CGPoint(x: locationX, y :locationY)
+		location = CGPoint(x: locationX, y: locationY)
 //		banned = [bannedPoint1, bannedPoin2, bannedPoint3]
 		for tag in form {
 			for tile in allTiles {
@@ -94,8 +109,19 @@ class CrabVentureViewController: UIViewController {
 				banned += [CGPoint(x: point, y: -1), CGPoint(x: point, y: -2), CGPoint(x: point - 1, y: -2), CGPoint(x: point - 1, y: -1), CGPoint(x: point + 1, y: -2), CGPoint(x: point + 1, y: -1)]
 			}
 		}
+        //vc
 	}
-    
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(true)
+		locationX = userDefaults.integer(forKey: "locationX")
+		locationY = userDefaults.integer(forKey: "locationY")
+		location = CGPoint(x: locationX, y: locationY)
+		let originx = crabImageView.frame.origin.x
+		let originy = crabImageView.frame.origin.y
+		crabImageView.frame.origin = CGPoint(x: originx + CGFloat(locationX * 50), y: originy + CGFloat((locationY + 2) * -50) )
+	}
+	
     enum WalkState {
         case idle
         case walking
@@ -184,6 +210,7 @@ class CrabVentureViewController: UIViewController {
 		} else {
 			noGo = false
 		}
+		userDefaults.set(locationX, forKey: "locationX")
     }
     //left
 	@IBAction func movecrableft (_sender: UIButton) {
@@ -210,7 +237,7 @@ class CrabVentureViewController: UIViewController {
 		} else {
 			noGo = false
 		}
-		
+		userDefaults.set(locationX, forKey: "locationX")
 	}
 	@IBAction func movecrabUP (_ sender: UIButton) {
 		let newLocation = (CGPoint(x: locationX , y: locationY + 1))
@@ -234,6 +261,7 @@ class CrabVentureViewController: UIViewController {
 		} else {
 			noGo = false
 		}
+		userDefaults.set(locationY, forKey: "locationY")
 	}
 	@IBAction func movecrabDown (_ sender: UIButton) {
 		let newLocation = (CGPoint(x: locationX, y: locationY - 1))
@@ -259,22 +287,36 @@ class CrabVentureViewController: UIViewController {
 		} else {
 			noGo = false
 		}
+		userDefaults.set(locationY, forKey: "locationY")
 	}
     
     @IBAction func checkIfContact (_ sender: UIButton) {
 
         guard let r1 = mainCrab.superview?.convert(mainCrab.frame, to: nil) else { return }
         guard let r2 = swordFish.superview?.convert(swordFish.frame, to: nil) else { return }
+        guard let r3 = eggtest.superview?.convert(eggtest.frame, to: nil) else { return }
+        spritesLocation += ([r1, r2, r3])
 
         if r1.intersects(r2) { touchingEnemy = true }
-        
+        if r1.intersects(r3) { touchingSprite = true }
+       
         if touchingEnemy == true {
-            print("touching")
+            print("touching enemy")
             
 			beans = true
 			performSegue(withIdentifier: "bingo", sender: Any?.self)
             //add change to gamescene code
         }
+        
+        if touchingSprite == true {
+            print ("touching sprite")
+            //in this case, the egg
+            invent1.image = UIImage(named: "egg")
+            eggtest.isHidden = true
+            
+            
+        }
+        
     }
     func moveToNewInventory(sender: UITapGestureRecognizer) {
         let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
@@ -301,8 +343,13 @@ class CrabVentureViewController: UIViewController {
 			let nvc = segue.destination as! GameViewController
 		} else {
         	let nvc = segue.destination as! InventoryViewController
+            nvc.invent1 = invent1
+            nvc.invent2 = invent2
+            nvc.invent3 = invent3
+            nvc.invent4 = invent4
 		}
     }
+    
 }
 
 

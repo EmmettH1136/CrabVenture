@@ -20,10 +20,12 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		
 		let forms = [form1, form2, form3, form4]
 		let form = forms.randomElement()
 		userDefaults.set(form, forKey: "form")
-		
+		userDefaults.set(-2, forKey: "locationY")
+		userDefaults.set(0, forKey: "locationX")
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
