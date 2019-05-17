@@ -53,7 +53,15 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
             count += 1
                 return cell
             }else {
+            
                 return UITableViewCell()
             }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nvc = segue.destination as! CrabVentureViewController
+        nvc.inventory1 = invent1
+        nvc.inventory2 = invent2
+        nvc.inventory3 = invent3
+        nvc.inventory4 = invent4
     }
 }

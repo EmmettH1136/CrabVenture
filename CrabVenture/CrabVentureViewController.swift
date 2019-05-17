@@ -21,7 +21,10 @@ class CrabVentureViewController: UIViewController {
 	@IBOutlet weak var invent2: UIImageView!
 	@IBOutlet weak var invent3: UIImageView!
 	@IBOutlet weak var invent4: UIImageView!
-    
+    var inventory1 = UIImageView()
+    var inventory2 = UIImageView()
+    var inventory3 = UIImageView()
+    var inventory4 = UIImageView()
     var spritesLocation: [CGRect] = []
 	
     var image = UIImage(named: "craeb")
@@ -59,10 +62,17 @@ class CrabVentureViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        inventory1 = invent1
+        inventory2 = invent2
+        inventory3 = invent3
+        inventory4 = invent4
 		var form : [Int] = []
 		form = userDefaults.array(forKey: "form") as! [Int]
+		locationX = 0
+		locationY = -2
+		
       	print("changed to View")
-		location = CGPoint(x: locationX, y :locationY)
+		location = CGPoint(x: locationX, y: locationY)
 //		banned = [bannedPoint1, bannedPoin2, bannedPoint3]
 		for tag in form {
 			for tile in allTiles {
@@ -101,7 +111,17 @@ class CrabVentureViewController: UIViewController {
 		}
         //vc
 	}
-    
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(true)
+		locationX = userDefaults.integer(forKey: "locationX")
+		locationY = userDefaults.integer(forKey: "locationY")
+		location = CGPoint(x: locationX, y: locationY)
+		let originx = crabImageView.frame.origin.x
+		let originy = crabImageView.frame.origin.y
+		crabImageView.frame.origin = CGPoint(x: originx + CGFloat(locationX * 50), y: originy + CGFloat((locationY + 2) * -50) )
+	}
+	
     enum WalkState {
         case idle
         case walking
@@ -190,6 +210,7 @@ class CrabVentureViewController: UIViewController {
 		} else {
 			noGo = false
 		}
+		userDefaults.set(locationX, forKey: "locationX")
     }
     //left
 	@IBAction func movecrableft (_sender: UIButton) {
@@ -216,7 +237,7 @@ class CrabVentureViewController: UIViewController {
 		} else {
 			noGo = false
 		}
-		
+		userDefaults.set(locationX, forKey: "locationX")
 	}
 	@IBAction func movecrabUP (_ sender: UIButton) {
 		let newLocation = (CGPoint(x: locationX , y: locationY + 1))
@@ -240,6 +261,7 @@ class CrabVentureViewController: UIViewController {
 		} else {
 			noGo = false
 		}
+		userDefaults.set(locationY, forKey: "locationY")
 	}
 	@IBAction func movecrabDown (_ sender: UIButton) {
 		let newLocation = (CGPoint(x: locationX, y: locationY - 1))
@@ -265,6 +287,7 @@ class CrabVentureViewController: UIViewController {
 		} else {
 			noGo = false
 		}
+		userDefaults.set(locationY, forKey: "locationY")
 	}
     
     @IBAction func checkIfContact (_ sender: UIButton) {
