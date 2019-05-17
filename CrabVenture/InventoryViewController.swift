@@ -8,17 +8,52 @@
 
 import UIKit
 
-class InventoryViewController: UIViewController, UICollectionViewDelegate {
-    @IBOutlet weak var CollectionView: UICollectionView!
-    var numberOfCells = 2
+class InventoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView1: UITableView!
+    @IBOutlet weak var tableView2: UITableView!
+    @IBOutlet weak var tableView3: UITableView!
+    var invent1: UIImageView = UIImageView()
+    var invent2: UIImageView = UIImageView()
+    var invent3: UIImageView = UIImageView()
+    var invent4: UIImageView = UIImageView()
+    var count = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        CollectionView.delegate = self
-       
+        tableView1.delegate = self
+        tableView2.delegate = self
+        tableView3.delegate = self
+        tableView1.dataSource = self
+        tableView2.dataSource = self
+        tableView3.dataSource = self
 
     }
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == tableView1 {
+        return 4
+        }else {
+            return 7
+        }
     }
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") {
+            switch count {
+            case 0:
+                cell.imageView?.image = invent1.image
+            case 1:
+                cell.imageView?.image = invent2.image
+            case 2:
+                cell.imageView?.image = invent3.image
+            case 3:
+                cell.imageView?.image = invent4.image
+            default:
+                _ = UITableViewCell()
+            }
+            count += 1
+                return cell
+            }else {
+                return UITableViewCell()
+            }
+    }
 }
