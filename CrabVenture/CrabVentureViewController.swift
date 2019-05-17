@@ -26,6 +26,7 @@ class CrabVentureViewController: UIViewController {
     var inventory3 = UIImageView()
     var inventory4 = UIImageView()
     var spritesLocation: [CGRect] = []
+	var egg = Item("egg", 2, false)
 	
     var image = UIImage(named: "craeb")
     
@@ -120,6 +121,11 @@ class CrabVentureViewController: UIViewController {
 		let originx = crabImageView.frame.origin.x
 		let originy = crabImageView.frame.origin.y
 		crabImageView.frame.origin = CGPoint(x: originx + CGFloat(locationX * 50), y: originy + CGFloat((locationY + 2) * -50) )
+		let eggInvent = userDefaults.bool(forKey: "eggY")
+		if eggInvent {
+			eggtest.isHidden = true
+			invent1.image = UIImage(named: "egg")
+		}
 	}
 	
     enum WalkState {
@@ -313,6 +319,8 @@ class CrabVentureViewController: UIViewController {
             //in this case, the egg
             invent1.image = UIImage(named: "egg")
             eggtest.isHidden = true
+			egg.inInvent = true
+			userDefaults.set(egg.inInvent, forKey: "eggY")
             
             
         }

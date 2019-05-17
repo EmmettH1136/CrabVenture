@@ -76,6 +76,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
+        print(cronched)
+        
+        health = 1
+        
 		physicsWorld.contactDelegate = self
 		
 		enemies = [swordFish, cleaver]
