@@ -21,7 +21,10 @@ class CrabVentureViewController: UIViewController {
 	@IBOutlet weak var invent2: UIImageView!
 	@IBOutlet weak var invent3: UIImageView!
 	@IBOutlet weak var invent4: UIImageView!
-    
+    var inventory1 = UIImageView()
+    var inventory2 = UIImageView()
+    var inventory3 = UIImageView()
+    var inventory4 = UIImageView()
     var spritesLocation: [CGRect] = []
 	
     var image = UIImage(named: "craeb")
@@ -59,6 +62,10 @@ class CrabVentureViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        inventory1 = invent1
+        inventory2 = invent2
+        inventory3 = invent3
+        inventory4 = invent4
 		var form : [Int] = []
 		form = userDefaults.array(forKey: "form") as! [Int]
       	print("changed to View")
