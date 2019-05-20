@@ -313,24 +313,37 @@ class CrabVentureViewController: UIViewController {
             
 			beans = true
 			performSegue(withIdentifier: "bingo", sender: Any?.self)
-            //add change to gamescene code
+            
         }
-        //touching sprite
+        
         if touchingSprite == true {
             print ("touching sprite")
             
-             guard let crabLocation = mainCrab.superview?.convert(mainCrab.frame, to: nil) else { return }
+            guard let crabLocation = mainCrab.superview?.convert(mainCrab.frame, to: nil) else { return }
             guard let eggLocation = eggtest.superview?.convert(eggtest.frame, to: nil) else { return }
            
+            func eggPickUpNow() {
+                invent1.image = UIImage(named: "egg")
+                eggtest.isHidden = true
+                egg.inInvent = true
+                userDefaults.set(egg.inInvent, forKey: "eggY")
+            }
+            
             if crabLocation.intersects(eggLocation) {eggPickup = true}
             
             if eggPickup == true {
-            invent1.image = UIImage(named: "egg")
-            eggtest.isHidden = true
-			egg.inInvent = true
-			userDefaults.set(egg.inInvent, forKey: "eggY")
+                if invent1.image == UIImage(named: "EmptySlot") {
+                    eggPickUpNow()
+                } else if invent2.image == UIImage(named: "EmptySlot") {
+                    eggPickUpNow()
+                } else if invent3.image == UIImage(named: "EmptySlot") {
+                    eggPickUpNow()
+                } else if invent4.image == UIImage(named: "EmptySlot") {
+                    eggPickUpNow()
+                }
             }
         }
+      
     }
     func moveToNewInventory(sender: UITapGestureRecognizer) {
         let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
