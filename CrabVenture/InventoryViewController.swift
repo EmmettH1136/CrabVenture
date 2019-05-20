@@ -42,13 +42,11 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         switch count2 {
         case 0:
             print("yee")
-            let cell = tableView.visibleCells[indexPath.row]
-            firstCell = cell
+            firstCell = tableView.visibleCells[indexPath.row]
             count2 = 1
         default:
             print("haw")
-            let cell2 = tableView.visibleCells[indexPath.row]
-            secondCell = cell2
+            secondCell = tableView.visibleCells[indexPath.row]
             count2 = 0
             swapPieces(imageView1: firstCell.imageView!, imageView2: secondCell.imageView!)
         }
@@ -77,6 +75,8 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     func swapPieces(imageView1: UIImageView, imageView2: UIImageView) {
         let tempImage = imageView2.image
+        print(tempImage)
+        print(imageView1.image)
         imageView2.image = imageView1.image
         imageView1.image = tempImage
         
