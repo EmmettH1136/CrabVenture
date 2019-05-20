@@ -26,6 +26,7 @@ class GameViewController: UIViewController {
 		userDefaults.set(form, forKey: "form")
 		userDefaults.set(-2, forKey: "locationY")
 		userDefaults.set(0, forKey: "locationX")
+		userDefaults.set(false, forKey: "eggY")
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
