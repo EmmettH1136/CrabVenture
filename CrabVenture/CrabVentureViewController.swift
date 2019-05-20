@@ -58,6 +58,8 @@ class CrabVentureViewController: UIViewController {
 	var bannedTiles : [UIImageView] = []
     var touchingEnemy: Bool = false
     var touchingSprite: Bool = false
+    
+    var eggPickup: Bool = false
     // important
 
     
@@ -323,18 +325,22 @@ class CrabVentureViewController: UIViewController {
 			performSegue(withIdentifier: "bingo", sender: Any?.self)
             //add change to gamescene code
         }
-        
+        //touching sprite
         if touchingSprite == true {
             print ("touching sprite")
-            //in this case, the egg
+            
+             guard let crabLocation = mainCrab.superview?.convert(mainCrab.frame, to: nil) else { return }
+            guard let eggLocation = eggtest.superview?.convert(eggtest.frame, to: nil) else { return }
+           
+            if crabLocation.intersects(eggLocation) {eggPickup = true}
+            
+            if eggPickup == true {
             invent1.image = UIImage(named: "egg")
             eggtest.isHidden = true
 			egg.inInvent = true
 			userDefaults.set(egg.inInvent, forKey: "eggY")
-            
-            
+            }
         }
-        
     }
     func moveToNewInventory(sender: UITapGestureRecognizer) {
         let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
