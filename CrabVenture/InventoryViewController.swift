@@ -18,6 +18,7 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
     var invent3: UIImageView = UIImageView()
     var invent4: UIImageView = UIImageView()
     var count = 0
+    var count2 = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView1.delegate = self
@@ -33,6 +34,23 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         return 4
         }else {
             return 7
+        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var firstCell = UITableViewCell()
+        var secondCell = UITableViewCell()
+        switch count2 {
+        case 0:
+            print("yee")
+            let cell = tableView.visibleCells[indexPath.row]
+            firstCell = cell
+            count2 = 1
+        default:
+            print("haw")
+            let cell2 = tableView.visibleCells[indexPath.row]
+            secondCell = cell2
+            count2 = 0
+            swapPieces(imageView1: firstCell.imageView!, imageView2: secondCell.imageView!)
         }
     }
     
@@ -56,6 +74,12 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
             
                 return UITableViewCell()
             }
+    }
+    func swapPieces(imageView1: UIImageView, imageView2: UIImageView) {
+        let tempImage = imageView2.image
+        imageView2.image = imageView1.image
+        imageView1.image = tempImage
+        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nvc = segue.destination as! CrabVentureViewController
