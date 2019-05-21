@@ -190,7 +190,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="egg" translatesAutoresizingMaskIntoConstraints="NO" id="iac-AV-hhP">
-                                <rect key="frame" x="305" y="133" width="85" height="59"/>
+                                <rect key="frame" x="305" y="144" width="50" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -351,6 +351,7 @@
         <image name="sandtile" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="SjC-e1-wki"/>
         <segue reference="wa8-IF-dA1"/>
     </inferredMetricsTieBreakers>
 </document>
