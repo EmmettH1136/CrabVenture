@@ -60,6 +60,7 @@ class CrabVentureViewController: UIViewController {
     var touchingSprite: Bool = false
     
     var eggPickup: Bool = false
+    var inventoryFull: Bool = false
     // important
 
     
@@ -326,21 +327,24 @@ class CrabVentureViewController: UIViewController {
             
         }
         
-        if touchingSprite == true {
+        if touchingSprite == true && inventoryFull == false {
             print ("touching sprite")
             
             guard let crabLocation = mainCrab.superview?.convert(mainCrab.frame, to: nil) else { return }
             guard let eggLocation = eggtest.superview?.convert(eggtest.frame, to: nil) else { return }
            
+            //func to pick up for diff items
             func eggPickUpNow() {
                 invent1.image = UIImage(named: "egg")
                 eggtest.isHidden = true
+                //isHidden only hides; still can interact even if hidden
                 egg.inInvent = true
                 userDefaults.set(egg.inInvent, forKey: "eggY")
             }
-            
+            //checks which item crab is touching
             if crabLocation.intersects(eggLocation) {eggPickup = true}
             
+            //checks if inv slot is taken for specific item
             if eggPickup == true {
                 if invent1.image == UIImage(named: "EmptySlot") {
                     eggPickUpNow()
@@ -351,9 +355,14 @@ class CrabVentureViewController: UIViewController {
                 } else if invent4.image == UIImage(named: "EmptySlot") {
                     eggPickUpNow()
                 }
+                
             }
+            touchingSprite = false
         }
-      
+        
+        if invent1.image != UIImage(named: "EmptySlot") && invent2.image != UIImage(named: "EmptySlot") && invent3.image != UIImage(named: "EmptySlot") && invent4.image != UIImage(named: "EmptySlot") {
+            inventoryFull = true
+        }
     }
     func moveToNewInventory(sender: UITapGestureRecognizer) {
         let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
@@ -388,7 +397,6 @@ class CrabVentureViewController: UIViewController {
     }
     
 }
-
 
 
 
