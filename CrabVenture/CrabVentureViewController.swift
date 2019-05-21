@@ -337,6 +337,8 @@ class CrabVentureViewController: UIViewController {
             func eggPickUpNow() {
                 invent1.image = UIImage(named: "egg")
                 eggtest.isHidden = true
+                let eggNewLocationAfterTouch = CGRect(x: -1, y: -1, width: 1, height: 1)
+                eggtest.frame = eggNewLocationAfterTouch
                 //isHidden only hides; still can interact even if hidden
                 egg.inInvent = true
                 userDefaults.set(egg.inInvent, forKey: "eggY")
