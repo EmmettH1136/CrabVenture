@@ -332,15 +332,18 @@ class CrabVentureViewController: UIViewController {
             guard let crabLocation = mainCrab.superview?.convert(mainCrab.frame, to: nil) else { return }
             guard let eggLocation = eggtest.superview?.convert(eggtest.frame, to: nil) else { return }
            
+            //func to pick up for diff items
             func eggPickUpNow() {
                 invent1.image = UIImage(named: "egg")
                 eggtest.isHidden = true
+                //isHidden only hides; still can interact even if hidden
                 egg.inInvent = true
                 userDefaults.set(egg.inInvent, forKey: "eggY")
             }
-            
+            //checks which item crab is touching
             if crabLocation.intersects(eggLocation) {eggPickup = true}
             
+            //checks if inv slot is taken for specific item
             if eggPickup == true {
                 if invent1.image == UIImage(named: "EmptySlot") {
                     eggPickUpNow()
@@ -352,7 +355,7 @@ class CrabVentureViewController: UIViewController {
                     eggPickUpNow()
                 }
             }
-        }
+            touchingSprite = false
       
     }
     func moveToNewInventory(sender: UITapGestureRecognizer) {
@@ -388,7 +391,6 @@ class CrabVentureViewController: UIViewController {
     }
     
 }
-
 
 
 
