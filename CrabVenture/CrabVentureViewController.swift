@@ -342,6 +342,10 @@ class CrabVentureViewController: UIViewController {
                 egg.inInvent = true
                 userDefaults.set(egg.inInvent, forKey: "eggY")
             }
+            
+            func ironClawPickUpNow() {
+                
+            }
             //checks which item crab is touching
             if crabLocation.intersects(eggLocation) {eggPickup = true}
             
