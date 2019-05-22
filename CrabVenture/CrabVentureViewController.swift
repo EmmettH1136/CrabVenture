@@ -16,6 +16,7 @@ class CrabVentureViewController: UIViewController {
     @IBOutlet weak var mainCrab: UIImageView!
     @IBOutlet weak var swordFish: UIImageView!
     @IBOutlet weak var eggtest: UIImageView!
+    @IBOutlet weak var ironClaw: UIImageView!
     
     @IBOutlet weak var invent1: UIImageView!
 	@IBOutlet weak var invent2: UIImageView!
@@ -345,11 +346,14 @@ class CrabVentureViewController: UIViewController {
             }
             
             func ironClawPickUpNow() {
-                
+                ironClaw.isHidden = true
+                let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
+                ironClaw.frame = ironClawNewLocation
             }
+            
             //checks which item crab is touching
             if crabLocation.intersects(eggLocation) {eggPickup = true}
-            
+            //if crabLocation.intersects
             //checks if inv slot is taken for specific item
             if eggPickup == true {
                 if invent1.image == UIImage(named: "EmptySlot") {
