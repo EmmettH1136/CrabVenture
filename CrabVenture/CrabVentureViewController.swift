@@ -335,7 +335,6 @@ class CrabVentureViewController: UIViewController {
            
             //func to pick up for diff items
             func eggPickUpNow() {
-                invent1.image = UIImage(named: "egg")
                 eggtest.isHidden = true
                 let eggNewLocationAfterTouch = CGRect(x: -1, y: -1, width: 1, height: 1)
                 eggtest.frame = eggNewLocationAfterTouch
@@ -349,12 +348,16 @@ class CrabVentureViewController: UIViewController {
             //checks if inv slot is taken for specific item
             if eggPickup == true {
                 if invent1.image == UIImage(named: "EmptySlot") {
+                     invent1.image = UIImage(named: "egg")
                     eggPickUpNow()
                 } else if invent2.image == UIImage(named: "EmptySlot") {
+                     invent2.image = UIImage(named: "egg")
                     eggPickUpNow()
                 } else if invent3.image == UIImage(named: "EmptySlot") {
+                     invent3.image = UIImage(named: "egg")
                     eggPickUpNow()
                 } else if invent4.image == UIImage(named: "EmptySlot") {
+                     invent4.image = UIImage(named: "egg")
                     eggPickUpNow()
                 }
                 
