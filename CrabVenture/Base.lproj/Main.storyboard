@@ -145,7 +145,7 @@
                                 <rect key="frame" x="698" y="100" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Crab" translatesAutoresizingMaskIntoConstraints="NO" id="CiK-Oj-TWq">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="craeb" translatesAutoresizingMaskIntoConstraints="NO" id="CiK-Oj-TWq">
                                 <rect key="frame" x="398" y="200" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -190,7 +190,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="egg" translatesAutoresizingMaskIntoConstraints="NO" id="iac-AV-hhP">
-                                <rect key="frame" x="305" y="133" width="85" height="59"/>
+                                <rect key="frame" x="305" y="144" width="50" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -344,13 +344,14 @@
         <image name="ArrowLeft" width="225" height="225"/>
         <image name="ArrowRight" width="240" height="240"/>
         <image name="ArrowUp" width="225" height="225"/>
-        <image name="Crab" width="222" height="227"/>
         <image name="EmptySlot" width="225" height="225"/>
         <image name="SwordFish" width="600" height="213"/>
+        <image name="craeb" width="1240" height="620"/>
         <image name="egg" width="310" height="360"/>
         <image name="sandtile" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="SjC-e1-wki"/>
         <segue reference="wa8-IF-dA1"/>
     </inferredMetricsTieBreakers>
 </document>
