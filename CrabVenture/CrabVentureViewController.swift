@@ -27,6 +27,7 @@ class CrabVentureViewController: UIViewController {
     var inventory4 = UIImageView()
     var spritesLocation: [CGRect] = []
 	var egg = Item("egg", 2, false)
+    var hasIronClaw = false
 	
     var image = UIImage(named: "craeb")
     
