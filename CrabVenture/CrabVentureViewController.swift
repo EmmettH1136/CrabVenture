@@ -59,6 +59,9 @@ class CrabVentureViewController: UIViewController {
 	var bannedTiles : [UIImageView] = []
     var touchingEnemy: Bool = false
     var touchingSprite: Bool = false
+    
+    var eggPickup: Bool = false
+    var inventoryFull: Bool = false
     // important
 
     
@@ -111,6 +114,16 @@ class CrabVentureViewController: UIViewController {
 				banned += [CGPoint(x: point, y: -1), CGPoint(x: point, y: -2), CGPoint(x: point - 1, y: -2), CGPoint(x: point - 1, y: -1), CGPoint(x: point + 1, y: -2), CGPoint(x: point + 1, y: -1)]
 			}
 		}
+		var randomFish = allTiles.randomElement()
+		while randomFish!.image == UIImage(named: "gravelpathtile") {
+			randomFish = allTiles.randomElement()
+		}
+		swordFish.frame.origin = randomFish!.frame.origin
+		var randomEgg = allTiles.randomElement()
+		while randomEgg!.image == UIImage(named: "gravelpathtile") {
+			randomEgg = allTiles.randomElement()
+		}
+		eggtest.frame.origin = randomEgg!.frame.origin
         //vc
 	}
 	
@@ -312,20 +325,50 @@ class CrabVentureViewController: UIViewController {
             
 			beans = true
 			performSegue(withIdentifier: "bingo", sender: Any?.self)
-            //add change to gamescene code
+            
         }
         
-        if touchingSprite == true {
+        if touchingSprite == true && inventoryFull == false {
             print ("touching sprite")
-            //in this case, the egg
-            invent1.image = UIImage(named: "egg")
-            eggtest.isHidden = true
-			egg.inInvent = true
-			userDefaults.set(egg.inInvent, forKey: "eggY")
             
+            guard let crabLocation = mainCrab.superview?.convert(mainCrab.frame, to: nil) else { return }
+            guard let eggLocation = eggtest.superview?.convert(eggtest.frame, to: nil) else { return }
+           
+            //func to pick up for diff items
+            func eggPickUpNow() {
+                eggtest.isHidden = true
+                let eggNewLocationAfterTouch = CGRect(x: -1, y: -1, width: 1, height: 1)
+                eggtest.frame = eggNewLocationAfterTouch
+                //isHidden only hides; still can interact even if hidden
+                egg.inInvent = true
+                userDefaults.set(egg.inInvent, forKey: "eggY")
+            }
+            //checks which item crab is touching
+            if crabLocation.intersects(eggLocation) {eggPickup = true}
             
+            //checks if inv slot is taken for specific item
+            if eggPickup == true {
+                if invent1.image == UIImage(named: "EmptySlot") {
+                     invent1.image = UIImage(named: "egg")
+                    eggPickUpNow()
+                } else if invent2.image == UIImage(named: "EmptySlot") {
+                     invent2.image = UIImage(named: "egg")
+                    eggPickUpNow()
+                } else if invent3.image == UIImage(named: "EmptySlot") {
+                     invent3.image = UIImage(named: "egg")
+                    eggPickUpNow()
+                } else if invent4.image == UIImage(named: "EmptySlot") {
+                     invent4.image = UIImage(named: "egg")
+                    eggPickUpNow()
+                }
+                
+            }
+            touchingSprite = false
         }
         
+        if invent1.image != UIImage(named: "EmptySlot") && invent2.image != UIImage(named: "EmptySlot") && invent3.image != UIImage(named: "EmptySlot") && invent4.image != UIImage(named: "EmptySlot") {
+            inventoryFull = true
+        }
     }
     func moveToNewInventory(sender: UITapGestureRecognizer) {
         let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
@@ -360,7 +403,6 @@ class CrabVentureViewController: UIViewController {
     }
     
 }
-
 
 
 

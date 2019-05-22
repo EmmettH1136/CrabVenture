@@ -35,12 +35,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	var cleaverNode = SKSpriteNode()
 	var cleaver = Enemy("Cleaver", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 400...800), dy: 0), 2)
 	var cronched = 0
+	var mantaRay = Enemy("MantaRay", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 100...200), dy: 0), 3)
     let tapRec = UITapGestureRecognizer()
 	var label = SKLabelNode()
 	var backgroundNode = SKSpriteNode()
     var initialCrabPosition = CGPoint(x: 100, y: -400)
-    
+	
+	var isSneakyTimerRunning = false
 	var timer = Timer()
+	var sneakyTimer = Timer()
+	var sneakySeconds = 2.0
 	var seconds = 0.5
 	var isTimerRunning = false
 	var initialPosition = CGPoint(x: 288.709, y: -300.153)
@@ -70,6 +74,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			}
 		}
 	}
+	func runSneakyTimer() {
+		sneakyTimer = Timer.scheduledTimer(timeInterval: 0.25, target: self,   selector: (#selector(GameScene.updateSneakyTimer)), userInfo: nil, repeats: true)
+		isSneakyTimerRunning = true
+	}
+	@objc func updateSneakyTimer() {
+		if isSneakyTimerRunning {
+			if sneakySeconds <= 0 {
+				timer.invalidate()
+				sneakySeconds = 2
+				isTimerRunning = false
+				enemy.body.physicsBody?.isDynamic = true
+				enemy.body.physicsBody?.velocity = enemy.speed
+			} else {
+				sneakySeconds -= 0.25
+				enemy.speed.dx += 100
+			}
+		}
+	}
 	
 
 	var health = 1
@@ -82,7 +104,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
 		physicsWorld.contactDelegate = self
 		
-		enemies = [swordFish, cleaver]
+		enemies = [swordFish, cleaver, mantaRay]
 		enemy = enemies.randomElement()!
 		
         isTimerRunning = false
@@ -96,9 +118,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		swordFish.body = swordFishNode
 		cleaverNode = self.childNode(withName: "cleaver") as! SKSpriteNode
 		cleaver.body = cleaverNode
+		let mantaRayNode = self.childNode(withName: "MantaRay") as! SKSpriteNode
+		mantaRay.body = mantaRayNode
 		enemy.body.position = CGPoint(x: -932.162, y: 235.423)
 		enemy.body.physicsBody?.isDynamic = true
 		enemy.body.physicsBody?.velocity = enemy.speed
+		if enemy.name == mantaRay.name {
+			runSneakyTimer()
+		}
 		
         let topRight = CGPoint(x: -frame.origin.x, y: -frame.origin.y)
 		let bottomRight = CGPoint(x: -frame.origin.x, y: frame.origin.y)
@@ -116,6 +143,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		
 		swordFishNode.physicsBody?.isDynamic = true
 		cleaverNode.physicsBody?.isDynamic = true
+		mantaRayNode.physicsBody?.isDynamic = true
 		
 		
 		for x in enemies {
@@ -133,12 +161,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		crabClaw.physicsBody?.categoryBitMask = clawCategory
 		swordFishNode.physicsBody?.categoryBitMask = enemyCategory
 		cleaverNode.physicsBody?.categoryBitMask = enemyCategory
+		mantaRayNode.physicsBody?.categoryBitMask = enemyCategory
 		right.physicsBody?.categoryBitMask = rightCategory
 		
 		enemyP = CGPoint(x: swordFish.body.position.x, y: swordFishNode.position.y)
 		
 		swordFishNode.physicsBody?.contactTestBitMask = clawCategory|rightCategory
 		cleaverNode.physicsBody?.contactTestBitMask = clawCategory|rightCategory
+		mantaRayNode.physicsBody?.contactTestBitMask = clawCategory|rightCategory
 		
 		
 		
@@ -169,6 +199,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			enemy.body.physicsBody!.isDynamic = false
 			let moveToActionS = SKAction.move(to: enemyP, duration: 0.01)
 			enemy.body.run(moveToActionS)
+			sneakySeconds = 29
 			
 		}
 		if contact.bodyA.categoryBitMask == rightCategory {
