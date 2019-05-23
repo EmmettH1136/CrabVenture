@@ -117,11 +117,11 @@ class CrabVentureViewController: UIViewController {
 				banned += [CGPoint(x: point, y: -1), CGPoint(x: point, y: -2), CGPoint(x: point - 1, y: -2), CGPoint(x: point - 1, y: -1), CGPoint(x: point + 1, y: -2), CGPoint(x: point + 1, y: -1)]
 			}
 		}
-//        var randomFish = allTiles.randomElement()
-//        while randomFish!.image == UIImage(named: "gravelpathtile") {
-//            randomFish = allTiles.randomElement()
-//		}
-//		swordFish.frame.origin = randomFish!.frame.origin
+        var randomFish = allTiles.randomElement()
+        while randomFish!.image == UIImage(named: "gravelpathtile") {
+            randomFish = allTiles.randomElement()
+        }
+        swordFish.frame.origin = randomFish!.frame.origin
 		var randomEgg = allTiles.randomElement()
 		while randomEgg!.image == UIImage(named: "gravelpathtile") {
 			randomEgg = allTiles.randomElement()
