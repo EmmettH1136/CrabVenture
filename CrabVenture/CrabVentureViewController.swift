@@ -351,7 +351,7 @@ class CrabVentureViewController: UIViewController {
             print("HIIII")
             if eggPickup == true {
                 print("HEEEELLLLLLLOOOO")
-                if invent1.image == UIImage(named: "EmptySlot") || invent1.image == nil {
+                if invent1.image == UIImage(named: "EmptySlot") {
                      invent1.image = UIImage(named: "egg")
                     eggPickUpNow()
                 } else if invent2.image == UIImage(named: "EmptySlot") {
