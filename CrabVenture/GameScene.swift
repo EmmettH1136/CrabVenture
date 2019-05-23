@@ -47,7 +47,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	var sneakyTimer = Timer()
 	var randomTimer = Timer()
 	var randomSeconds = CGFloat.random(in: 0.2 ... 3.0)
-	var sneakySeconds = 5
+	var sneakySeconds = 2.0
 	var seconds = 0.5
 	var isTimerRunning = false
 	var isRandomTimerRunning = false
@@ -79,20 +79,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		}
 	}
 	func runSneakyTimer() {
-		sneakyTimer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(GameScene.updateSneakyTimer)), userInfo: nil, repeats: true)
+		sneakyTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self,   selector: (#selector(GameScene.updateSneakyTimer)), userInfo: nil, repeats: true)
 		isSneakyTimerRunning = true
 	}
 	@objc func updateSneakyTimer() {
 		if isSneakyTimerRunning {
 			if sneakySeconds <= 0 {
 				sneakyTimer.invalidate()
-				sneakySeconds = 5
+				sneakySeconds = 2.0
 				isSneakyTimerRunning = false
 				enemy.body.physicsBody?.isDynamic = true
 				enemy.body.physicsBody?.velocity = enemy.speed
 			} else {
-				sneakySeconds -= 1
-				enemy.speed.dx += 100
+				sneakySeconds -= 0.5
+				enemy.body.physicsBody?.velocity.dx += 100
+				enemy.speed.dx += 120
 				print(enemy.speed.dx)
 			}
 		}
@@ -110,7 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 				enemy.body.physicsBody?.isDynamic = true
 				enemy.body.physicsBody?.velocity = enemy.speed
 				if enemy.name == mantaRay.name {
-//					runSneakyTimer()
+					runSneakyTimer()
 				}
 			} else {
 				randomSeconds -= 0.1
@@ -143,7 +144,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		swordFish.body = swordFishNode
 		cleaverNode = self.childNode(withName: "cleaver") as! SKSpriteNode
 		cleaver.body = cleaverNode
-		mantaRayNode = self.childNode(withName: "MantaRay") as! SKSpriteNode
+		mantaRayNode = self.childNode(withName: "Meen") as! SKSpriteNode
 		mantaRay.body = mantaRayNode
 		enemy.body.position = CGPoint(x: -932.162, y: 235.423)
         let topRight = CGPoint(x: -frame.origin.x, y: -frame.origin.y)
