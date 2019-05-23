@@ -342,7 +342,18 @@ class CrabVentureViewController: UIViewController {
             guard let eggLocation = eggtest.superview?.convert(eggtest.frame, to: nil) else { return }
             guard let ironClawLocation = ironClaw.superview?.convert(ironClaw.frame, to: nil) else { return }
            
+            //ironClaw
+            
+            //checks which item crab is touching
+            if crabLocation.intersects(eggLocation) {eggPickup = true}
+            if crabLocation.intersects(ironClawLocation) {ironClawPickup = true}
+            
             //func to pick up for diff items
+            func ironClawPickUpNow() {
+                ironClaw.isHidden = true
+                let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
+                ironClaw.frame = ironClawNewLocation
+            }
             //egg
             func eggPickUpNow() {
                 eggtest.isHidden = true
@@ -352,16 +363,7 @@ class CrabVentureViewController: UIViewController {
                 egg.inInvent = true
                 userDefaults.set(egg.inInvent, forKey: "eggY")
             }
-            //ironClaw
-            func ironClawPickUpNow() {
-                ironClaw.isHidden = true
-                let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
-                ironClaw.frame = ironClawNewLocation
-            }
             
-            //checks which item crab is touching
-            if crabLocation.intersects(eggLocation) {eggPickup = true}
-            if crabLocation.intersects(ironClawLocation) {ironClawPickup = true}
             //checks if inv slot is taken for specific item
             if eggPickup == true {
                 if invent1.image == UIImage(named: "EmptySlot") {
@@ -377,12 +379,12 @@ class CrabVentureViewController: UIViewController {
                      invent4.image = UIImage(named: "egg")
                     eggPickUpNow()
                 }
-                touchingSprite = false
+                eggPickup = false
             }
             //when egg first picks both up
             if ironClawPickup == true {
                 if invent1.image == UIImage(named: "EmptySlot") {
-                    invent1.image = UIImage(named: "craebIRONClawJustClaw")
+                invent1.image = UIImage(named: "craebIRONClawJustClaw")
                 ironClawPickUpNow() }
             } else if invent2.image == UIImage(named: "EmptySlot") {
                 invent2.image = UIImage(named: "craebIRONClawJustClaw")
@@ -394,7 +396,7 @@ class CrabVentureViewController: UIViewController {
                 invent4.image = UIImage(named: "craebIRONClawJustClaw")
                 ironClawPickUpNow()
             }
-            touchingSprite = false
+            ironClawPickup = false
         }
         //checks if inventory is full
         if invent1.image != UIImage(named: "EmptySlot") && invent2.image != UIImage(named: "EmptySlot") && invent3.image != UIImage(named: "EmptySlot") && invent4.image != UIImage(named: "EmptySlot") {
