@@ -271,7 +271,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
 			runTimer()
 		}
-		
+        enemy.body.physicsBody?.isDynamic = true
     }
     
     func removeAllGestures(){
@@ -288,7 +288,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		if health == 0 {
 			print("yuh oh you lost")
 			let vc = UIApplication.shared.keyWindow?.rootViewController as! GameViewController
-				vc.gameOver()
+			vc.performSegue(withIdentifier: "Segue", sender: nil)
+			self.removeAllActions()
+			self.removeAllChildren()
 			
 		}
         
@@ -301,7 +303,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 		if hit == 1 && electricBoogaloo == 1 {
 			let vc = UIApplication.shared.keyWindow?.rootViewController as! GameViewController
-			vc.gameOver()
+			vc.performSegue(withIdentifier: "Segue", sender: nil)
+			self.removeAllActions()
+			self.removeAllChildren()
 			electricBoogaloo = 0
 		}
 	}

@@ -30,7 +30,6 @@ class CrabVentureViewController: UIViewController {
     var spritesLocation: [CGRect] = []
 	var egg = Item("egg", 2, false)
     var hasIronClaw = false
-	
     var image = UIImage(named: "craeb")
     
     var collision: UICollisionBehavior!
@@ -71,10 +70,14 @@ class CrabVentureViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        inventory1 = invent1
-        inventory2 = invent2
-        inventory3 = invent3
-        inventory4 = invent4
+        invent1.image = inventory1.image
+        invent2.image = inventory2.image
+        invent3.image = inventory3.image
+        invent4.image = inventory4.image
+        invent1.image == nil ? invent1.image = UIImage(named: "EmptySlot"):nil
+        invent2.image == nil ? invent2.image = UIImage(named: "EmptySlot"):nil
+        invent3.image == nil ? invent3.image = UIImage(named: "EmptySlot"):nil
+        invent4.image == nil ? invent4.image = UIImage(named: "EmptySlot"):nil
 		var form : [Int] = []
 		form = userDefaults.array(forKey: "form") as! [Int]
 		locationX = 0
@@ -118,11 +121,11 @@ class CrabVentureViewController: UIViewController {
 				banned += [CGPoint(x: point, y: -1), CGPoint(x: point, y: -2), CGPoint(x: point - 1, y: -2), CGPoint(x: point - 1, y: -1), CGPoint(x: point + 1, y: -2), CGPoint(x: point + 1, y: -1)]
 			}
 		}
-		var randomFish = allTiles.randomElement()
-		while randomFish!.image == UIImage(named: "gravelpathtile") {
-			randomFish = allTiles.randomElement()
-		}
-		swordFish.frame.origin = randomFish!.frame.origin
+        var randomFish = allTiles.randomElement()
+        while randomFish!.image == UIImage(named: "gravelpathtile") {
+            randomFish = allTiles.randomElement()
+        }
+        swordFish.frame.origin = randomFish!.frame.origin
 		var randomEgg = allTiles.randomElement()
 		while randomEgg!.image == UIImage(named: "gravelpathtile") {
 			randomEgg = allTiles.randomElement()
@@ -140,10 +143,10 @@ class CrabVentureViewController: UIViewController {
 		let originy = crabImageView.frame.origin.y
 		crabImageView.frame.origin = CGPoint(x: originx + CGFloat(locationX * 50), y: originy + CGFloat((locationY + 2) * -50) )
 		let eggInvent = userDefaults.bool(forKey: "eggY")
-		if eggInvent {
-			eggtest.isHidden = true
-			invent1.image = UIImage(named: "egg")
-		}
+//        if eggInvent {
+//            eggtest.isHidden = true
+//            invent1.image = UIImage(named: "egg")
+//        }
 	}
 	
     enum WalkState {
@@ -315,7 +318,6 @@ class CrabVentureViewController: UIViewController {
 	}
     
     @IBAction func checkIfContact (_ sender: UIButton) {
-
         guard let r1 = mainCrab.superview?.convert(mainCrab.frame, to: nil) else { return }
         guard let r2 = swordFish.superview?.convert(swordFish.frame, to: nil) else { return }
         guard let r3 = eggtest.superview?.convert(eggtest.frame, to: nil) else { return }
@@ -334,8 +336,7 @@ class CrabVentureViewController: UIViewController {
 			performSegue(withIdentifier: "bingo", sender: Any?.self)
             
         }
-        
-        if touchingSprite == true && inventoryFull == false {
+        if touchingSprite == true  {
             print ("touching sprite")
             
             guard let crabLocation = mainCrab.superview?.convert(mainCrab.frame, to: nil) else { return }
@@ -365,8 +366,10 @@ class CrabVentureViewController: UIViewController {
             }
             
             //checks if inv slot is taken for specific item
+            print("HIIII")
             if eggPickup == true {
-                if invent1.image == UIImage(named: "EmptySlot") {
+                print("HEEEELLLLLLLOOOO")
+                if invent1.image == UIImage(named: "EmptySlot") || invent1.image == nil {
                      invent1.image = UIImage(named: "egg")
                     eggPickUpNow()
                 } else if invent2.image == UIImage(named: "EmptySlot") {
