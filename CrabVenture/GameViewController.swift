@@ -16,12 +16,13 @@ class GameViewController: UIViewController {
 	let form2 = [-16, -24, -32, 32, 24, 16, -26, -36, -34, 36, 34, 26]
 	let form3 = [-12, 12, -26, 26, -32, 32]
 	let form4 = [-16, -14, -36, -34, 16, 14, 36, 34]
+	let form5 = [-26,-24,-22,22,24,26]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		
-		let forms = [form1, form2, form3, form4]
+		let forms = [form1, form2, form3, form4, form5]
 		let form = forms.randomElement()
 		userDefaults.set(form, forKey: "form")
 		userDefaults.set(-2, forKey: "locationY")
