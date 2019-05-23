@@ -37,8 +37,8 @@ class GameViewController: UIViewController {
                 // Present the scene
                 view.presentScene(scene)
             }
-            
-            
+			
+			
             view.ignoresSiblingOrder = true
             
             view.showsFPS = true
@@ -69,7 +69,7 @@ class GameViewController: UIViewController {
     
     func gameOver() {
         
-        self.removeFromParent()
+//        self.removeFromParent()
         performSegue(withIdentifier: "Segue", sender: nil)
     }
     
