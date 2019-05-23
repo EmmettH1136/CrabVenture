@@ -16,6 +16,8 @@ class CrabVentureViewController: UIViewController {
     @IBOutlet weak var mainCrab: UIImageView!
     @IBOutlet weak var swordFish: UIImageView!
     @IBOutlet weak var eggtest: UIImageView!
+    @IBOutlet weak var ironClaw: UIImageView!
+    
     
     @IBOutlet weak var invent1: UIImageView!
 	@IBOutlet weak var invent2: UIImageView!
@@ -60,6 +62,8 @@ class CrabVentureViewController: UIViewController {
     var touchingSprite: Bool = false
     
     var eggPickup: Bool = false
+    var ironClawPickup: Bool = false
+    
     var inventoryFull: Bool = false
     // important
 
@@ -317,10 +321,13 @@ class CrabVentureViewController: UIViewController {
         guard let r1 = mainCrab.superview?.convert(mainCrab.frame, to: nil) else { return }
         guard let r2 = swordFish.superview?.convert(swordFish.frame, to: nil) else { return }
         guard let r3 = eggtest.superview?.convert(eggtest.frame, to: nil) else { return }
-        spritesLocation += ([r1, r2, r3])
+        guard let r4 = ironClaw.superview?.convert(ironClaw.frame, to: nil) else {return}
+        spritesLocation += ([r1, r2, r3, r4])
 
         if r1.intersects(r2) { touchingEnemy = true }
+     
         if r1.intersects(r3) { touchingSprite = true }
+        if r1.intersects(r4) { touchingSprite = true }
        
         if touchingEnemy == true {
             print("touching enemy")
@@ -334,8 +341,21 @@ class CrabVentureViewController: UIViewController {
             
             guard let crabLocation = mainCrab.superview?.convert(mainCrab.frame, to: nil) else { return }
             guard let eggLocation = eggtest.superview?.convert(eggtest.frame, to: nil) else { return }
+            guard let ironClawLocation = ironClaw.superview?.convert(ironClaw.frame, to: nil) else { return }
            
+            //ironClaw
+            
+            //checks which item crab is touching
+            if crabLocation.intersects(eggLocation) {eggPickup = true}
+            if crabLocation.intersects(ironClawLocation) {ironClawPickup = true}
+            
             //func to pick up for diff items
+            func ironClawPickUpNow() {
+                ironClaw.isHidden = true
+                let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
+                ironClaw.frame = ironClawNewLocation
+            }
+            //egg
             func eggPickUpNow() {
                 eggtest.isHidden = true
                 let eggNewLocationAfterTouch = CGRect(x: -1, y: -1, width: 1, height: 1)
@@ -344,8 +364,6 @@ class CrabVentureViewController: UIViewController {
                 egg.inInvent = true
                 userDefaults.set(egg.inInvent, forKey: "eggY")
             }
-            //checks which item crab is touching
-            if crabLocation.intersects(eggLocation) {eggPickup = true}
             
             //checks if inv slot is taken for specific item
             print("HIIII")
@@ -364,11 +382,26 @@ class CrabVentureViewController: UIViewController {
                      invent4.image = UIImage(named: "egg")
                     eggPickUpNow()
                 }
-                
+                eggPickup = false
             }
-            touchingSprite = false
+            //when egg first picks both up
+            if ironClawPickup == true {
+                if invent1.image == UIImage(named: "EmptySlot") {
+                invent1.image = UIImage(named: "craebIRONClawJustClaw")
+                ironClawPickUpNow() }
+            } else if invent2.image == UIImage(named: "EmptySlot") {
+                invent2.image = UIImage(named: "craebIRONClawJustClaw")
+                ironClawPickUpNow()
+            } else if invent3.image == UIImage(named: "EmptySlot") {
+                invent3.image = UIImage(named: "craebIRONClawJustClaw")
+                ironClawPickUpNow()
+            } else if invent4.image == UIImage(named: "EmptySlot") {
+                invent4.image = UIImage(named: "craebIRONClawJustClaw")
+                ironClawPickUpNow()
+            }
+            ironClawPickup = false
         }
-        
+        //checks if inventory is full
         if invent1.image != UIImage(named: "EmptySlot") && invent2.image != UIImage(named: "EmptySlot") && invent3.image != UIImage(named: "EmptySlot") && invent4.image != UIImage(named: "EmptySlot") {
             inventoryFull = true
         }

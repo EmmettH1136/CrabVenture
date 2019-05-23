@@ -193,6 +193,10 @@
                                 <rect key="frame" x="305" y="144" width="50" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="craebIRONClawJustClaw" translatesAutoresizingMaskIntoConstraints="NO" id="UrV-Gf-yO2">
+                                <rect key="frame" x="541" y="124" width="73" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -208,6 +212,7 @@
                         <outlet property="invent2" destination="Dur-8a-NHo" id="W56-kh-oih"/>
                         <outlet property="invent3" destination="hOc-IK-i7O" id="lCE-xj-yF0"/>
                         <outlet property="invent4" destination="l84-BD-loT" id="cFP-tc-4Bz"/>
+                        <outlet property="ironClaw" destination="UrV-Gf-yO2" id="cwz-in-bVZ"/>
                         <outlet property="mainCrab" destination="CiK-Oj-TWq" id="10C-Mt-b2v"/>
                         <outlet property="swordFish" destination="WcD-Qc-z0G" id="DAk-Da-Hxq"/>
                         <outletCollection property="allTiles" destination="rnL-ey-GIz" collectionClass="NSMutableArray" id="EvZ-TD-QYe"/>
@@ -347,6 +352,7 @@
         <image name="EmptySlot" width="225" height="225"/>
         <image name="SwordFish" width="600" height="213"/>
         <image name="craeb" width="1240" height="620"/>
+        <image name="craebIRONClawJustClaw" width="258" height="359"/>
         <image name="egg" width="310" height="360"/>
         <image name="sandtile" width="400" height="400"/>
     </resources>
