@@ -35,6 +35,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	var cleaverNode = SKSpriteNode()
 	var cleaver = Enemy("Cleaver", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 400...800), dy: 0), 2)
 	var cronched = 0
+	var mantaRayNode = SKSpriteNode()
 	var mantaRay = Enemy("MantaRay", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 100...200), dy: 0), 3)
     let tapRec = UITapGestureRecognizer()
 	var label = SKLabelNode()
@@ -44,9 +45,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	var isSneakyTimerRunning = false
 	var timer = Timer()
 	var sneakyTimer = Timer()
-	var sneakySeconds = 2.0
+	var randomTimer = Timer()
+	var randomSeconds = CGFloat.random(in: 0.2 ... 3.0)
+	var sneakySeconds = 5
 	var seconds = 0.5
 	var isTimerRunning = false
+	var isRandomTimerRunning = false
 	var initialPosition = CGPoint(x: 288.709, y: -300.153)
 	var moveClawBackAction = SKAction()
 	var enemyP = CGPoint()
@@ -75,20 +79,41 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		}
 	}
 	func runSneakyTimer() {
-		sneakyTimer = Timer.scheduledTimer(timeInterval: 0.25, target: self,   selector: (#selector(GameScene.updateSneakyTimer)), userInfo: nil, repeats: true)
+		sneakyTimer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(GameScene.updateSneakyTimer)), userInfo: nil, repeats: true)
 		isSneakyTimerRunning = true
 	}
 	@objc func updateSneakyTimer() {
 		if isSneakyTimerRunning {
 			if sneakySeconds <= 0 {
-				timer.invalidate()
-				sneakySeconds = 2
-				isTimerRunning = false
+				sneakyTimer.invalidate()
+				sneakySeconds = 5
+				isSneakyTimerRunning = false
 				enemy.body.physicsBody?.isDynamic = true
 				enemy.body.physicsBody?.velocity = enemy.speed
 			} else {
-				sneakySeconds -= 0.25
+				sneakySeconds -= 1
 				enemy.speed.dx += 100
+				print(enemy.speed.dx)
+			}
+		}
+	}
+	func runRandomTimer() {
+		randomTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self,   selector: (#selector(GameScene.updateRandomTimer)), userInfo: nil, repeats: true)
+		isRandomTimerRunning = true
+	}
+	@objc func updateRandomTimer() {
+		if isRandomTimerRunning {
+			if randomSeconds <= 0 {
+				randomTimer.invalidate()
+				randomSeconds = CGFloat.random(in: 0.2 ... 3.0)
+				isRandomTimerRunning = false
+				enemy.body.physicsBody?.isDynamic = true
+				enemy.body.physicsBody?.velocity = enemy.speed
+				if enemy.name == mantaRay.name {
+//					runSneakyTimer()
+				}
+			} else {
+				randomSeconds -= 0.1
 			}
 		}
 	}
@@ -118,15 +143,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		swordFish.body = swordFishNode
 		cleaverNode = self.childNode(withName: "cleaver") as! SKSpriteNode
 		cleaver.body = cleaverNode
-		let mantaRayNode = self.childNode(withName: "MantaRay") as! SKSpriteNode
+		mantaRayNode = self.childNode(withName: "MantaRay") as! SKSpriteNode
 		mantaRay.body = mantaRayNode
 		enemy.body.position = CGPoint(x: -932.162, y: 235.423)
-		enemy.body.physicsBody?.isDynamic = true
-		enemy.body.physicsBody?.velocity = enemy.speed
-		if enemy.name == mantaRay.name {
-			runSneakyTimer()
-		}
-		
         let topRight = CGPoint(x: -frame.origin.x, y: -frame.origin.y)
 		let bottomRight = CGPoint(x: -frame.origin.x, y: frame.origin.y)
 		
@@ -170,6 +189,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		cleaverNode.physicsBody?.contactTestBitMask = clawCategory|rightCategory
 		mantaRayNode.physicsBody?.contactTestBitMask = clawCategory|rightCategory
 		
+		mantaRayNode.texture = SKTexture(image: UIImage(named: "MantaRay")!)
+		
+		runRandomTimer()
 		
 		
         // Starting the sworfish movement in here for now can move to a function later
@@ -199,7 +221,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			enemy.body.physicsBody!.isDynamic = false
 			let moveToActionS = SKAction.move(to: enemyP, duration: 0.01)
 			enemy.body.run(moveToActionS)
-			sneakySeconds = 29
 			
 		}
 		if contact.bodyA.categoryBitMask == rightCategory {
@@ -227,7 +248,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			viewLocation = crosshairPoint
             
 			
-			let moveToAction = SKAction.move(to: viewLocation, duration: 0.15)
+			let moveToAction = SKAction.move(to: viewLocation, duration: 0.2)
 			
 			enemy.body.physicsBody?.isDynamic = false
 			
@@ -284,4 +305,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		}
 	}
 }
-////happy now xcode
+////happy now xcode\
+
+
+//
