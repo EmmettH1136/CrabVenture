@@ -11,7 +11,6 @@ import UIKit
 class InventoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView1: UITableView!
-    @IBOutlet weak var tableView2: UITableView!
     @IBOutlet weak var tableView3: UITableView!
     var invent1: UIImageView = UIImageView()
     var invent2: UIImageView = UIImageView()
@@ -21,14 +20,29 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
     var count2 = 0
     var firstCell = UITableViewCell()
     var secondCell = UITableViewCell()
+    var cell1 = ""
+    var cell2 = ""
+    var cell3 = ""
+    var cell4 = ""
+    var cell5 = ""
+    var cell6 = ""
+    var cell7 = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView1.delegate = self
-        tableView2.delegate = self
         tableView3.delegate = self
         tableView1.dataSource = self
-        tableView2.dataSource = self
         tableView3.dataSource = self
+        UIImage(named: "egg")?.accessibilityIdentifier = "egg"
+        UIImage(named: "craebIRONClawJustClaw")?.accessibilityIdentifier = "craebIRONClawJustClaw"
+        cell1 = userDefaults.string(forKey: "cell1o") ?? ""
+        print(cell1)
+        cell2 = userDefaults.string(forKey: "cell2o") ?? ""
+        cell3 = userDefaults.string(forKey: "cell3o") ?? ""
+        cell4 = userDefaults.string(forKey: "cell4o") ?? ""
+        cell5 = userDefaults.string(forKey: "cell5o") ?? ""
+        cell6 = userDefaults.string(forKey: "cell6o") ?? ""
+        cell7 = userDefaults.string(forKey: "cell7o") ?? ""
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == tableView1 {
@@ -38,6 +52,7 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         switch count2 {
         case 0:
             firstCell = tableView.visibleCells[indexPath.row]
@@ -64,6 +79,22 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
                 cell.imageView?.image = invent3.image
             case 3:
                 cell.imageView?.image = invent4.image
+            case 4:
+                cell.imageView?.image = UIImage(named: cell1)
+                print(cell)
+            case 5:
+                cell.imageView?.image = UIImage(named: cell2)
+            case 6:
+                cell.imageView?.image = UIImage(named: cell3)
+            case 7:
+                cell.imageView?.image = UIImage(named: cell4)
+            case 8:
+                cell.imageView?.image = UIImage(named: cell5)
+            case 9:
+                cell.imageView?.image = UIImage(named: cell6)
+            case 10:
+                cell.imageView?.image = UIImage(named: cell7)
+
             default:
                 _ = UITableViewCell()
             }
@@ -89,5 +120,14 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         nvc.inventory2 = invent2
         nvc.inventory3 = invent3
         nvc.inventory4 = invent4
+        userDefaults.set(tableView3.visibleCells[0].imageView!.image?.accessibilityIdentifier, forKey: "cell1o")
+        userDefaults.set(tableView3.visibleCells[1].imageView!.image?.accessibilityIdentifier, forKey: "cell2o")
+        userDefaults.set(tableView3.visibleCells[2].imageView!.image?.accessibilityIdentifier, forKey: "cell3o")
+        userDefaults.set(tableView3.visibleCells[3].imageView!.image?.accessibilityIdentifier, forKey: "cell4o")
+        userDefaults.set(tableView3.visibleCells[4].imageView!.image?.accessibilityIdentifier, forKey: "cell5o")
+        userDefaults.set(tableView3.visibleCells[5].imageView!.image?.accessibilityIdentifier, forKey: "cell6o")
+        userDefaults.set(tableView3.visibleCells[6].imageView!.image?.accessibilityIdentifier, forKey: "cell7o")
+        print(userDefaults.string(forKey: "cell1o")
+)
     }
 }
