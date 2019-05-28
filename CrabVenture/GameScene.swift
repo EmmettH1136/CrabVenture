@@ -272,7 +272,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
 			runTimer()
 		}
-		
+        enemy.body.physicsBody?.isDynamic = true
     }
     
     func removeAllGestures(){

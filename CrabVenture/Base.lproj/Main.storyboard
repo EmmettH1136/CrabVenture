@@ -193,6 +193,10 @@
                                 <rect key="frame" x="305" y="144" width="50" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="craebIRONClawJustClaw" translatesAutoresizingMaskIntoConstraints="NO" id="UrV-Gf-yO2">
+                                <rect key="frame" x="541" y="124" width="73" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -208,6 +212,7 @@
                         <outlet property="invent2" destination="Dur-8a-NHo" id="W56-kh-oih"/>
                         <outlet property="invent3" destination="hOc-IK-i7O" id="lCE-xj-yF0"/>
                         <outlet property="invent4" destination="l84-BD-loT" id="cFP-tc-4Bz"/>
+                        <outlet property="ironClaw" destination="UrV-Gf-yO2" id="cwz-in-bVZ"/>
                         <outlet property="mainCrab" destination="CiK-Oj-TWq" id="10C-Mt-b2v"/>
                         <outlet property="swordFish" destination="WcD-Qc-z0G" id="DAk-Da-Hxq"/>
                         <outletCollection property="allTiles" destination="rnL-ey-GIz" collectionClass="NSMutableArray" id="EvZ-TD-QYe"/>
@@ -251,18 +256,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="zkd-ku-8OS">
+                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="400" translatesAutoresizingMaskIntoConstraints="NO" id="zkd-ku-8OS">
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="393"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tiP-Wf-GRg">
-                                        <rect key="frame" x="0.0" y="0.0" width="297.33333333333331" height="393"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="248" height="393"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="9MF-zQ-8ZM">
-                                                <rect key="frame" x="0.0" y="28" width="297.33333333333331" height="44"/>
+                                                <rect key="frame" x="0.0" y="28" width="248" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9MF-zQ-8ZM" id="Hvy-9x-HHD">
-                                                    <rect key="frame" x="44" y="0.0" width="253.33333333333331" height="43.666666666666664"/>
+                                                    <rect key="frame" x="44" y="0.0" width="204" height="43.666666666666664"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VyL-2h-e9G">
@@ -275,29 +280,15 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oJM-Yx-5uh">
-                                        <rect key="frame" x="299.33333333333337" y="0.0" width="297.33333333333337" height="393"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell2" id="ibH-Xd-NcK">
-                                                <rect key="frame" x="0.0" y="28" width="297.33333333333337" height="44"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ibH-Xd-NcK" id="bf4-EI-DFG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="297.33333333333337" height="43.666666666666664"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </tableViewCellContentView>
-                                            </tableViewCell>
-                                        </prototypes>
-                                    </tableView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PnL-xI-dOY">
-                                        <rect key="frame" x="598.66666666666663" y="0.0" width="297.33333333333337" height="393"/>
+                                        <rect key="frame" x="648" y="0.0" width="248" height="393"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell3" id="KGK-v0-80p">
-                                                <rect key="frame" x="0.0" y="28" width="297.33333333333337" height="44"/>
+                                                <rect key="frame" x="0.0" y="28" width="248" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KGK-v0-80p" id="QaS-hQ-wLY">
-                                                    <rect key="frame" x="0.0" y="0.0" width="253.33333333333348" height="43.666666666666664"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="204" height="43.666666666666664"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
@@ -312,11 +303,25 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ei9-4D-nz2">
                                 <rect key="frame" x="336" y="10" width="222.33333333333337" height="393"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Return"/>
                                 <connections>
                                     <segue destination="slJ-kp-nhJ" kind="show" id="wa8-IF-dA1"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Equipped" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fys-JI-dAK">
+                                <rect key="frame" x="250" y="1" width="100" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="In Inventory" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HB3-TA-Ngd">
+                                <rect key="frame" x="530" y="1" width="101" height="101"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -330,7 +335,6 @@
                     <navigationItem key="navigationItem" id="AVT-a9-MTk"/>
                     <connections>
                         <outlet property="tableView1" destination="tiP-Wf-GRg" id="L0v-oY-H5t"/>
-                        <outlet property="tableView2" destination="oJM-Yx-5uh" id="HVf-9o-fjM"/>
                         <outlet property="tableView3" destination="PnL-xI-dOY" id="obO-mx-brU"/>
                     </connections>
                 </viewController>
@@ -347,10 +351,11 @@
         <image name="EmptySlot" width="225" height="225"/>
         <image name="SwordFish" width="600" height="213"/>
         <image name="craeb" width="1240" height="620"/>
+        <image name="craebIRONClawJustClaw" width="258" height="359"/>
         <image name="egg" width="310" height="360"/>
         <image name="sandtile" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lww-zR-ibk"/>
+        <segue reference="wa8-IF-dA1"/>
     </inferredMetricsTieBreakers>
 </document>

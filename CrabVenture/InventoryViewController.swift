@@ -19,6 +19,8 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
     var invent4: UIImageView = UIImageView()
     var count = 0
     var count2 = 0
+    var firstCell = UITableViewCell()
+    var secondCell = UITableViewCell()
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView1.delegate = self
@@ -27,7 +29,6 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView1.dataSource = self
         tableView2.dataSource = self
         tableView3.dataSource = self
-
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == tableView1 {
@@ -37,21 +38,19 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var firstCell = UITableViewCell()
-        var secondCell = UITableViewCell()
         switch count2 {
         case 0:
-            print("yee")
-            let cell = tableView.visibleCells[indexPath.row]
-            firstCell = cell
+            firstCell = tableView.visibleCells[indexPath.row]
             count2 = 1
         default:
-            print("haw")
-            let cell2 = tableView.visibleCells[indexPath.row]
-            secondCell = cell2
+            secondCell = tableView.visibleCells[indexPath.row]
             count2 = 0
             swapPieces(imageView1: firstCell.imageView!, imageView2: secondCell.imageView!)
         }
+        invent1 = tableView1.visibleCells[0].imageView!
+        invent2 = tableView1.visibleCells[1].imageView!
+        invent3 = tableView1.visibleCells[2].imageView!
+        invent4 = tableView1.visibleCells[3].imageView!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,15 +68,18 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
                 _ = UITableViewCell()
             }
             count += 1
-                return cell
+            return cell
+
             }else {
             
                 return UITableViewCell()
             }
+
     }
     func swapPieces(imageView1: UIImageView, imageView2: UIImageView) {
         let tempImage = imageView2.image
-        imageView2.image = imageView1.image
+        let otherImage = imageView1.image
+        imageView2.image = otherImage
         imageView1.image = tempImage
         
     }
