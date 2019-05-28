@@ -30,13 +30,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var crabClaw = SKSpriteNode()
 	var crabPhys = SKPhysicsBody()
     var swordFishNode = SKSpriteNode()
-	var swordFish = Enemy("SwordFish", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 100...400), dy: 0), 0)
+	var swordFish = Enemy("SwordFish", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 100...400), dy: 0), 0, 10, 80.0)
     var swordFishPhys = SKPhysicsBody()
 	var cleaverNode = SKSpriteNode()
-	var cleaver = Enemy("Cleaver", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 400...800), dy: 0), 2)
+	var cleaver = Enemy("Cleaver", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 400...800), dy: 0), 2, 50, 50.0)
 	var cronched = 0
 	var mantaRayNode = SKSpriteNode()
-	var mantaRay = Enemy("MantaRay", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 100...200), dy: 0), 3)
+	var mantaRay = Enemy("MantaRay", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 100...200), dy: 0), 3, 1, 120.0)
     let tapRec = UITapGestureRecognizer()
 	var label = SKLabelNode()
 	var backgroundNode = SKSpriteNode()
@@ -55,9 +55,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	var moveClawBackAction = SKAction()
 	var enemyP = CGPoint()
 	var enemies : [Enemy] = []
-	var enemy = Enemy("boop", 0, SKSpriteNode(), CGVector(), 1)
+	var enemy = Enemy("boop", 0, SKSpriteNode(), CGVector(), 1, 120303403, 2)
 	var electricBoogaloo = 0
 	var hit = 0
+	var enemyIsSneak = false
 	
 	func runTimer() {
 		timer = Timer.scheduledTimer(timeInterval: 0.5, target: self,   selector: (#selector(GameScene.updateTimer)), userInfo: nil, repeats: true)
@@ -92,9 +93,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 				enemy.body.physicsBody?.velocity = enemy.speed
 			} else {
 				sneakySeconds -= 0.5
-				enemy.body.physicsBody?.velocity.dx += 100
-				enemy.speed.dx += 120
-//				print(enemy.speed.dx)
+				enemy.body.physicsBody?.velocity.dx += enemy.sneakMount
+				enemy.speed.dx += enemy.sneakMount
+				print(enemy.body.physicsBody!.velocity.dx)
 			}
 		}
 	}
@@ -110,7 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 				isRandomTimerRunning = false
 				enemy.body.physicsBody?.isDynamic = true
 				enemy.body.physicsBody?.velocity = enemy.speed
-				if enemy.name == mantaRay.name {
+				if enemyIsSneak {
 					runSneakyTimer()
 				}
 			} else {
@@ -132,6 +133,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		
 		enemies = [swordFish, cleaver, mantaRay]
 		enemy = enemies.randomElement()!
+		var random = Int.random(in: 1 ... enemy.sneakChance)
+		if random == 1 {
+			enemyIsSneak = true
+			print("baba jons")
+		}
 		
         isTimerRunning = false
 		electricBoogaloo = 0

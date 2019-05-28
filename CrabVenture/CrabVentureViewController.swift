@@ -130,7 +130,12 @@ class CrabVentureViewController: UIViewController {
 		while randomEgg!.image == UIImage(named: "gravelpathtile") {
 			randomEgg = allTiles.randomElement()
 		}
+		var randomClaw = allTiles.randomElement()
+		while randomClaw!.image == UIImage(named: "gravelpathtile") {
+			randomClaw = allTiles.randomElement()
+		}
 		eggtest.frame.origin = randomEgg!.frame.origin
+		ironClaw.frame.origin = randomClaw!.frame.origin
         //vc
 	}
 	
