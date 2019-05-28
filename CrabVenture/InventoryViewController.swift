@@ -52,6 +52,7 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         switch count2 {
         case 0:
             firstCell = tableView.visibleCells[indexPath.row]
