@@ -94,7 +94,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 				sneakySeconds -= 0.5
 				enemy.body.physicsBody?.velocity.dx += 100
 				enemy.speed.dx += 120
-				print(enemy.speed.dx)
+//				print(enemy.speed.dx)
 			}
 		}
 	}
@@ -124,8 +124,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
-        print(cronched)
-        
+//        print(cronched)
+		
         health = 1
         
 		physicsWorld.contactDelegate = self
@@ -153,6 +153,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		backgroundNode.size = CGSize(width: self.frame.width, height: self.frame.height)
 		backgroundNode.zPosition = -100
 		backgroundNode.texture = SKTexture(image: UIImage(named: "beeech")!)
+		backgroundNode.name = "background"
 		self.addChild(backgroundNode)
 		
 		
@@ -258,7 +259,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             cronched = 1
             let crabWhenGrabbedPosition = CGPoint(x: crabClaw.position.x, y: crabClaw.position.y)
 			
-            print(crabClaw.position)
+//            print(crabClaw.position)
 			
 			
             
@@ -266,7 +267,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if crabClaw.position == crabWhenGrabbedPosition {
                 self.crabClaw.run(moveClawBackAction)
-                print("is at position")
+//                print("is at position")
             }
             
 			runTimer()
@@ -286,11 +287,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	
 	override func update(_ currentTime: TimeInterval) {
 		if health == 0 {
-			print("yuh oh you lost")
+//			print("yuh oh you lost")
 			let vc = UIApplication.shared.keyWindow?.rootViewController as! GameViewController
-			vc.performSegue(withIdentifier: "Segue", sender: nil)
-			self.removeAllActions()
+//			self.removeAllActions()
 			self.removeAllChildren()
+			vc.performSegue(withIdentifier: "Segue", sender: nil)
 			
 		}
         
@@ -303,10 +304,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 		if hit == 1 && electricBoogaloo == 1 {
 			let vc = UIApplication.shared.keyWindow?.rootViewController as! GameViewController
-			vc.performSegue(withIdentifier: "Segue", sender: nil)
-			self.removeAllActions()
-			self.removeAllChildren()
 			electricBoogaloo = 0
+			
+//			self.removeAllActions()
+			self.removeAllChildren()
+			vc.performSegue(withIdentifier: "Segue", sender: nil)
 		}
 	}
 }
