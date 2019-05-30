@@ -105,9 +105,33 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
             return cell
 
             }else {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") {
+                switch count {
+                case 4:
+                    cell.imageView?.image = UIImage(named: cell1)
+                    print("iggggggy")
+                case 5:
+                    cell.imageView?.image = UIImage(named: cell2)
+                case 6:
+                    cell.imageView?.image = UIImage(named: cell3)
+                case 7:
+                    cell.imageView?.image = UIImage(named: cell4)
+                case 8:
+                    cell.imageView?.image = UIImage(named: cell5)
+                case 9:
+                    cell.imageView?.image = UIImage(named: cell6)
+                case 10:
+                    cell.imageView?.image = UIImage(named: cell7)
+                    
+                default:
+                    _ = UITableViewCell()
+                }
+                return cell
+            }else {
             
                 return UITableViewCell()
             }
+        }
 
     }
     func swapPieces(imageView1: UIImageView, imageView2: UIImageView) {
