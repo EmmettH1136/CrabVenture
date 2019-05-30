@@ -20,15 +20,15 @@ class CrabVentureViewController: UIViewController {
     
     
     @IBOutlet weak var invent1: UIImageView!
-	@IBOutlet weak var invent2: UIImageView!
-	@IBOutlet weak var invent3: UIImageView!
-	@IBOutlet weak var invent4: UIImageView!
+    @IBOutlet weak var invent2: UIImageView!
+    @IBOutlet weak var invent3: UIImageView!
+    @IBOutlet weak var invent4: UIImageView!
     var inventory1 = UIImageView()
     var inventory2 = UIImageView()
     var inventory3 = UIImageView()
     var inventory4 = UIImageView()
     var spritesLocation: [CGRect] = []
-	var egg = Item("egg", 2, false)
+    var egg = Item("egg", 2, false)
     var hasIronClaw = false
     var image = UIImage(named: "craeb")
     
@@ -41,23 +41,23 @@ class CrabVentureViewController: UIViewController {
     var crabFrame: CGRect = CGRect()
     var crabX: CGFloat = 0.0
     var crabY: CGFloat = 0.0
-	var locationX = 0
-	var locationY = -2
-	var location = CGPoint(x: 0, y: 0)
-	var banned : [CGPoint] = []
-	var noGo = false
-	let form1 = [-16, -26, -36, 16, 26, 36]
-	let form2 = [-16, -24, -32, 32, 24, 16, -26, -36, -34, 36, 34, 26]
-	let form3 = [-12, 12, -26, 26, -32, 32]
-	let form4 = [-16, -14, -36, -34, 16, 14, 36, 34]
-	var beans = false
-//	var bannedPoint1 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
-//	var bannedPoin2 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
-//	var bannedPoint3 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
-	var bannedTile = UIImageView()
-	var bannedTile2 = UIImageView()
-	var bannedTile3 = UIImageView()
-	var bannedTiles : [UIImageView] = []
+    var locationX = 0
+    var locationY = -2
+    var location = CGPoint(x: 0, y: 0)
+    var banned : [CGPoint] = []
+    var noGo = false
+    let form1 = [-16, -26, -36, 16, 26, 36]
+    let form2 = [-16, -24, -32, 32, 24, 16, -26, -36, -34, 36, 34, 26]
+    let form3 = [-12, 12, -26, 26, -32, 32]
+    let form4 = [-16, -14, -36, -34, 16, 14, 36, 34]
+    var beans = false
+    //	var bannedPoint1 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
+    //	var bannedPoin2 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
+    //	var bannedPoint3 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
+    var bannedTile = UIImageView()
+    var bannedTile2 = UIImageView()
+    var bannedTile3 = UIImageView()
+    var bannedTiles : [UIImageView] = []
     var touchingEnemy: Bool = false
     var touchingSprite: Bool = false
     
@@ -66,7 +66,7 @@ class CrabVentureViewController: UIViewController {
     
     var inventoryFull: Bool = false
     // important
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,77 +78,77 @@ class CrabVentureViewController: UIViewController {
         invent2.image == nil ? invent2.image = UIImage(named: "EmptySlot"):nil
         invent3.image == nil ? invent3.image = UIImage(named: "EmptySlot"):nil
         invent4.image == nil ? invent4.image = UIImage(named: "EmptySlot"):nil
-		var form : [Int] = []
-		form = userDefaults.array(forKey: "form") as! [Int]
-		locationX = 0
-		locationY = -2
-		
-      	print("changed to View")
-		location = CGPoint(x: locationX, y: locationY)
-//		banned = [bannedPoint1, bannedPoin2, bannedPoint3]
-		for tag in form {
-			for tile in allTiles {
-				if Int(tag) == tile.tag {
-					bannedTiles.append(tile)
-				}
-			}
-		}
-		for x in bannedTiles {
-			x.image = UIImage(named: "gravelpathtile")
-			if abs(x.tag) < 20 {
-				var point = Int()
-				if x.tag < 0 {
-					point = x.tag + 10
-				} else {
-					point = x.tag - 10
-				}
-				banned += [CGPoint(x: point, y: 2), CGPoint(x: point, y: 1), CGPoint(x: point - 1, y: 2), CGPoint(x: point - 1, y: 1), CGPoint(x: point + 1, y: 2), CGPoint(x: point + 1, y: 1)]
-			} else if abs(x.tag) < 30 {
-				var point = Int()
-				if x.tag < 0 {
-					point = x.tag + 20
-				} else {
-					point = x.tag - 20
-				}
-				banned += [CGPoint(x: point, y: 1), CGPoint(x: point, y: -1), CGPoint(x: point - 1, y: 1), CGPoint(x: point - 1, y: 0), CGPoint(x: point - 1, y: -1), CGPoint(x: point + 1, y: 1), CGPoint(x: point + 1, y: 0), CGPoint(x: point + 1, y: -1)]
-			} else {
-				var point = Int()
-				if x.tag < 0 {
-					point = x.tag + 30
-				} else {
-					point = x.tag - 30
-				}
-				banned += [CGPoint(x: point, y: -1), CGPoint(x: point, y: -2), CGPoint(x: point - 1, y: -2), CGPoint(x: point - 1, y: -1), CGPoint(x: point + 1, y: -2), CGPoint(x: point + 1, y: -1)]
-			}
-		}
+        var form : [Int] = []
+        form = userDefaults.array(forKey: "form") as! [Int]
+        locationX = 0
+        locationY = -2
+        
+        print("changed to View")
+        location = CGPoint(x: locationX, y: locationY)
+        //		banned = [bannedPoint1, bannedPoin2, bannedPoint3]
+        for tag in form {
+            for tile in allTiles {
+                if Int(tag) == tile.tag {
+                    bannedTiles.append(tile)
+                }
+            }
+        }
+        for x in bannedTiles {
+            x.image = UIImage(named: "gravelpathtile")
+            if abs(x.tag) < 20 {
+                var point = Int()
+                if x.tag < 0 {
+                    point = x.tag + 10
+                } else {
+                    point = x.tag - 10
+                }
+                banned += [CGPoint(x: point, y: 2), CGPoint(x: point, y: 1), CGPoint(x: point - 1, y: 2), CGPoint(x: point - 1, y: 1), CGPoint(x: point + 1, y: 2), CGPoint(x: point + 1, y: 1)]
+            } else if abs(x.tag) < 30 {
+                var point = Int()
+                if x.tag < 0 {
+                    point = x.tag + 20
+                } else {
+                    point = x.tag - 20
+                }
+                banned += [CGPoint(x: point, y: 1), CGPoint(x: point, y: -1), CGPoint(x: point - 1, y: 1), CGPoint(x: point - 1, y: 0), CGPoint(x: point - 1, y: -1), CGPoint(x: point + 1, y: 1), CGPoint(x: point + 1, y: 0), CGPoint(x: point + 1, y: -1)]
+            } else {
+                var point = Int()
+                if x.tag < 0 {
+                    point = x.tag + 30
+                } else {
+                    point = x.tag - 30
+                }
+                banned += [CGPoint(x: point, y: -1), CGPoint(x: point, y: -2), CGPoint(x: point - 1, y: -2), CGPoint(x: point - 1, y: -1), CGPoint(x: point + 1, y: -2), CGPoint(x: point + 1, y: -1)]
+            }
+        }
         var randomFish = allTiles.randomElement()
         while randomFish!.image == UIImage(named: "gravelpathtile") {
             randomFish = allTiles.randomElement()
         }
         swordFish.frame.origin = randomFish!.frame.origin
-		var randomEgg = allTiles.randomElement()
-		while randomEgg!.image == UIImage(named: "gravelpathtile") {
-			randomEgg = allTiles.randomElement()
-		}
-		eggtest.frame.origin = randomEgg!.frame.origin
+        var randomEgg = allTiles.randomElement()
+        while randomEgg!.image == UIImage(named: "gravelpathtile") {
+            randomEgg = allTiles.randomElement()
+        }
+        eggtest.frame.origin = randomEgg!.frame.origin
         //vc
-	}
-	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(true)
-		locationX = userDefaults.integer(forKey: "locationX")
-		locationY = userDefaults.integer(forKey: "locationY")
-		location = CGPoint(x: locationX, y: locationY)
-		let originx = crabImageView.frame.origin.x
-		let originy = crabImageView.frame.origin.y
-		crabImageView.frame.origin = CGPoint(x: originx + CGFloat(locationX * 50), y: originy + CGFloat((locationY + 2) * -50) )
-		let eggInvent = userDefaults.bool(forKey: "eggY")
-//        if eggInvent {
-//            eggtest.isHidden = true
-//            invent1.image = UIImage(named: "egg")
-//        }
-	}
-	
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        locationX = userDefaults.integer(forKey: "locationX")
+        locationY = userDefaults.integer(forKey: "locationY")
+        location = CGPoint(x: locationX, y: locationY)
+        let originx = crabImageView.frame.origin.x
+        let originy = crabImageView.frame.origin.y
+        crabImageView.frame.origin = CGPoint(x: originx + CGFloat(locationX * 50), y: originy + CGFloat((locationY + 2) * -50) )
+        let eggInvent = userDefaults.bool(forKey: "eggY")
+        //        if eggInvent {
+        //            eggtest.isHidden = true
+        //            invent1.image = UIImage(named: "egg")
+        //        }
+    }
+    
     enum WalkState {
         case idle
         case walking
@@ -215,7 +215,7 @@ class CrabVentureViewController: UIViewController {
     
     //right
     @IBAction func movecrab (_ sender: UIButton) {
-		let newLocation = (CGPoint(x: locationX + 1, y: locationY))
+        let newLocation = (CGPoint(x: locationX + 1, y: locationY))
         
         switch walkState {
         case .idle:
@@ -224,24 +224,25 @@ class CrabVentureViewController: UIViewController {
             connect()
         }
         
-		for x in banned {
-			if newLocation == x {
-				noGo = true
-			}
-		}
-		if locationX < 6 && noGo == false {
-			UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
-			self.crabImageView.frame.origin.x += 50}, completion: nil)
-			locationX += 1
-			crabImageView.image = UIImage(named: "craeb2")
-		} else {
-			noGo = false
-		}
-		userDefaults.set(locationX, forKey: "locationX")
+        for x in banned {
+            if newLocation == x {
+                noGo = true
+            }
+        }
+        if locationX < 6 && noGo == false {
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+                self.crabImageView.frame.origin.x += 50}, completion: nil)
+            locationX += 1
+            crabImageView.image = UIImage(named: "craeb2")
+        } else {
+            noGo = false
+        }
+        userDefaults.set(locationX, forKey: "locationX")
+        checkIfContact()
     }
     //left
-	@IBAction func movecrableft (_sender: UIButton) {
-		let newLocation = (CGPoint(x: locationX - 1, y: locationY))
+    @IBAction func movecrableft (_sender: UIButton) {
+        let newLocation = (CGPoint(x: locationX - 1, y: locationY))
         
         switch walkState {
         case .idle:
@@ -251,23 +252,24 @@ class CrabVentureViewController: UIViewController {
         }
         
         
-		for x in banned {
-			if newLocation == x {
-				noGo = true
-			}
-		}
-		if locationX > -6 && noGo == false {
-			UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
-			self.crabImageView.frame.origin.x -= 50}, completion: nil)
-			locationX -= 1
-			self.crabImageView.image = UIImage(named: "craeb2")
-		} else {
-			noGo = false
-		}
-		userDefaults.set(locationX, forKey: "locationX")
-	}
-	@IBAction func movecrabUP (_ sender: UIButton) {
-		let newLocation = (CGPoint(x: locationX , y: locationY + 1))
+        for x in banned {
+            if newLocation == x {
+                noGo = true
+            }
+        }
+        if locationX > -6 && noGo == false {
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+                self.crabImageView.frame.origin.x -= 50}, completion: nil)
+            locationX -= 1
+            self.crabImageView.image = UIImage(named: "craeb2")
+        } else {
+            noGo = false
+        }
+        userDefaults.set(locationX, forKey: "locationX")
+        checkIfContact()
+    }
+    @IBAction func movecrabUP (_ sender: UIButton) {
+        let newLocation = (CGPoint(x: locationX , y: locationY + 1))
         
         switch walkState {
         case .idle:
@@ -275,23 +277,24 @@ class CrabVentureViewController: UIViewController {
         case .walking:
             connectUp()
         }
-		for x in banned {
-			if newLocation == x {
-				noGo = true
-			}
-		}
-		if locationY < 2 && noGo == false {
-			UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations:  {
-			self.crabImageView.frame.origin.y -= 50}, completion: nil)
-			locationY += 1
-			crabImageView.image = UIImage(named: "craebUp2")
-		} else {
-			noGo = false
-		}
-		userDefaults.set(locationY, forKey: "locationY")
-	}
-	@IBAction func movecrabDown (_ sender: UIButton) {
-		let newLocation = (CGPoint(x: locationX, y: locationY - 1))
+        for x in banned {
+            if newLocation == x {
+                noGo = true
+            }
+        }
+        if locationY < 2 && noGo == false {
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations:  {
+                self.crabImageView.frame.origin.y -= 50}, completion: nil)
+            locationY += 1
+            crabImageView.image = UIImage(named: "craebUp2")
+        } else {
+            noGo = false
+        }
+        userDefaults.set(locationY, forKey: "locationY")
+        checkIfContact()
+    }
+    @IBAction func movecrabDown (_ sender: UIButton) {
+        let newLocation = (CGPoint(x: locationX, y: locationY - 1))
         
         switch walkState {
         case .idle:
@@ -299,127 +302,140 @@ class CrabVentureViewController: UIViewController {
         case .walking:
             connectUp()
         }
-		for x in banned {
-			if newLocation == x {
-				noGo = true
-			}
-		}
-		if locationY > -2 && noGo == false {
-			UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
-			self.crabImageView.frame.origin.y += 50}, completion: nil)
-			locationY -= 1
+        for x in banned {
+            if newLocation == x {
+                noGo = true
+            }
+        }
+        if locationY > -2 && noGo == false {
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+                self.crabImageView.frame.origin.y += 50}, completion: nil)
+            locationY -= 1
             
             self.crabImageView.image = UIImage(named: "craebUp2")
-			
-		} else {
-			noGo = false
-		}
-		userDefaults.set(locationY, forKey: "locationY")
-	}
+            
+        } else {
+            noGo = false
+        }
+        userDefaults.set(locationY, forKey: "locationY")
+        checkIfContact()
+    }
     
-    @IBAction func checkIfContact (_ sender: UIButton) {
-        guard let r1 = mainCrab.superview?.convert(mainCrab.frame, to: nil) else { return }
-        guard let r2 = swordFish.superview?.convert(swordFish.frame, to: nil) else { return }
-        guard let r3 = eggtest.superview?.convert(eggtest.frame, to: nil) else { return }
-        guard let r4 = ironClaw.superview?.convert(ironClaw.frame, to: nil) else {return}
-        spritesLocation += ([r1, r2, r3, r4])
-
-        if r1.intersects(r2) { touchingEnemy = true }
-     
-        if r1.intersects(r3) { touchingSprite = true }
-        if r1.intersects(r4) { touchingSprite = true }
-       
+    func checkIfContact() {
+        let mainCrabContact = mainCrab.superview?.convert(mainCrab.frame, to: nil)
+        let swordFishContact = swordFish.superview?.convert(swordFish.frame, to: nil)
+        let eggContact = eggtest.superview?.convert(eggtest.frame, to: nil)
+        let ironClawItemContact = ironClaw.superview?.convert(ironClaw.frame, to: nil)
+        
+        if mainCrabContact!.intersects(swordFishContact!) { touchingEnemy = true }
+        
+        if mainCrabContact!.intersects(eggContact!) { eggPickup = true }
+        if mainCrabContact!.intersects(ironClawItemContact!) { ironClawPickup = true } 
+        
+        
+        
+        print(touchingEnemy)
+        print(eggPickup)
+        print(ironClawPickup)
+        
+        
         if touchingEnemy == true {
             print("touching enemy")
-            
-			beans = true
-			performSegue(withIdentifier: "bingo", sender: Any?.self)
-            
+
+            beans = true
+            performSegue(withIdentifier: "bingo", sender: Any?.self)
+
         }
-        if touchingSprite == true  {
-            print ("touching sprite")
-            
-            guard let crabLocation = mainCrab.superview?.convert(mainCrab.frame, to: nil) else { return }
-            guard let eggLocation = eggtest.superview?.convert(eggtest.frame, to: nil) else { return }
-            guard let ironClawLocation = ironClaw.superview?.convert(ironClaw.frame, to: nil) else { return }
-           
-            //ironClaw
-            
-            //checks which item crab is touching
-            if crabLocation.intersects(eggLocation) {eggPickup = true}
-            if crabLocation.intersects(ironClawLocation) {ironClawPickup = true}
-            
-            //func to pick up for diff items
-            func ironClawPickUpNow() {
-                ironClaw.isHidden = true
-                let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
-                ironClaw.frame = ironClawNewLocation
-            }
-            //egg
-            func eggPickUpNow() {
+
+        if eggPickup == true {
+            print("HEEEELLLLLLLOOOO")
+            if invent1.image == UIImage(named: "EmptySlot") || invent1.image == nil {
+                invent1.image = UIImage(named: "egg")
                 eggtest.isHidden = true
                 let eggNewLocationAfterTouch = CGRect(x: -1, y: -1, width: 1, height: 1)
                 eggtest.frame = eggNewLocationAfterTouch
                 //isHidden only hides; still can interact even if hidden
                 egg.inInvent = true
                 userDefaults.set(egg.inInvent, forKey: "eggY")
-            }
-            
-            //checks if inv slot is taken for specific item
-            print("HIIII")
-            if eggPickup == true {
-                print("HEEEELLLLLLLOOOO")
-                if invent1.image == UIImage(named: "EmptySlot") || invent1.image == nil {
-                     invent1.image = UIImage(named: "egg")
-                    eggPickUpNow()
-                } else if invent2.image == UIImage(named: "EmptySlot") {
-                     invent2.image = UIImage(named: "egg")
-                    eggPickUpNow()
-                } else if invent3.image == UIImage(named: "EmptySlot") {
-                     invent3.image = UIImage(named: "egg")
-                    eggPickUpNow()
-                } else if invent4.image == UIImage(named: "EmptySlot") {
-                     invent4.image = UIImage(named: "egg")
-                    eggPickUpNow()
-                }
+                eggPickup = false
+            } else if invent2.image == UIImage(named: "EmptySlot") {
+                invent2.image = UIImage(named: "egg")
+                eggtest.isHidden = true
+                let eggNewLocationAfterTouch = CGRect(x: -1, y: -1, width: 1, height: 1)
+                eggtest.frame = eggNewLocationAfterTouch
+                //isHidden only hides; still can interact even if hidden
+                egg.inInvent = true
+                userDefaults.set(egg.inInvent, forKey: "eggY")
+                eggPickup = false
+            } else if invent3.image == UIImage(named: "EmptySlot") {
+                invent3.image = UIImage(named: "egg")
+                eggtest.isHidden = true
+                let eggNewLocationAfterTouch = CGRect(x: -1, y: -1, width: 1, height: 1)
+                eggtest.frame = eggNewLocationAfterTouch
+                //isHidden only hides; still can interact even if hidden
+                egg.inInvent = true
+                userDefaults.set(egg.inInvent, forKey: "eggY")
+                eggPickup = false
+            } else if invent4.image == UIImage(named: "EmptySlot") {
+                invent4.image = UIImage(named: "egg")
+                eggtest.isHidden = true
+                let eggNewLocationAfterTouch = CGRect(x: -1, y: -1, width: 1, height: 1)
+                eggtest.frame = eggNewLocationAfterTouch
+                //isHidden only hides; still can interact even if hidden
+                egg.inInvent = true
+                userDefaults.set(egg.inInvent, forKey: "eggY")
                 eggPickup = false
             }
-            //when egg first picks both up
-            if ironClawPickup == true {
-                if invent1.image == UIImage(named: "EmptySlot") {
-                invent1.image = UIImage(named: "craebIRONClawJustClaw")
-                ironClawPickUpNow() }
-            } else if invent2.image == UIImage(named: "EmptySlot") {
-                invent2.image = UIImage(named: "craebIRONClawJustClaw")
-                ironClawPickUpNow()
-            } else if invent3.image == UIImage(named: "EmptySlot") {
-                invent3.image = UIImage(named: "craebIRONClawJustClaw")
-                ironClawPickUpNow()
-            } else if invent4.image == UIImage(named: "EmptySlot") {
-                invent4.image = UIImage(named: "craebIRONClawJustClaw")
-                ironClawPickUpNow()
-            }
-            ironClawPickup = false
+
         }
+        //when egg first picks both up
+        if ironClawPickup == true {
+            if invent1.image == UIImage(named: "EmptySlot") {
+                invent1.image = UIImage(named: "craebIRONClawJustClaw")
+                ironClaw.isHidden = true
+                let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
+                ironClaw.frame = ironClawNewLocation
+                ironClawPickup = false
+            }
+        } else if invent2.image == UIImage(named: "EmptySlot") {
+            invent2.image = UIImage(named: "craebIRONClawJustClaw")
+            ironClaw.isHidden = true
+            let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
+            ironClaw.frame = ironClawNewLocation
+        } else if invent3.image == UIImage(named: "EmptySlot") {
+            invent3.image = UIImage(named: "craebIRONClawJustClaw")
+            ironClaw.isHidden = true
+            let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
+            ironClaw.frame = ironClawNewLocation
+        } else if invent4.image == UIImage(named: "EmptySlot") {
+            invent4.image = UIImage(named: "craebIRONClawJustClaw")
+            ironClaw.isHidden = true
+            let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
+            ironClaw.frame = ironClawNewLocation
+        }
+        print(ironClawPickup)
+
         //checks if inventory is full
         if invent1.image != UIImage(named: "EmptySlot") && invent2.image != UIImage(named: "EmptySlot") && invent3.image != UIImage(named: "EmptySlot") && invent4.image != UIImage(named: "EmptySlot") {
             inventoryFull = true
         }
+        return
     }
+    //end
     func moveToNewInventory(sender: UITapGestureRecognizer) {
         let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
         let stackView: UIStackView = UIStackView(frame: rectangle)
         view.addSubview(stackView)
-            if invent1.frame.contains(sender.location(in: stackView)) {}else {
-                if invent2.frame.contains(sender.location(in: stackView)) {}else {
-                    if invent3.frame.contains(sender.location(in: stackView)) {}else {
-                        if invent4.frame.contains(sender.location(in: stackView)) {}else {
-                            print("here3")
-                            performSegue(withIdentifier: "modalSegue", sender: sender)
-                        }
+        if invent1.frame.contains(sender.location(in: stackView)) {}else {
+            if invent2.frame.contains(sender.location(in: stackView)) {}else {
+                if invent3.frame.contains(sender.location(in: stackView)) {}else {
+                    if invent4.frame.contains(sender.location(in: stackView)) {}else {
+                        print("here3")
+                        performSegue(withIdentifier: "modalSegue", sender: sender)
                     }
                 }
             }
+        }
         view.willRemoveSubview(stackView)
         stackView.removeFromSuperview()
     }
@@ -427,17 +443,16 @@ class CrabVentureViewController: UIViewController {
         moveToNewInventory(sender: sender)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if beans {
-			let nvc = segue.destination as! GameViewController
-		} else {
-        	let nvc = segue.destination as! InventoryViewController
+        if beans {
+            let nvc = segue.destination as! GameViewController
+        } else {
+            let nvc = segue.destination as! InventoryViewController
             nvc.invent1 = invent1
             nvc.invent2 = invent2
             nvc.invent3 = invent3
             nvc.invent4 = invent4
-		}
+        }
     }
-    
 }
 
 
