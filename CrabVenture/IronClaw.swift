@@ -13,5 +13,6 @@ class IronClaw {
     
     
     var hasTappedIronClaw: Bool = false
+    var isInInventory: Bool = false
     
 }
