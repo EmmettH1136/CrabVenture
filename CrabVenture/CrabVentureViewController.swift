@@ -29,6 +29,7 @@ class CrabVentureViewController: UIViewController {
     var inventory4 = UIImageView()
     var spritesLocation: [CGRect] = []
     var egg = Item("egg", 2, false)
+    var ironClawInInvent = Item("ironClaw", 1, false)
     var hasIronClaw = false
     var image = UIImage(named: "craeb")
     
@@ -400,26 +401,34 @@ class CrabVentureViewController: UIViewController {
         //when egg first picks both up
         if ironClawPickup == true {
             if invent1.image == UIImage(named: "EmptySlot") {
-                invent1.image = UIImage(named: "craebIRONClawJustClaw")
+                invent1.image = UIImage(named: "craebIRONClawJustClawInventoryPreview")
                 ironClaw.isHidden = true
                 let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
                 ironClaw.frame = ironClawNewLocation
+                ironClawInInvent.inInvent = true
+                userDefaults.set(ironClawInInvent.inInvent, forKey: "ironClawY")
                 ironClawPickup = false
             }   else if invent2.image == UIImage(named: "EmptySlot") {
-                invent2.image = UIImage(named: "craebIRONClawJustClaw")
+                invent2.image = UIImage(named: "craebIRONClawJustClawInventoryPreview")
                 ironClaw.isHidden = true
                 let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
                 ironClaw.frame = ironClawNewLocation
+                ironClawInInvent.inInvent = true
+                userDefaults.set(ironClawInInvent.inInvent, forKey: "ironClawY")
             } else if invent3.image == UIImage(named: "EmptySlot") {
-                invent3.image = UIImage(named: "craebIRONClawJustClaw")
+                invent3.image = UIImage(named: "craebIRONClawJustClawInventoryPreview")
                 ironClaw.isHidden = true
                 let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
                 ironClaw.frame = ironClawNewLocation
+                ironClawInInvent.inInvent = true
+                userDefaults.set(ironClawInInvent.inInvent, forKey: "ironClawY")
             } else if invent4.image == UIImage(named: "EmptySlot") {
-                invent4.image = UIImage(named: "craebIRONClawJustClaw")
+                invent4.image = UIImage(named: "craebIRONClawJustClawInventoryPreview")
                 ironClaw.isHidden = true
                 let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
                 ironClaw.frame = ironClawNewLocation
+                ironClawInInvent.inInvent = true
+                userDefaults.set(ironClawInInvent.inInvent, forKey: "ironClawY")
             }
             ironClawPickup = false
         }

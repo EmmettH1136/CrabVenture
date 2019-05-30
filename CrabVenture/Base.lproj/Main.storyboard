@@ -153,16 +153,8 @@
                                 <rect key="frame" x="634" y="9" width="164" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLk-FW-QAU">
-                                <rect key="frame" x="55" y="222" width="35" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="ArrowDown"/>
-                                <connections>
-                                    <action selector="movecrabDown:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="W4w-a3-eKk"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQp-TM-YV1">
-                                <rect key="frame" x="20" y="188" width="35" height="35"/>
+                                <rect key="frame" x="28" y="188" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="ArrowLeft"/>
                                 <connections>
@@ -170,7 +162,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWs-kw-C3w">
-                                <rect key="frame" x="55" y="155" width="35" height="35"/>
+                                <rect key="frame" x="63" y="153" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="ArrowUp"/>
                                 <connections>
@@ -178,7 +170,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efv-6p-LRX">
-                                <rect key="frame" x="89" y="188" width="35" height="35"/>
+                                <rect key="frame" x="98" y="188" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="ArrowRight"/>
                                 <connections>
@@ -193,6 +185,14 @@
                                 <rect key="frame" x="541" y="124" width="73" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLk-FW-QAU">
+                                <rect key="frame" x="63" y="223" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="ArrowDown"/>
+                                <connections>
+                                    <action selector="movecrabDown:" destination="slJ-kp-nhJ" eventType="touchUpInside" id="W4w-a3-eKk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -280,7 +280,7 @@
                                         <rect key="frame" x="648" y="0.0" width="248" height="393"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="KGK-v0-80p">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell1" id="KGK-v0-80p">
                                                 <rect key="frame" x="0.0" y="28" width="248" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KGK-v0-80p" id="QaS-hQ-wLY">
@@ -352,7 +352,6 @@
         <image name="sandtile" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SjC-e1-wki"/>
         <segue reference="wa8-IF-dA1"/>
     </inferredMetricsTieBreakers>
 </document>
