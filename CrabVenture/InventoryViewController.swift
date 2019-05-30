@@ -126,6 +126,7 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
                 default:
                     _ = UITableViewCell()
                 }
+                count += 1
                 return cell
             }else {
             
