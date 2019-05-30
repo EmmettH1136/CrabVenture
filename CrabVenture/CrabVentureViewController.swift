@@ -445,10 +445,18 @@ class CrabVentureViewController: UIViewController {
         let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
         let stackView: UIStackView = UIStackView(frame: rectangle)
         view.addSubview(stackView)
-        if invent1.frame.contains(sender.location(in: stackView)) {}else {
-            if invent2.frame.contains(sender.location(in: stackView)) {}else {
-                if invent3.frame.contains(sender.location(in: stackView)) {}else {
-                    if invent4.frame.contains(sender.location(in: stackView)) {}else {
+        if invent1.frame.contains(sender.location(in: stackView)) {
+            invent1.image = UIImage(named: "EmptySlot")
+        }else {
+            if invent2.frame.contains(sender.location(in: stackView)) {
+                invent2.image = UIImage(named: "EmptySlot")
+            }else {
+                if invent3.frame.contains(sender.location(in: stackView)) {
+                    invent3.image = UIImage(named: "EmptySlot")
+                }else {
+                    if invent4.frame.contains(sender.location(in: stackView)) {
+                        invent4.image = UIImage(named: "EmptySlot")
+                    }else {
                         print("here3")
                         performSegue(withIdentifier: "modalSegue", sender: sender)
                     }
