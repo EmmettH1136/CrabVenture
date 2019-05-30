@@ -29,6 +29,7 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
     var cell7 = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        count = 0
         tableView1.delegate = self
         tableView3.delegate = self
         tableView1.dataSource = self
@@ -72,6 +73,7 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") {
             switch count {
             case 0:
+                print("I AM HERE")
                 cell.imageView?.image = invent1.image
                 
             case 1:
@@ -82,32 +84,44 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
                 
             case 3:
                 cell.imageView?.image = invent4.image
-            case 4:
-                cell.imageView?.image = UIImage(named: cell1)
-                print("iggggggy")
-            case 5:
-                cell.imageView?.image = UIImage(named: cell2)
-            case 6:
-                cell.imageView?.image = UIImage(named: cell3)
-            case 7:
-                cell.imageView?.image = UIImage(named: cell4)
-            case 8:
-                cell.imageView?.image = UIImage(named: cell5)
-            case 9:
-                cell.imageView?.image = UIImage(named: cell6)
-            case 10:
-                cell.imageView?.image = UIImage(named: cell7)
-
             default:
+                print(count)
+                print("strognngngng")
                 _ = UITableViewCell()
             }
             count += 1
             return cell
 
             }else {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") {
+                switch count {
+                case 4:
+                    cell.imageView?.image = UIImage(named: cell1)
+                    print("iggggggy")
+                case 5:
+                    cell.imageView?.image = UIImage(named: cell2)
+                case 6:
+                    cell.imageView?.image = UIImage(named: cell3)
+                case 7:
+                    cell.imageView?.image = UIImage(named: cell4)
+                case 8:
+                    cell.imageView?.image = UIImage(named: cell5)
+                case 9:
+                    cell.imageView?.image = UIImage(named: cell6)
+                case 10:
+                    cell.imageView?.image = UIImage(named: cell7)
+                    
+                default:
+                    print("h")
+                    _ = UITableViewCell()
+                }
+                count += 1
+                return cell
+            }else {
             
                 return UITableViewCell()
             }
+        }
 
     }
     func swapPieces(imageView1: UIImageView, imageView2: UIImageView) {
