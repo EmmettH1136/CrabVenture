@@ -193,6 +193,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		swordFishNode.physicsBody?.categoryBitMask = enemyCategory
 		cleaverNode.physicsBody?.categoryBitMask = enemyCategory
 		mantaRayNode.physicsBody?.categoryBitMask = enemyCategory
+		octoNode.physicsBody?.categoryBitMask = enemyCategory
 		right.physicsBody?.categoryBitMask = rightCategory
 		
 		enemyP = CGPoint(x: swordFish.body.position.x, y: swordFishNode.position.y)
@@ -200,6 +201,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		swordFishNode.physicsBody?.contactTestBitMask = clawCategory|rightCategory
 		cleaverNode.physicsBody?.contactTestBitMask = clawCategory|rightCategory
 		mantaRayNode.physicsBody?.contactTestBitMask = clawCategory|rightCategory
+		octoNode.physicsBody?.contactTestBitMask = clawCategory|rightCategory
 		
 		mantaRayNode.texture = SKTexture(image: UIImage(named: "MantaRay")!)
 		

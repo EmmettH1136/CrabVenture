@@ -51,6 +51,7 @@ class CrabVentureViewController: UIViewController {
     let form3 = [-12, 12, -26, 26, -32, 32]
     let form4 = [-16, -14, -36, -34, 16, 14, 36, 34]
     var beans = false
+	var images = [UIImage(named: "SwordFish"), UIImage(named: "cleaver"), UIImage(named: "MantaRay"), UIImage(named: "Pode")]
     //	var bannedPoint1 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
     //	var bannedPoin2 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
     //	var bannedPoint3 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
@@ -82,7 +83,7 @@ class CrabVentureViewController: UIViewController {
         form = userDefaults.array(forKey: "form") as! [Int]
         locationX = 0
         locationY = -2
-        
+		swordFish.image = images.randomElement() as! UIImage
         print("changed to View")
         location = CGPoint(x: locationX, y: locationY)
         //		banned = [bannedPoint1, bannedPoin2, bannedPoint3]
