@@ -327,7 +327,7 @@ class CrabVentureViewController: UIViewController {
         guard let r2 = swordFish.superview?.convert(swordFish.frame, to: nil) else { return }
         guard let r3 = eggtest.superview?.convert(eggtest.frame, to: nil) else { return }
         guard let r4 = ironClaw.superview?.convert(ironClaw.frame, to: nil) else {return}
-        spritesLocation += ([r1, r2, r3, r4])
+        spritesLocation = ([r1, r2, r3, r4])
 
         if r1.intersects(r2) { touchingEnemy = true }
      
