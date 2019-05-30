@@ -53,6 +53,7 @@ class CrabVentureViewController: UIViewController {
     let form3 = [-12, 12, -26, 26, -32, 32]
     let form4 = [-16, -14, -36, -34, 16, 14, 36, 34]
     var beans = false
+	var images = [UIImage(named: "SwordFish"), UIImage(named: "cleaver"), UIImage(named: "MantaRay"), UIImage(named: "Pode")]
     //	var bannedPoint1 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
     //	var bannedPoin2 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
     //	var bannedPoint3 = CGPoint(x: Int.random(in: -6...6), y: Int.random(in: -2...2))
@@ -84,7 +85,7 @@ class CrabVentureViewController: UIViewController {
         form = userDefaults.array(forKey: "form") as! [Int]
         locationX = 0
         locationY = -2
-        
+		swordFish.image = images.randomElement() as! UIImage
         print("changed to View")
         location = CGPoint(x: locationX, y: locationY)
         //		banned = [bannedPoint1, bannedPoin2, bannedPoint3]
@@ -489,10 +490,18 @@ class CrabVentureViewController: UIViewController {
         let rectangle = CGRect(x: -4, y: 304, width: 900, height: 110)
         let stackView: UIStackView = UIStackView(frame: rectangle)
         view.addSubview(stackView)
-        if invent1.frame.contains(sender.location(in: stackView)) {}else {
-            if invent2.frame.contains(sender.location(in: stackView)) {}else {
-                if invent3.frame.contains(sender.location(in: stackView)) {}else {
-                    if invent4.frame.contains(sender.location(in: stackView)) {}else {
+        if invent1.frame.contains(sender.location(in: stackView)) {
+            invent1.image = UIImage(named: "EmptySlot")
+        }else {
+            if invent2.frame.contains(sender.location(in: stackView)) {
+                invent2.image = UIImage(named: "EmptySlot")
+            }else {
+                if invent3.frame.contains(sender.location(in: stackView)) {
+                    invent3.image = UIImage(named: "EmptySlot")
+                }else {
+                    if invent4.frame.contains(sender.location(in: stackView)) {
+                        invent4.image = UIImage(named: "EmptySlot")
+                    }else {
                         print("here3")
                         performSegue(withIdentifier: "modalSegue", sender: sender)
                     }
