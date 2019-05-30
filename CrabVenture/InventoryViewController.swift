@@ -34,16 +34,16 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView3.delegate = self
         tableView1.dataSource = self
         tableView3.dataSource = self
-        UIImage(named: "egg")?.accessibilityIdentifier = "egg"
+        UIImage(named: "egg")?.accessibilityIdentifier = ""
         UIImage(named: "craebIRONClawJustClaw")?.accessibilityIdentifier = "craebIRONClawJustClaw"
-        cell1 = userDefaults.string(forKey: "cell1o") ?? "egg"
+        cell1 = userDefaults.string(forKey: "cell1o") ?? ""
         print(cell1)
-        cell2 = userDefaults.string(forKey: "cell2o") ?? "egg"
-        cell3 = userDefaults.string(forKey: "cell3o") ?? "egg"
-        cell4 = userDefaults.string(forKey: "cell4o") ?? "egg"
-        cell5 = userDefaults.string(forKey: "cell5o") ?? "egg"
-        cell6 = userDefaults.string(forKey: "cell6o") ?? "egg"
-        cell7 = userDefaults.string(forKey: "cell7o") ?? "egg"
+        cell2 = userDefaults.string(forKey: "cell2o") ?? ""
+        cell3 = userDefaults.string(forKey: "cell3o") ?? ""
+        cell4 = userDefaults.string(forKey: "cell4o") ?? ""
+        cell5 = userDefaults.string(forKey: "cell5o") ?? ""
+        cell6 = userDefaults.string(forKey: "cell6o") ?? ""
+        cell7 = userDefaults.string(forKey: "cell7o") ?? ""
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == tableView1 {
