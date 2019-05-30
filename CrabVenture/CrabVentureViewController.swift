@@ -420,6 +420,7 @@ class CrabVentureViewController: UIViewController {
                 let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
                 ironClaw.frame = ironClawNewLocation
             }
+            ironClawPickup = false
         }
         print(ironClawPickup)
 
