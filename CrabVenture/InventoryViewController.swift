@@ -36,14 +36,14 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView3.dataSource = self
         UIImage(named: "egg")?.accessibilityIdentifier = "egg"
         UIImage(named: "craebIRONClawJustClaw")?.accessibilityIdentifier = "craebIRONClawJustClaw"
-        cell1 = userDefaults.string(forKey: "cell1o") ?? ""
+        cell1 = userDefaults.string(forKey: "cell1o") ?? "egg"
         print(cell1)
-        cell2 = userDefaults.string(forKey: "cell2o") ?? ""
-        cell3 = userDefaults.string(forKey: "cell3o") ?? ""
-        cell4 = userDefaults.string(forKey: "cell4o") ?? ""
-        cell5 = userDefaults.string(forKey: "cell5o") ?? ""
-        cell6 = userDefaults.string(forKey: "cell6o") ?? ""
-        cell7 = userDefaults.string(forKey: "cell7o") ?? ""
+        cell2 = userDefaults.string(forKey: "cell2o") ?? "egg"
+        cell3 = userDefaults.string(forKey: "cell3o") ?? "egg"
+        cell4 = userDefaults.string(forKey: "cell4o") ?? "egg"
+        cell5 = userDefaults.string(forKey: "cell5o") ?? "egg"
+        cell6 = userDefaults.string(forKey: "cell6o") ?? "egg"
+        cell7 = userDefaults.string(forKey: "cell7o") ?? "egg"
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == tableView1 {
@@ -94,6 +94,7 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
 
             }else {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") {
+                print("there is a cell1")
                 switch count {
                 case 4:
                     cell.imageView?.image = UIImage(named: cell1)
