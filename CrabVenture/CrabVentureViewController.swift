@@ -126,11 +126,16 @@ class CrabVentureViewController: UIViewController {
             randomFish = allTiles.randomElement()
         }
         swordFish.frame.origin = randomFish!.frame.origin
-        var randomEgg = allTiles.randomElement()
-        while randomEgg!.image == UIImage(named: "gravelpathtile") {
-            randomEgg = allTiles.randomElement()
-        }
-        eggtest.frame.origin = randomEgg!.frame.origin
+		var randomEgg = allTiles.randomElement()
+		while randomEgg!.image == UIImage(named: "gravelpathtile") {
+			randomEgg = allTiles.randomElement()
+		}
+		var randomClaw = allTiles.randomElement()
+		while randomClaw!.image == UIImage(named: "gravelpathtile") {
+			randomClaw = allTiles.randomElement()
+		}
+		eggtest.frame.origin = randomEgg!.frame.origin
+		ironClaw.frame.origin = randomClaw!.frame.origin
         //vc
     }
     
@@ -357,6 +362,25 @@ class CrabVentureViewController: UIViewController {
                 //isHidden only hides; still can interact even if hidden
                 egg.inInvent = true
                 userDefaults.set(egg.inInvent, forKey: "eggY")
+            }
+            
+            //checks if inv slot is taken for specific item
+            print("HIIII")
+            if eggPickup == true {
+                print("HEEEELLLLLLLOOOO")
+                if invent1.image == UIImage(named: "EmptySlot") {
+                     invent1.image = UIImage(named: "egg")
+                    eggPickUpNow()
+                } else if invent2.image == UIImage(named: "EmptySlot") {
+                     invent2.image = UIImage(named: "egg")
+                    eggPickUpNow()
+                } else if invent3.image == UIImage(named: "EmptySlot") {
+                     invent3.image = UIImage(named: "egg")
+                    eggPickUpNow()
+                } else if invent4.image == UIImage(named: "EmptySlot") {
+                     invent4.image = UIImage(named: "egg")
+                    eggPickUpNow()
+                }
                 eggPickup = false
             } else if invent2.image == UIImage(named: "EmptySlot") {
                 invent2.image = UIImage(named: "egg")

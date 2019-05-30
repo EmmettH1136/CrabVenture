@@ -70,6 +70,7 @@ class GameViewController: UIViewController {
     func gameOver() {
         
 //        self.removeFromParent()
+//        self.dismiss(animated: true, completion: nil)
         performSegue(withIdentifier: "Segue", sender: nil)
     }
     

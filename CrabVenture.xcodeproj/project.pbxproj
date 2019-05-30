@@ -10,6 +10,7 @@
 		1435DFD62289CE8B007CAC0A /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1435DFD52289CE8B007CAC0A /* InventoryViewController.swift */; };
 		1458D1682281E5CC00DCB403 /* CrabVentureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1458D1672281E5CC00DCB403 /* CrabVentureViewController.swift */; };
 		34BDC128227B51C000A1BF12 /* SecondGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BDC127227B51C000A1BF12 /* SecondGameScene.swift */; };
+		56530B4C229858480056D822 /* IronClaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56530B4B229858480056D822 /* IronClaw.swift */; };
 		5F27DCC3228339490046D40F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F27DCC2228339490046D40F /* Assets.xcassets */; };
 		5FA3E9CC227A01F600D8C1D3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA3E9CB227A01F600D8C1D3 /* Item.swift */; };
 		5FD7497C2278B02600F26F63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD7497B2278B02600F26F63 /* AppDelegate.swift */; };
@@ -27,6 +28,7 @@
 		1435DFD52289CE8B007CAC0A /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		1458D1672281E5CC00DCB403 /* CrabVentureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrabVentureViewController.swift; sourceTree = "<group>"; };
 		34BDC127227B51C000A1BF12 /* SecondGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondGameScene.swift; sourceTree = "<group>"; };
+		56530B4B229858480056D822 /* IronClaw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IronClaw.swift; sourceTree = "<group>"; };
 		5F27DCC2228339490046D40F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FA3E9CB227A01F600D8C1D3 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		5FD749782278B02600F26F63 /* CrabVenture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrabVenture.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +85,7 @@
 				5FD749832278B02600F26F63 /* GameViewController.swift */,
 				1458D1672281E5CC00DCB403 /* CrabVentureViewController.swift */,
 				1435DFD52289CE8B007CAC0A /* InventoryViewController.swift */,
+				56530B4B229858480056D822 /* IronClaw.swift */,
 				5F27DCC2228339490046D40F /* Assets.xcassets */,
 				5FD749852278B02600F26F63 /* Main.storyboard */,
 				5FD7498A2278B02700F26F63 /* LaunchScreen.storyboard */,
@@ -164,6 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56530B4C229858480056D822 /* IronClaw.swift in Sources */,
 				5FA3E9CC227A01F600D8C1D3 /* Item.swift in Sources */,
 				1435DFD62289CE8B007CAC0A /* InventoryViewController.swift in Sources */,
 				5FDE45DD227B4C2A008D9E16 /* Enemy.swift in Sources */,
@@ -319,14 +323,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 74D3D3A2RV;
+				DEVELOPMENT_TEAM = 4NPB4A6LM8;
 				INFOPLIST_FILE = CrabVenture/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CrabVenture;
+				PRODUCT_BUNDLE_IDENTIFIER = Jake.CrabVenture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -338,14 +342,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 74D3D3A2RV;
+				DEVELOPMENT_TEAM = 4NPB4A6LM8;
 				INFOPLIST_FILE = CrabVenture/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CrabVenture;
+				PRODUCT_BUNDLE_IDENTIFIER = Jake.CrabVenture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

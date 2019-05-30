@@ -30,13 +30,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var crabClaw = SKSpriteNode()
 	var crabPhys = SKPhysicsBody()
     var swordFishNode = SKSpriteNode()
-	var swordFish = Enemy("SwordFish", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 100...400), dy: 0), 0)
+	var swordFish = Enemy("SwordFish", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 100...400), dy: 0), 0, 10, 80.0)
     var swordFishPhys = SKPhysicsBody()
 	var cleaverNode = SKSpriteNode()
-	var cleaver = Enemy("Cleaver", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 400...800), dy: 0), 2)
+	var cleaver = Enemy("Cleaver", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 400...800), dy: 0), 2, 50, 50.0)
 	var cronched = 0
 	var mantaRayNode = SKSpriteNode()
-	var mantaRay = Enemy("MantaRay", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 100...200), dy: 0), 3)
+	var mantaRay = Enemy("MantaRay", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 100...200), dy: 0), 3, 1, 120.0)
     let tapRec = UITapGestureRecognizer()
 	var label = SKLabelNode()
 	var backgroundNode = SKSpriteNode()
@@ -55,9 +55,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	var moveClawBackAction = SKAction()
 	var enemyP = CGPoint()
 	var enemies : [Enemy] = []
-	var enemy = Enemy("boop", 0, SKSpriteNode(), CGVector(), 1)
+	var enemy = Enemy("boop", 0, SKSpriteNode(), CGVector(), 1, 120303403, 2)
 	var electricBoogaloo = 0
 	var hit = 0
+	var enemyIsSneak = false
 	
 	func runTimer() {
 		timer = Timer.scheduledTimer(timeInterval: 0.5, target: self,   selector: (#selector(GameScene.updateTimer)), userInfo: nil, repeats: true)
@@ -92,9 +93,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 				enemy.body.physicsBody?.velocity = enemy.speed
 			} else {
 				sneakySeconds -= 0.5
-				enemy.body.physicsBody?.velocity.dx += 100
-				enemy.speed.dx += 120
-				print(enemy.speed.dx)
+				enemy.body.physicsBody?.velocity.dx += enemy.sneakMount
+				enemy.speed.dx += enemy.sneakMount
+				print(enemy.body.physicsBody!.velocity.dx)
 			}
 		}
 	}
@@ -110,7 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 				isRandomTimerRunning = false
 				enemy.body.physicsBody?.isDynamic = true
 				enemy.body.physicsBody?.velocity = enemy.speed
-				if enemy.name == mantaRay.name {
+				if enemyIsSneak {
 					runSneakyTimer()
 				}
 			} else {
@@ -124,14 +125,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
-        print(cronched)
-        
+//        print(cronched)
+		
         health = 1
         
 		physicsWorld.contactDelegate = self
 		
 		enemies = [swordFish, cleaver, mantaRay]
 		enemy = enemies.randomElement()!
+		var random = Int.random(in: 1 ... enemy.sneakChance)
+		if random == 1 {
+			enemyIsSneak = true
+			print("baba jons")
+		}
 		
         isTimerRunning = false
 		electricBoogaloo = 0
@@ -153,6 +159,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		backgroundNode.size = CGSize(width: self.frame.width, height: self.frame.height)
 		backgroundNode.zPosition = -100
 		backgroundNode.texture = SKTexture(image: UIImage(named: "beeech")!)
+		backgroundNode.name = "background"
 		self.addChild(backgroundNode)
 		
 		
@@ -258,7 +265,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             cronched = 1
             let crabWhenGrabbedPosition = CGPoint(x: crabClaw.position.x, y: crabClaw.position.y)
 			
-            print(crabClaw.position)
+//            print(crabClaw.position)
 			
 			
             
@@ -266,7 +273,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if crabClaw.position == crabWhenGrabbedPosition {
                 self.crabClaw.run(moveClawBackAction)
-                print("is at position")
+//                print("is at position")
             }
             
 			runTimer()
@@ -286,11 +293,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	
 	override func update(_ currentTime: TimeInterval) {
 		if health == 0 {
-			print("yuh oh you lost")
+//			print("yuh oh you lost")
 			let vc = UIApplication.shared.keyWindow?.rootViewController as! GameViewController
-			vc.performSegue(withIdentifier: "Segue", sender: nil)
-			self.removeAllActions()
+//			self.removeAllActions()
 			self.removeAllChildren()
+			vc.performSegue(withIdentifier: "Segue", sender: nil)
 			
 		}
         
@@ -303,10 +310,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 		if hit == 1 && electricBoogaloo == 1 {
 			let vc = UIApplication.shared.keyWindow?.rootViewController as! GameViewController
-			vc.performSegue(withIdentifier: "Segue", sender: nil)
-			self.removeAllActions()
-			self.removeAllChildren()
 			electricBoogaloo = 0
+			
+//			self.removeAllActions()
+			self.removeAllChildren()
+			vc.performSegue(withIdentifier: "Segue", sender: nil)
 		}
 	}
 }
