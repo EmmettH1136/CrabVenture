@@ -32,6 +32,7 @@ class CrabVentureViewController: UIViewController {
     var ironClawInInvent = Item("ironClaw", 1, false)
     var hasIronClaw = false
     var image = UIImage(named: "craeb")
+    var setCrabImageToIron: Bool = false
     
     var collision: UICollisionBehavior!
     
@@ -206,8 +207,16 @@ class CrabVentureViewController: UIViewController {
         walkState = walkState == .walking ? .idle : .walking
         
         // Updates `UIImageView` default image
-        let image = walkState == .walking ? UIImage(named: "craeb2") : UIImage(named: "craeb")
-        crabImageView.image = image
+        
+        if setCrabImageToIron == false {
+            let image = walkState == .walking ? UIImage(named: "craeb2") : UIImage(named: "craeb")
+            crabImageView.image = image
+        }
+        else {
+            let image = walkState == .walking ? UIImage(named: "craebIRONClaw2") : UIImage(named: "craebIRONClaw")
+            crabImageView.image = image
+        }
+        
     }
     
     private func toggleCastStateUp() {
@@ -215,12 +224,27 @@ class CrabVentureViewController: UIViewController {
         walkState = walkState == .walking ? .idle : .walking
         
         // Updates `UIImageView` default image
-        let image = walkState == .walking ? UIImage(named: "craeb2Up") : UIImage(named: "craebUp")
-        crabImageView.image = image
+        
+        if setCrabImageToIron == false {
+            let image = walkState == .walking ? UIImage(named: "craeb2Up") : UIImage(named: "craebUp")
+            crabImageView.image = image
+        }
+        else {
+            let image = walkState == .walking ? UIImage(named: "craebIRONClaw2Up") : UIImage(named: "craebIRONClawUp")
+            crabImageView.image = image
+        }
+        
     }
     
     //right
     @IBAction func movecrab (_ sender: UIButton) {
+        
+        if ironClawInInvent.inInvent == true {
+            setCrabImageToIron = true
+        }
+        
+        
+        
         let newLocation = (CGPoint(x: locationX + 1, y: locationY))
         
         switch walkState {
@@ -239,7 +263,12 @@ class CrabVentureViewController: UIViewController {
             UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
                 self.crabImageView.frame.origin.x += 50}, completion: nil)
             locationX += 1
-            crabImageView.image = UIImage(named: "craeb2")
+            if setCrabImageToIron == false {
+                self.crabImageView.image = UIImage(named: "craeb2")
+            }
+            else {
+                self.crabImageView.image = UIImage(named: "craebIRONClaw2")
+            }
         } else {
             noGo = false
         }
@@ -267,7 +296,12 @@ class CrabVentureViewController: UIViewController {
             UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
                 self.crabImageView.frame.origin.x -= 50}, completion: nil)
             locationX -= 1
-            self.crabImageView.image = UIImage(named: "craeb2")
+            if setCrabImageToIron == false {
+                self.crabImageView.image = UIImage(named: "craeb2")
+            }
+            else {
+                self.crabImageView.image = UIImage(named: "craebIRONClaw2")
+            }
         } else {
             noGo = false
         }
@@ -292,7 +326,12 @@ class CrabVentureViewController: UIViewController {
             UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations:  {
                 self.crabImageView.frame.origin.y -= 50}, completion: nil)
             locationY += 1
-            crabImageView.image = UIImage(named: "craebUp2")
+            if setCrabImageToIron == false {
+                self.crabImageView.image = UIImage(named: "craebUp2")
+            }
+            else {
+                self.crabImageView.image = UIImage(named: "craebIRONClaw2Up")
+            }
         } else {
             noGo = false
         }
@@ -318,8 +357,12 @@ class CrabVentureViewController: UIViewController {
                 self.crabImageView.frame.origin.y += 50}, completion: nil)
             locationY -= 1
             
-            self.crabImageView.image = UIImage(named: "craebUp2")
-            
+            if setCrabImageToIron == false {
+                self.crabImageView.image = UIImage(named: "craebUp2")
+            }
+            else {
+                self.crabImageView.image = UIImage(named: "craebIRONClaw2Up")
+            }
         } else {
             noGo = false
         }
@@ -399,6 +442,8 @@ class CrabVentureViewController: UIViewController {
         }
         //when egg first picks both up
         if ironClawPickup == true {
+            
+            
             if invent1.image == UIImage(named: "EmptySlot") {
                 invent1.image = UIImage(named: "craebIRONClawJustClawInventoryPreview")
                 ironClaw.isHidden = true
