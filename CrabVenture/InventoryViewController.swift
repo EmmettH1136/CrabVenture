@@ -36,14 +36,14 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView3.dataSource = self
         UIImage(named: "egg")?.accessibilityIdentifier = "egg"
         UIImage(named: "craebIRONClawJustClaw")?.accessibilityIdentifier = "craebIRONClawJustClaw"
-        cell1 = userDefaults.string(forKey: "cell1o") ?? "egg"
+        cell1 = userDefaults.string(forKey: "cell1o") ?? ""
         print(cell1)
-        cell2 = userDefaults.string(forKey: "cell2o") ?? "egg"
-        cell3 = userDefaults.string(forKey: "cell3o") ?? "egg"
-        cell4 = userDefaults.string(forKey: "cell4o") ?? "egg"
-        cell5 = userDefaults.string(forKey: "cell5o") ?? "egg"
-        cell6 = userDefaults.string(forKey: "cell6o") ?? "egg"
-        cell7 = userDefaults.string(forKey: "cell7o") ?? "egg"
+        cell2 = userDefaults.string(forKey: "cell2o") ?? ""
+        cell3 = userDefaults.string(forKey: "cell3o") ?? ""
+        cell4 = userDefaults.string(forKey: "cell4o") ?? ""
+        cell5 = userDefaults.string(forKey: "cell5o") ?? ""
+        cell6 = userDefaults.string(forKey: "cell6o") ?? ""
+        cell7 = userDefaults.string(forKey: "cell7o") ?? ""
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == tableView1 {
@@ -72,17 +72,17 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") {
             switch count {
-            case 7:
+            case 0:
                 print("I AM HERE")
                 cell.imageView?.image = invent1.image
                 
-            case 8:
+            case 1:
                 cell.imageView?.image = invent2.image
                 
-            case 9:
+            case 2:
                 cell.imageView?.image = invent3.image
                 
-            case 10:
+            case 3:
                 cell.imageView?.image = invent4.image
             default:
                 print(count)
@@ -99,20 +99,20 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
             }
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") {
                 switch count {
-                case 0:
-                    cell.imageView?.image = UIImage(named: cell1)
-                    print("iggggggy")
-                case 1:
-                    cell.imageView?.image = UIImage(named: cell2)
-                case 2:
-                    cell.imageView?.image = UIImage(named: cell3)
-                case 3:
-                    cell.imageView?.image = UIImage(named: cell4)
                 case 4:
-                    cell.imageView?.image = UIImage(named: cell5)
+                    cell.imageView?.image = UIImage(named: "egg")
+                    print("iggggggy")
                 case 5:
-                    cell.imageView?.image = UIImage(named: cell6)
+                    cell.imageView?.image = UIImage(named: cell2)
                 case 6:
+                    cell.imageView?.image = UIImage(named: cell3)
+                case 7:
+                    cell.imageView?.image = UIImage(named: cell4)
+                case 8:
+                    cell.imageView?.image = UIImage(named: cell5)
+                case 9:
+                    cell.imageView?.image = UIImage(named: cell6)
+                case 10:
                     cell.imageView?.image = UIImage(named: cell7)
                     
                 default:
