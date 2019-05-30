@@ -93,6 +93,7 @@ class CrabVentureViewController: UIViewController {
             for tile in allTiles {
                 if Int(tag) == tile.tag {
                     bannedTiles.append(tile)
+					
                 }
             }
         }
@@ -151,10 +152,18 @@ class CrabVentureViewController: UIViewController {
         let originy = crabImageView.frame.origin.y
         crabImageView.frame.origin = CGPoint(x: originx + CGFloat(locationX * 50), y: originy + CGFloat((locationY + 2) * -50) )
         let eggInvent = userDefaults.bool(forKey: "eggY")
-        //        if eggInvent {
-        //            eggtest.isHidden = true
-        //            invent1.image = UIImage(named: "egg")
-        //        }
+		if eggInvent {
+			eggtest.isHidden = true
+			let eggNewLocationAfterTouch = CGRect(x: -1, y: -1, width: 1, height: 1)
+			eggtest.frame = eggNewLocationAfterTouch
+		}
+		let clawInvent = userDefaults.bool(forKey: "clawY")
+		if clawInvent {
+			ironClaw.isHidden = true
+			let clawNewLocationAfterTouch = CGRect(x: -1, y: -1, width: 1, height: 1)
+			ironClaw.frame = clawNewLocationAfterTouch
+		}
+		
     }
     
     enum WalkState {
@@ -476,6 +485,7 @@ class CrabVentureViewController: UIViewController {
                 userDefaults.set(ironClawInInvent.inInvent, forKey: "ironClawY")
             }
             ironClawPickup = false
+			userDefaults.set(true, forKey: "clawY")
         }
         print(ironClawPickup)
 
