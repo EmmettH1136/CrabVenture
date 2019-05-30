@@ -369,18 +369,13 @@ class CrabVentureViewController: UIViewController {
             if eggPickup == true {
                 print("HEEEELLLLLLLOOOO")
                 if invent1.image == UIImage(named: "EmptySlot") {
-                     invent1.image = UIImage(named: "egg")
-                    eggPickUpNow()
-                } else if invent2.image == UIImage(named: "EmptySlot") {
-                     invent2.image = UIImage(named: "egg")
-                    eggPickUpNow()
-                } else if invent3.image == UIImage(named: "EmptySlot") {
-                     invent3.image = UIImage(named: "egg")
-                    eggPickUpNow()
-                } else if invent4.image == UIImage(named: "EmptySlot") {
-                     invent4.image = UIImage(named: "egg")
-                    eggPickUpNow()
-                }
+                    invent1.image = UIImage(named: "egg")
+                    eggtest.isHidden = true
+                    let eggNewLocationAfterTouch = CGRect(x: -1, y: -1, width: 1, height: 1)
+                    eggtest.frame = eggNewLocationAfterTouch
+                    //isHidden only hides; still can interact even if hidden
+                    egg.inInvent = true
+                    userDefaults.set(egg.inInvent, forKey: "eggY")
                 eggPickup = false
             } else if invent2.image == UIImage(named: "EmptySlot") {
                 invent2.image = UIImage(named: "egg")
@@ -420,30 +415,31 @@ class CrabVentureViewController: UIViewController {
                 let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
                 ironClaw.frame = ironClawNewLocation
                 ironClawPickup = false
+            }   else if invent2.image == UIImage(named: "EmptySlot") {
+                invent2.image = UIImage(named: "craebIRONClawJustClaw")
+                ironClaw.isHidden = true
+                let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
+                ironClaw.frame = ironClawNewLocation
+            } else if invent3.image == UIImage(named: "EmptySlot") {
+                invent3.image = UIImage(named: "craebIRONClawJustClaw")
+                ironClaw.isHidden = true
+                let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
+                ironClaw.frame = ironClawNewLocation
+            } else if invent4.image == UIImage(named: "EmptySlot") {
+                invent4.image = UIImage(named: "craebIRONClawJustClaw")
+                ironClaw.isHidden = true
+                let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
+                ironClaw.frame = ironClawNewLocation
             }
-        } else if invent2.image == UIImage(named: "EmptySlot") {
-            invent2.image = UIImage(named: "craebIRONClawJustClaw")
-            ironClaw.isHidden = true
-            let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
-            ironClaw.frame = ironClawNewLocation
-        } else if invent3.image == UIImage(named: "EmptySlot") {
-            invent3.image = UIImage(named: "craebIRONClawJustClaw")
-            ironClaw.isHidden = true
-            let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
-            ironClaw.frame = ironClawNewLocation
-        } else if invent4.image == UIImage(named: "EmptySlot") {
-            invent4.image = UIImage(named: "craebIRONClawJustClaw")
-            ironClaw.isHidden = true
-            let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
-            ironClaw.frame = ironClawNewLocation
         }
         print(ironClawPickup)
 
         //checks if inventory is full
         if invent1.image != UIImage(named: "EmptySlot") && invent2.image != UIImage(named: "EmptySlot") && invent3.image != UIImage(named: "EmptySlot") && invent4.image != UIImage(named: "EmptySlot") {
             inventoryFull = true
-        }
+            }
         return
+        }
     }
     //end
     func moveToNewInventory(sender: UITapGestureRecognizer) {
@@ -478,8 +474,5 @@ class CrabVentureViewController: UIViewController {
         }
     }
 }
-
-
-
 
 
