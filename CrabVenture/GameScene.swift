@@ -37,6 +37,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	var cronched = 0
 	var mantaRayNode = SKSpriteNode()
 	var mantaRay = Enemy("MantaRay", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 100...200), dy: 0), 3, 1, 120.0)
+	var octoNode = SKSpriteNode()
+	var octo = Enemy("Octopode", 1, SKSpriteNode(), CGVector(dx: Int.random(in: 300...600), dy: 0), 4, 3, 100)
     let tapRec = UITapGestureRecognizer()
 	var label = SKLabelNode()
 	var backgroundNode = SKSpriteNode()
@@ -131,7 +133,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
 		physicsWorld.contactDelegate = self
 		
-		enemies = [swordFish, cleaver, mantaRay]
+		enemies = [swordFish, cleaver, mantaRay, octo]
 		enemy = enemies.randomElement()!
 		var random = Int.random(in: 1 ... enemy.sneakChance)
 		if random == 1 {
@@ -152,7 +154,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		cleaver.body = cleaverNode
 		mantaRayNode = self.childNode(withName: "Meen") as! SKSpriteNode
 		mantaRay.body = mantaRayNode
-		enemy.body.position = CGPoint(x: -932.162, y: 235.423)
+		octoNode = self.childNode(withName : "Pode") as! SKSpriteNode
+		octo.body = octoNode
+		enemy.body.position = CGPoint(x: -934.162, y: 230.423)
         let topRight = CGPoint(x: -frame.origin.x, y: -frame.origin.y)
 		let bottomRight = CGPoint(x: -frame.origin.x, y: frame.origin.y)
 		
