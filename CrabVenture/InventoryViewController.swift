@@ -73,15 +73,18 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
             switch count {
             case 0:
                 cell.imageView?.image = invent1.image
+                
             case 1:
                 cell.imageView?.image = invent2.image
+                
             case 2:
                 cell.imageView?.image = invent3.image
+                
             case 3:
                 cell.imageView?.image = invent4.image
             case 4:
                 cell.imageView?.image = UIImage(named: cell1)
-                print(cell)
+                print("iggggggy")
             case 5:
                 cell.imageView?.image = UIImage(named: cell2)
             case 6:
