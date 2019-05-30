@@ -331,7 +331,6 @@
                     <navigationItem key="navigationItem" id="AVT-a9-MTk"/>
                     <connections>
                         <outlet property="tableView1" destination="tiP-Wf-GRg" id="L0v-oY-H5t"/>
-                        <outlet property="tableView2" destination="oJM-Yx-5uh" id="HVf-9o-fjM"/>
                         <outlet property="tableView3" destination="PnL-xI-dOY" id="obO-mx-brU"/>
                     </connections>
                 </viewController>
@@ -353,6 +352,6 @@
         <image name="sandtile" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lww-zR-ibk"/>
+        <segue reference="wa8-IF-dA1"/>
     </inferredMetricsTieBreakers>
 </document>
