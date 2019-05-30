@@ -352,7 +352,6 @@ class CrabVentureViewController: UIViewController {
 
         }
 
-     
             
             //checks if inv slot is taken for specific item
             print("HIIII")
@@ -429,7 +428,6 @@ class CrabVentureViewController: UIViewController {
             inventoryFull = true
             }
         return
-        }
     }
     //end
     func moveToNewInventory(sender: UITapGestureRecognizer) {
