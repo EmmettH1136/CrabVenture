@@ -399,23 +399,23 @@ class CrabVentureViewController: UIViewController {
         //when egg first picks both up
         if ironClawPickup == true {
             if invent1.image == UIImage(named: "EmptySlot") {
-                invent1.image = UIImage(named: "craebIRONClawJustClawInventoryPreview")
+                invent1.image = UIImage(named: "craebIRONClawJustClaw")
                 ironClaw.isHidden = true
                 let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
                 ironClaw.frame = ironClawNewLocation
                 ironClawPickup = false
             }   else if invent2.image == UIImage(named: "EmptySlot") {
-                invent2.image = UIImage(named: "craebIRONClawJustClawInventoryPreview")
+                invent2.image = UIImage(named: "craebIRONClawJustClaw")
                 ironClaw.isHidden = true
                 let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
                 ironClaw.frame = ironClawNewLocation
             } else if invent3.image == UIImage(named: "EmptySlot") {
-                invent3.image = UIImage(named: "craebIRONClawJustClawInventoryPreview")
+                invent3.image = UIImage(named: "craebIRONClawJustClaw")
                 ironClaw.isHidden = true
                 let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
                 ironClaw.frame = ironClawNewLocation
             } else if invent4.image == UIImage(named: "EmptySlot") {
-                invent4.image = UIImage(named: "craebIRONClawJustClawInventoryPreview")
+                invent4.image = UIImage(named: "craebIRONClawJustClaw")
                 ironClaw.isHidden = true
                 let ironClawNewLocation = CGRect(x: -1, y: -1, width: -1, height: -1)
                 ironClaw.frame = ironClawNewLocation
