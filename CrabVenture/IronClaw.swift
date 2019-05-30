@@ -13,4 +13,5 @@ class IronClaw {
     
     
     var hasTappedIronClaw: Bool = false
+    
 }
